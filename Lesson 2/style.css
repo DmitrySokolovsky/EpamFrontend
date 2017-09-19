@@ -1,0 +1,16 @@
+a, a:hover, a:active, a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.container{
+    width: 950px;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.container img{
+    height: 105px;
+    width: 910px;
+}
