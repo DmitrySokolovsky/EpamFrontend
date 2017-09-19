@@ -4,7 +4,7 @@
 ### Lesson1
 Description: create account and repository on GitHub and push some file.
 
-Comment: I did't create a new folder for this task, so you can see test.html.
+Comment: I did't create a new folder for this task, so you can see only test.html.
 
 ---
 ### Lesson2
