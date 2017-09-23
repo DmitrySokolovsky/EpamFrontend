@@ -19,7 +19,6 @@ Description: different tasks about element's chidren.
 Comment: the task whith * I did like redneck with a class for every child.
 ---
 ### Lesson4
-
 Description: create html-file with form, table, and iframe.
 
 Comment: instad of using button I used input type image.
