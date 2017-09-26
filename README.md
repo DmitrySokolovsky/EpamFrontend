@@ -24,3 +24,11 @@ Comment: the task whith * I did like redneck with a class for every child.
 Description: create html-file with form, table, and iframe.
 
 Comment: instad of using button I used input type image.
+
+---
+### Lesson5
+Description: create html-page whith different buttons.
+
+Comment: I used my own image for background - I suppose it's not a mistake.
+
+I used Corel Draw for the image.
