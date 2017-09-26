@@ -1,0 +1,115 @@
+@font-face{
+    font-family: Mistral;
+    src: url(./font/Mistral.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+button{
+    border-style: none;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#home{
+    width: 1366px;
+    height: 282px;
+    background-image: url(./img/background-main.jpg); 
+    position: relative;
+}
+
+#logo-back{
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 408px;
+    height: 87px;
+    border: 4px solid black;
+    background-color: white;
+    opacity: 0.95;
+    box-shadow: 0 0 0 7px rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo{
+    font-family: Mistral;
+    font-weight: bold;
+    font-size: 56px;;
+}
+
+.white-back{
+    background-color: white;
+}
+
+.dark-back{
+    background-color: #333333;
+}
+
+.button-wrap{
+    margin: 10px;
+    box-sizing: border-box;
+    border: 2px solid #eaeaea; 
+    height: 168px;  
+    position: relative; 
+}
+
+.button-container{
+    margin-left: 35px;
+    margin-top: 24px;
+    position: absolute;
+}
+
+.button-container :first-child{
+    margin-top: 0;
+}
+
+.margin{
+    margin-top: 14px;
+}
+
+.btn-shape{
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    padding: 7px 12px 7px 12px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 9px;
+    color: white; 
+}
+
+.pink{
+    font-size: 21px;
+    background: linear-gradient(180deg, #e954ab, #e52094);
+
+}
+
+.green{
+    background: linear-gradient(180deg, #a7cb39, #9dc819);
+}
+
+.blue{
+    background: linear-gradient(180deg, #5d9ee9, #3f8fe9);
+}
+
+.red{
+    background: linear-gradient(180deg, #ec5b5b, #eb3d3d);
+}
+
+.orange{
+    background: linear-gradient(180deg, #ff823e, #ff6e1a);
+}
+
+.orange{
+    background: linear-gradient(180deg, #ff823e, #ff6e1a);
+}
+
+.yellow{
+    background: linear-gradient(180deg, #ffc74c, #ffbe2d);
+}
