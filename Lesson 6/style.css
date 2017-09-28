@@ -1,0 +1,66 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+.b-day-form {
+  width: 25%;
+  min-width: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+.b-day-form__line {
+  margin: 10px 10px 0 10px;
+}
+
+.b-day-form-label {
+  font-size: 15px;
+  font-weight: normal;
+  color: gray;
+}
+
+.b-day-form-description {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.b-day-form__date-from-inputs--bottom-border{
+    border-bottom: 2px solid red;
+}
+
+.date-from-inputs__date--bold-15, .date-from-inputs__time--bold-15{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.date-from__error--color-red{
+    color: red;
+}
+
+.b-day-form__date-to-inputs--bottom-border{
+    border-bottom: 2px solid red;
+}
+
+.date-to-inputs__date--bold-15, .date-to-inputs__time--bold-15{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.date-to__error--color-red{
+    color: red;
+}
+
+.b-day-form__submit{
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+}
+
+
+
