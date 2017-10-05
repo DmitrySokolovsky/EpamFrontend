@@ -1,0 +1,140 @@
+.hw-page__contact-line{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hw__form{
+    width: 50%;
+    height: 565px;
+    background-color: #E9714C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hw__form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hw__input{
+    width: 100%;
+    display: block;
+    background-color: #E9714C; 
+    border-style: none;
+    border-bottom: 2px solid #EBCA98;
+    line-height: 30px;
+    color: white;
+    margin-top: 30px;
+}
+
+.hw__input::-webkit-input-placeholder{
+    color:white;
+    font-size: 17px;
+}
+
+.hw__input--text{
+    height: 147px;
+    width: 100%;
+}
+
+.hw__contact-button{    
+    font-weight: bold;
+    font-size: 15px;
+    font-family: SourseSansPro;
+    padding: 14px 122px 14px 122px;
+    background: white;
+    border-radius: 22px;
+    border-style: none;
+    margin-top: 20px;
+}
+
+/* fonts */
+.hw__contact-text{
+    font-family: SourseSansPro;
+    font-weight: 15px;
+    color: white;
+}
+
+.hw__contact-text--title{
+    font-size: 35px;
+}
+
+/* Contact Image */
+.hw__contact-image{
+    width: 25%;
+    height: 565px;
+    background: url(../img/contact-image.jpg) no-repeat center;
+}
+
+/* Contact Info */
+.hw__contact-info{
+    width: 25%;
+    height: 565px;
+    background-color: #191919;
+    box-sizing: border-box;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.hw__contact-info-container{
+    width: 257px;
+}
+
+.hw__contact-adress{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 51px;
+}
+
+.hw__contact-adress :first-child{
+    margin-bottom: 15px;
+}
+
+.hw__contact-item{
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0 20px 0;
+}
+
+.hw__contact-item :first-child{
+    margin-right: 10px; 
+}
+
+.hw__contact-link:hover{
+    color: #E9714C;
+}
+
+.hw__contact-link:visitd{
+    color: #EBCA98;
+}
+
+/* Font */
+.hw__contact-text{
+    font-family: SourseSansPro;
+    font-weight: 15px;
+    color: white;
+}
+
+.hw__contact-text--grey{
+    color: #616161;
+}
+
+.hw__contact-text--yellow{
+    color: #EBCA98;
+}
+
+.hw__contact--item-text{
+    font-size: 15px;
+}
+
+.hw__contact-text--info-title{
+    font-size: 30px;
+}
+
+.hw__contact-link--yellow{
+    color: #EBCA98;
+}

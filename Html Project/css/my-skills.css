@@ -1,0 +1,147 @@
+.hw-page__skills-line{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+/*My Skills FIRST LINE */
+
+/* Skills info*/
+.hw__skills-container{    
+    width: 50%;
+    height: 300px;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hw__skills-info{
+    max-width: 600px;
+}
+
+.hw__skills-info :nth-child(1){
+    margin-bottom: 15px;
+}
+
+.hw__skills-info :nth-child(2){
+    margin-bottom: 25px;
+}
+
+.hw__skills-info :nth-child(3){
+    margin-bottom: 10px;
+}
+
+.hw__skills-text{
+    font-family: SourseSansPro;
+    font-size: 15px;
+}
+
+.hw__skills-text--yellow{
+    color: #E4AE58;
+}
+
+.hw__skills-text--title-font{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Image */
+.hw__skills-image{
+    background: url(../img/skills-image.jpg) no-repeat center;
+    width: 25%;
+    height: 300px;;
+}
+
+.hw__skills-text--bold-black{
+    font-weight: bold;
+    color: black;
+}
+
+.hw__skills-text--white{
+    color: white;
+}
+
+.hw__skills-text--title{
+    color: white;
+    font-family: SourseSansPro;
+    font-size: 35px;
+}
+
+/* Range Block */
+.hw__skills-range-container{
+    background-color: #E4AE58;
+    display: flex;
+    min-width: 325px;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.hw__skills-range{
+    width: 280px;
+}
+
+.hw__range-info{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 5px 0;
+}
+
+
+/*My Skills items */
+.hw-page__skills-items{
+
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.hw__back--yellow{
+    background-color: #E4AE58;
+    color: white;
+}
+
+.hw__back--red{
+    background-color: #E9714C;
+    color: white;
+}
+
+.hw__back--black{
+    background-color: #161616;
+    color: white;
+}
+
+.hw__skills-item-container{    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hw__skills-item{
+    width: 25%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hw__skills-item :nth-child(2){
+    margin: 30px 0 20px 0; 
+}
+
+.hw__item-text{
+    font-family: SourseSansPro;
+    font-weight: 15px;
+    color: white;
+}
+
+.hw__item-text--title{
+    font-size: 28px;
+}
+
+.hw__item-text-black{
+    color: black;
+}

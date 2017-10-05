@@ -1,0 +1,203 @@
+@media screen and (max-width:1000px){
+
+    .hw__head-line{
+        justify-content: space-around;
+    }
+
+    .hw__nav-button{
+        display: block;
+        font-weight: bold;
+        font-size: 10px;
+        font-family: SourseSansPro;
+        text-transform: uppercase;
+        padding: 8px 18px 8px 18px;
+        background: transparent;
+        border: 2px solid black;
+        border-radius: 22px;
+    }
+
+    .hw__main-image, .hw__main-info-container {
+        width: 100%;
+    }
+
+    .hw__logo{
+        margin-left: 0;
+    }
+
+    .hw__logo-text{
+        font-size: 35px;
+    }
+
+    .hw__nav-container{
+        display: none;
+    }
+
+    .hw__skills-container{
+        width: 100%;
+    }
+
+    .hw__skills-image{
+        width: 50%;
+    }
+
+    .hw__skills-range-container{
+        width: 50%;
+    }
+
+    .hw__skills-item{
+        width: 50%;
+    }
+
+    .hw__my-ex-text{
+        font-size: 14px;
+    }
+    
+    .hw__my-ex-text--title-big{
+        font-size: 30px;
+    }
+
+    .hw-my-ex--date-font{
+        font-size: 14px;
+    }
+
+    .hw__my-ex-image{
+        width: 100%;
+    }
+
+    .hw__my-ex-info{
+        width: 100%;
+    }
+
+    .hw__my-ed-text{
+        font-size: 14px;
+    }
+    
+    .hw__my-ed-text--title-big{
+        font-size: 30px;
+    }
+
+    .hw-my-ed--date-font{
+        font-size: 14px;
+    }
+
+    .hw__my-ed-image{
+        width: 100%;
+    }
+
+    .hw__my-ed-info{
+        width: 100%;
+    }
+
+    .hw__slogan-text--title{
+        font-size: 29px;
+    }
+
+    .hw__form{
+        width: 100%;
+    }
+
+    .hw__contact-image{
+        width: 50%;
+    }
+
+    .hw__contact-info{
+        width: 50%;
+    }
+
+    .hw-page__slogan :nth-child(2){
+        margin-top: 24px;
+        margin-bottom: 30px;
+    }
+
+}
+
+@media screen and (max-width:500px){
+    .hw__head-line{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hw__logo{
+        margin-right: 0;
+    }
+
+    .hw__nav-button{
+        display: block;
+        font-weight: bold;
+        font-size: 10px;
+        font-family: SourseSansPro;
+        text-transform: uppercase;
+        padding: 8px 18px 8px 18px;
+        background: transparent;
+        border: 2px solid black;
+        border-radius: 22px;
+    }
+    
+    .hw__logo-text{
+        font-size: 35px;
+    }
+    
+    .hw__nav-container{
+        display: none;
+    }
+    
+    .hw__skills-container{
+        width: 100%;
+    }
+    
+    .hw__skills-image{
+        width: 100%;
+    }
+    
+    .hw__skills-range-container{
+        width: 100%;
+    }
+        
+    .hw__skills-image{
+        width: 100%;
+    }
+    
+    .hw__skills-range-container{
+        width: 100%;
+    }
+
+    .hw__skills-item{
+        width: 100%;
+    }
+    
+    .hw__my-ex-info{
+        width: 100%;
+    }
+
+    .hw__my-ex-image{
+        width: 100%;
+    }
+
+    .hw__my-ex-image{
+        width: 100%;
+    }
+
+    .hw__my-ex-info{
+        width: 100%;
+    }
+
+    .hw__my-ed-image{
+        width: 100%;
+    }
+    
+    .hw__my-ed-info{
+        width: 100%;
+    }
+
+    .hw__form{
+        width: 100%;
+    }
+
+    .hw__contact-image{
+        width: 100%;
+    }
+
+    .hw__contact-info{
+        width: 100%;
+    }    
+}

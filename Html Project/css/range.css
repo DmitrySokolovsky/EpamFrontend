@@ -1,0 +1,18 @@
+.hw__range-item{
+    height: 3px;
+    background-color: white;
+}
+
+.hw__range-progress{
+    background-color: #552A0A;
+    width: 89%;
+    height: 100%;
+}
+
+.hw__progress--min{
+    width: 87%;
+}
+
+.hw__progress--max{
+    width: 91%;
+}

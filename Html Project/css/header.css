@@ -1,0 +1,63 @@
+.hw__head-line{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    justify-content: space-between;
+    flex: 1 1 650px;
+    margin-top: 30px;
+}
+
+/* HEADER */
+/* Header logo */
+.hw__logo{
+    margin-left: 150px;
+}
+
+/*Header Navigation*/
+.hw__nav-container{
+    width: 33%;
+    margin-top: 5px;
+    margin-right: 150px;
+}
+
+.hw__nav{    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.hw__nav-items{
+    text-transform: uppercase;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.hw__nav-button{
+    display: none;
+}
+
+.hw__nav-links{
+    color: black;
+}
+
+.hw__nav-links:visited{
+    color: black;
+}
+
+.hw__nav-links:hover, .hw__nav-links:hover{
+    color: #DCC192;
+}
+
+.hw__nav-links--active{
+    color: #DCC192;
+}
+
+/*Fonts header*/
+.hw__logo-text{    
+    font-size: 17px;
+    font-family: SourseSansPro;
+    font-weight: bold;
+}
