@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .example{
+            width: 690px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="example">
+        1) "1" + 1 + 0 = 
+        <script>
+            document.write("1"+1+0);
+        </script>
+        <br>
+        Получаем строку 110 т.к. идёт преобразование в строку (имеем  строчный операнд и оператор "+").
+        <br>
+        2) "1" - 1 + 2 =  
+        <script>
+            document.write("1"-1+2);
+        </script>
+        <br>
+        "1"-1 - строка пребразуется к числу (оператор "-"), получаем 0, 0 + 2 = 2  
+        <br>
+        3) true + false =  
+        <script>
+            document.write(true + false);
+        </script>
+        <br>
+        Преобразование к числовому типу (в выражении нет строк)
+        <br>
+        4) 10 / "5" =   
+        <script>
+            document.write(10 / "5");
+        </script>
+        <br>
+        Преобразование к числовому типу (оператор"/") 
+        <br>
+        5) "2" * "3" =   
+        <script>
+            document.write("2" * "3");
+        </script>
+        <br>
+        Преобразование к числовому типу (оператор"*") 
+        <br>
+        6) 4 + 5 + "px" =   
+        <script>
+            document.write(4 + 5 + "px");
+        </script>
+        <br>
+        Преобразование к строковому типу (оператор"+" и в выражении есть строка) 
+        <br>
+        7) "$" + 4 + 5 =   
+        <script>
+            document.write(4 + 5 + "px");
+        </script>
+        <br>
+        Аналогично преобразование к строковому типу (оператор"+" и в выражении есть строка) 
+        <br>
+        8) "42" - 2 =   
+        <script>
+            document.write("42" - 2);
+        </script>
+        <br>
+        Преобразование к числовому типу (оператор"-") 
+        <br>
+        9) "4px" - 2 =   
+        <script>
+            document.write("4px" - 2);
+        </script>
+        <br>
+        Преобразование к числовому типу (оператор"-") при преобразовании "4px" получаем NaN т.к. рх - символы.
+        NaN + число = NaN
+        <br>
+        10) 7 / 0 =   
+        <script>
+            document.write(7 / 0);
+        </script>
+        <br>
+        Результат математического выражения
+        <br>
+        11) "-9\n" + 5 =   
+        <script>
+            document.write("-9\n" + 5);
+        </script>
+        <br>
+        Получаем строку,затем спец символ \n переводит на другую строку
+        <br>
+        12) "-9\n" - 5 =   
+        <script>
+            document.write("-9\n" - 5);
+        </script>
+        <br>
+        Преобразование к числовому типу - \n отбрасывается
+        <br>
+        13) 5&&2 =   
+        <script>
+            document.write(5&&2);
+        </script>
+        <br>
+        "И" ловит на лжи,в данном случае - результат последнее true значение  
+        <br>
+        14) 2&&5 =   
+        <script>
+            document.write(2&&5);
+        </script>
+        <br>
+        Аналогично "И" ловит на лжи,в данном случае - результат последнее true значение  
+        <br>
+        15) 5||0 =   
+        <script>
+            document.write(5||0);
+        </script>
+        <br>
+        "ИЛИ" ловит на правде,то есть вернёт первое true значение  
+        <br>
+        16) 0||5 =   
+        <script>
+            document.write(0||5);
+        </script>
+        <br>
+        Аналогично "ИЛИ" ловит на правде,то есть вернёт первое true значение  
+        <br>
+        17) null + 1 =   
+        <script>
+            document.write(null+1);
+        </script>
+        <br>
+        null становится 0 при преобразовании к числу  
+        <br>
+        18) undefined + 1 =   
+        <script>
+            document.write( undefined + 1);
+        </script>
+        <br>
+        undefined становится NaN при преобразовании к числу  
+        <br>
+        19) null == "\n0\n" =   
+        <script>
+            document.write( null == "\n0\n");
+        </script>
+        <br>
+        "ничего" не равно строке  
+        <br>
+        20) +null == +"\n0\n" =   
+        <script>
+            document.write( +null == +"\n0\n");
+        </script>
+        <br>
+        после числового преобразования получаем 0 == 0 , соответственно получаем true  
+        <br>
+
+    </div>
+</body>
+</html>
