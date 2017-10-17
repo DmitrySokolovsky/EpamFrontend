@@ -21,11 +21,11 @@ console.log(res);
 
 // Простые числа
 var simpNum = [];
-nextSimple:
+
 for(var i = 2; i < 20; i++){
     for(var j=2; j < i ;j++){
-        if(i % j==0) continue nextSimple;
+        if(i % j==0) break;
     }
-    simpNum.push(i);
+    if(i === j)simpNum.push(i);
 }
 console.log(simpNum);
