@@ -18,7 +18,7 @@ function Outlander(mark, model, volume){
         console.log(`${this.mark} ${this.model} move through the dirt successfully`);
     }
 }
-Outlander.prototype = Car.prototype;
+Outlander.prototype = Object.create(Car.prototype);
 
 function Universal(mark, model, volume){
     Car.prototype.constructor(mark, model, volume);
@@ -26,7 +26,7 @@ function Universal(mark, model, volume){
         console.log(`${this.mark} ${this.model} deliver potatos from the country`);
     }
 }
-Universal.prototype = Car.prototype;
+Universal.prototype = Object.create(Car.prototype);
 
 function Sedan(mark, model, volume){
     Car.prototype.constructor(mark, model, volume);
@@ -34,7 +34,7 @@ function Sedan(mark, model, volume){
         console.log(`${this.mark} ${this.model} move through city`);
     }
 }
-Sedan.prototype = Car.prototype;
+Sedan.prototype = Object.create(Car.prototype);
 
 
 var mitsOutland = new Outlander("Mitsubishi", "Outlander", "2.0");
