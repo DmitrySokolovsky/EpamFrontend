@@ -18,6 +18,7 @@ function Outlander(mark, model, volume){
         console.log(`${this.mark} ${this.model} move through the dirt successfully`);
     }
 }
+
 Outlander.prototype = Object.create(Car.prototype);
 
 function Universal(mark, model, volume){
@@ -26,6 +27,7 @@ function Universal(mark, model, volume){
         console.log(`${this.mark} ${this.model} deliver potatos from the country`);
     }
 }
+
 Universal.prototype = Object.create(Car.prototype);
 
 function Sedan(mark, model, volume){
@@ -34,6 +36,7 @@ function Sedan(mark, model, volume){
         console.log(`${this.mark} ${this.model} move through city`);
     }
 }
+
 Sedan.prototype = Object.create(Car.prototype);
 
 
