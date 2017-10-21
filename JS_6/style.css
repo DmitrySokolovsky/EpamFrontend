@@ -1,0 +1,64 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.datepicker{
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.d-container{
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.month{    
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+}
+
+.days{
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 15px;
+    height: 50px;
+    width: 14.28%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(201, 191, 181);
+}
+
+.title{
+    font-weight: bold;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 15px;
+    height: 50px;
+    width: 14.28%;
+    border: 1px solid black;
+}
+
+.dayNum{
+    background-color: rgb(19, 18, 18);
+    color: white;
+}
+
+.today{
+    background-color: rgb(77, 233, 77);
+}
+
+.btn{
+    background-color: transparent;
+    border: 3px solid rgb(77, 233, 77);
+    margin-bottom: 10px;
+}
+
+.btn:hover{
+    background-color: rgb(201, 191, 181);
+}
