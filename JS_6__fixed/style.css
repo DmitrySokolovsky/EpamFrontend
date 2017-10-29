@@ -1,0 +1,120 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: space-around;
+}
+
+.datepicker{
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.btn{
+    border: 2px solid black;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.days{
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 15px;
+    height: 50px;
+    width: 14.28%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(201, 191, 181);
+}
+
+.month{    
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+    text-align: center;
+}
+
+.month__title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.green{
+    background-color: rgb(77, 233, 77);
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 15px;
+    height: 50px;
+    width: 14.28%;
+}
+
+.dropdown{
+    width: 250px;
+    height: auto;
+}
+
+.title{
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: bisque;
+    border: 2px solid saddlebrown;
+}
+
+.items{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 2px;
+    display: none;
+    padding: 5px 5px;
+}
+
+.dropdown:hover .items{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn{
+    background-color: transparent;
+    border: 3px solid rgb(77, 233, 77);
+    margin-bottom: 10px;
+}
+
+.btn:hover{
+    background-color: rgb(201, 191, 181);
+}
