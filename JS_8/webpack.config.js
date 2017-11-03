@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const NODE_ENV = process.env.NODE_ENV;
 
 
 module.exports = {
@@ -30,8 +32,21 @@ module.exports = {
     ],
     resolve:{
         modules: ['node_modules']
+    },
+    devServer: {        
+        contentBase: path.join(__dirname, "dist"),        
+        port: 8080,        
+        hotOnly: true
     }
 };
 
-
+if (NODE_ENV == 'production') {    
+    module.exports.plugins.push(    
+        new webpack.optimize.UglifyJsPlugin({    
+            compress: {                       
+                drop_console: true    
+            }    
+        })    
+    );    
+}
 
