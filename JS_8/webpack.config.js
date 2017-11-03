@@ -5,20 +5,22 @@ const NODE_ENV = process.env.NODE_ENV;
 
 
 module.exports = {
-    entry: "./main.js",
+    context: __dirname,
+    devtool: "source-map",
+    entry: "./src/main.js",
     output: {
+        path: __dirname + "/dist",
         filename: "bundle.js"
     },
     watch: true,
     module: {
         rules: [
         {
-            test: /\.js$/,
-            include: [path.resolve(__dirname, "dist")],
+            test: /\.jsx?$/,
             exclude: [path.resolve(__dirname, "node_modules")],
             loader: "babel-loader",
             query: {
-                presets: ["es2015"]
+                presets: ["es2015","react","stage-0"]
             }
         },
         {
@@ -28,13 +30,13 @@ module.exports = {
         
     },
     plugins: [
-        new HtmlWebpackPlugin({template: './index.html'})        
+        new HtmlWebpackPlugin({template: "./dist/index.html"})        
     ],
     resolve:{
         modules: ['node_modules']
     },
-    devServer: {        
-        contentBase: path.join(__dirname, "dist"),        
+    devServer: {    
+        contentBase: './dist',           
         port: 8080,        
         hotOnly: true
     }
