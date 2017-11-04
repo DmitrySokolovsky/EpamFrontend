@@ -1,13 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const NODE_ENV = process.env.NODE_ENV;
-
 
 module.exports = {
     context: __dirname,
     devtool: "source-map",
-    entry: "./src/main.js",
+    entry: {
+        app: './src/main.js'
+    },
     output: {
         path: __dirname + "/dist",
         filename: "bundle.js"
@@ -34,10 +33,6 @@ module.exports = {
     ],
     resolve:{
         modules: ['node_modules']
-    },
-    devServer: {    
-        contentBase: path.join(__dirname, "dist"),           
-        port: 8080
     }
 };
 
