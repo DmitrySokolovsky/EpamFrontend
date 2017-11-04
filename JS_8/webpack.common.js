@@ -36,18 +36,8 @@ module.exports = {
         modules: ['node_modules']
     },
     devServer: {    
-        contentBase: './dist',           
+        contentBase: path.join(__dirname, "dist"),           
         port: 8080
     }
 };
-
-if (NODE_ENV == 'production') {    
-    module.exports.plugins.push(    
-        new webpack.optimize.UglifyJsPlugin({    
-            compress: {                       
-                drop_console: true    
-            }    
-        })    
-    );    
-}
 
