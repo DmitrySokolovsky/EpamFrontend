@@ -4,17 +4,20 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "release": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.common.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dmitry Sokolowsky",
   "license": "ISC",
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "node": "^9.0.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "webpack-merge": "^4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -30,15 +30,14 @@ module.exports = {
         
     },
     plugins: [
-        new HtmlWebpackPlugin({template: "./dist/index.html"})        
+        new HtmlWebpackPlugin({template: "./src/index.html"})        
     ],
     resolve:{
         modules: ['node_modules']
     },
     devServer: {    
         contentBase: './dist',           
-        port: 8080,        
-        hotOnly: true
+        port: 8080
     }
 };
 
