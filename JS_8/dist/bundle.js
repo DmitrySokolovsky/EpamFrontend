@@ -967,9 +967,7 @@ var _reactDom = __webpack_require__(18);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _style = __webpack_require__(32);
-
-var _style2 = _interopRequireDefault(_style);
+__webpack_require__(32);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -978,7 +976,7 @@ var element = _react2.default.createElement(
   { id: 'test' },
   'Hello world!!'
 );
-_reactDom2.default.render(element, document.querySelector('test'));
+_reactDom2.default.render(element, document.querySelector('#test'));
 
 /***/ }),
 /* 16 */
@@ -21194,7 +21192,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(35)(content, options);
+var update = __webpack_require__(36)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -21219,7 +21217,7 @@ exports = module.exports = __webpack_require__(34)(undefined);
 
 
 // module
-exports.push([module.i, "h2{\r\n    color:green;\r\n    background-color: yellow;\r\n}", ""]);
+exports.push([module.i, "@font-face{\r\n    font-family: Bradley;\r\n    src: url(" + __webpack_require__(35) + ");\r\n}\r\n\r\nh2{\r\n    color:green;\r\n    background-color: yellow;\r\n    font-family: Bradley;\r\n}", ""]);
 
 // exports
 
@@ -21310,6 +21308,12 @@ function toComment(sourceMap) {
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__.p + "c8e367ed921e0b64eb40752644e1e353.ttf";
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -21363,7 +21367,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(36);
+var	fixUrls = __webpack_require__(37);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -21679,7 +21683,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 

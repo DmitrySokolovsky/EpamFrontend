@@ -1,4 +1,10 @@
+@font-face{
+    font-family: Bradley;
+    src: url(./fonts/BradleyHand.ttf);
+}
+
 h2{
     color:green;
     background-color: yellow;
+    font-family: Bradley;
 }

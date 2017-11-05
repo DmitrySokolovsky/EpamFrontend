@@ -25,8 +25,30 @@ module.exports = {
         {
             test: /\.css$/,
             use: ["style-loader", "css-loader"]
-        }]
-        
+        },
+        {
+            test: /\.(png|jpg|gif)$/,
+            use: [
+                {
+                    loader: "url-loader",
+                    options:{
+                        limit: 8192
+                    }
+                }
+            ]
+        },
+        {
+            test: /\.(jpg|png|svg)$/,
+            use: [
+                "file-loader"
+            ]
+        },
+        {
+            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            use: [
+                "file-loader"
+            ]
+        }]        
     },
     plugins: [
         new HtmlWebpackPlugin({template: "./src/index.html"})        
