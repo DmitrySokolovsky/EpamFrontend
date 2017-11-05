@@ -974,11 +974,11 @@ var _style2 = _interopRequireDefault(_style);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var element = _react2.default.createElement(
-  'h1',
+  'h2',
   { id: 'test' },
   'Hello world!!'
 );
-_reactDom2.default.render(element, document.body);
+_reactDom2.default.render(element, document.querySelector('test'));
 
 /***/ }),
 /* 16 */
