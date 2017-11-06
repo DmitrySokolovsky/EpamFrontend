@@ -969,14 +969,13 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 __webpack_require__(32);
 
+var _hwNav = __webpack_require__(38);
+
+var _hwNav2 = _interopRequireDefault(_hwNav);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var element = _react2.default.createElement(
-  'h2',
-  { id: 'test' },
-  'Hello world!!'
-);
-_reactDom2.default.render(element, document.querySelector('#test'));
+_reactDom2.default.render(_react2.default.createElement(_hwNav2.default, null), document.getElementById('test'));
 
 /***/ }),
 /* 16 */
@@ -21775,6 +21774,13 @@ module.exports = function (css) {
 	// send back the fixed css
 	return fixedCss;
 };
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 /***/ })
