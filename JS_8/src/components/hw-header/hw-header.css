@@ -1,0 +1,7 @@
+.hw-header{
+    height: 70px;
+    width: 100%;
+    background-color: #262126;
+    display: flex;
+    align-items: center;
+}
