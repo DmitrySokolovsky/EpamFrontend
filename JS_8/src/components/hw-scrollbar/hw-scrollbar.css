@@ -1,0 +1,9 @@
+.hw-scrollbar__container{
+    height: 585px;
+    width: 50px;
+    background-color: #222329;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

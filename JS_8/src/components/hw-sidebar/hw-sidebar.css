@@ -1,7 +1,5 @@
 .hw-side-bar__container{
     height: 655px;
-    width: 20%;
-    min-width: 200px;
     flex-direction: column;
     background-color: #363847;
 }
@@ -49,4 +47,8 @@
 
 .hw-side-bar__text--big{
     font-size: 30px;
+}
+
+.hw-side-bar__hide{
+    display: none;
 }

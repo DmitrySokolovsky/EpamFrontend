@@ -13,3 +13,23 @@
     height: 100%;
     display: flex;
 }
+
+#hw-app{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.hw-app__main-container{
+    width: 100%;
+}
+
+.hw-app__movie-container{
+    display: flex;
+}
+
+.hw-app__poster-container{
+    height: 585px;
+    width: 100%;
+    background-color: #222329;
+}

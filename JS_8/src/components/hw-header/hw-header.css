@@ -8,7 +8,7 @@
 }
 
 .hw-header__container{
-    width: 1030px;
+    min-width: 1030px;
     display: flex;
     align-items: center;
     justify-content: space-between;
