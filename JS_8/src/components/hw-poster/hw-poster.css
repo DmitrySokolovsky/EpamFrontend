@@ -1,4 +1,6 @@
 .hw-poster__container{
     width: 192px;
     height: 247px;
+    margin: 5px 10px;
+    background-repeat: no-repeat;
 }

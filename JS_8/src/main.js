@@ -1,29 +1,45 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import SideBar from './components/hw-sidebar/hw-sidebar.jsx'
-import Header from './components/hw-header/hw-header.jsx';
+import Search from './components/hw-search/hw-search.jsx';
+import Navigation from './components/hw-navigation/hw-navigation.jsx';
 import ScrollBar from './components/hw-scrollbar/hw-scrollbar.jsx';
 import Poster from './components/hw-poster/hw-poster.jsx';
 import './style.css';
 
 var data = require('./data.json');
+console.log(data.movies);
 
 class App extends React.Component{
     constructor(props){
         super(props);
+        this.postersUrlArray = data.movies.map((item)=>{
+            return item.poster_path;
+        });
     };
     render(){
         return(
             <div id="hw-app">
                 <SideBar/>
                 <div className="hw-app__main-container">
-                <Header/>
-                <div className="hw-app__movie-container">
-                <ScrollBar/>
-                <div className="hw-app__poster-container">
-                <Poster/>
-                </div>
-                </div>                
+                  <div className="hw-header">
+                  <header>
+                  <div className="hw-header__container">
+                    <Search />
+                    <Navigation />
+                  </div>
+                  </header>
+                  </div>
+                  <div className="hw-app__movie-container">
+                    <ScrollBar/>
+                    <div className="hw-app__poster-container">
+                    {this.postersUrlArray
+                        .map((item,index)=>{
+                            return (<Poster url={item}
+                                key = {index}/>)
+                    })}
+                    </div>
+                  </div>                
                 </div>
                 
             </div>            
