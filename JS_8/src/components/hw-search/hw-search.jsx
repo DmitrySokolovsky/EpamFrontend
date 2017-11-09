@@ -4,6 +4,7 @@ import './hw-search.css';
 class Search extends Component{
     constructor(props){
         super(props);
+        this.state = { textValue: this.props.textValue };
     }
     render(){
         return(
@@ -13,9 +14,15 @@ class Search extends Component{
                 </div>                
                 <input type="search" 
                 className="hw-search__input hw-search__text"
-                placeholder="  Search..."/>
+                placeholder="  Search..."
+                onChange={this.onInputChange.bind(this)}/>
             </div>
         );
+    }
+    onInputChange(event) {
+        if (this.props.onChange) {
+            this.props.onChange(event.target.value);
+        }
     }
 }
 

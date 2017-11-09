@@ -13,10 +13,18 @@ console.log(data.movies);
 class App extends React.Component{
     constructor(props){
         super(props);
-        this.postersUrlArray = data.movies.map((item)=>{
-            return item.poster_path;
-        });
+        this.postersUrlArray = data.movies;
+        
+        this.state = {
+            textValue: '',
+            onChange: (newValue)=>{                
+                this.setState({
+                    textValue: newValue
+                });
+            }
+        };
     };
+
     render(){
         return(
             <div id="hw-app">
@@ -25,8 +33,9 @@ class App extends React.Component{
                   <div className="hw-header">
                   <header>
                   <div className="hw-header__container">
-                    <Search />
+                    <Search onChange={this.state.onChange.bind(this)}/>
                     <Navigation />
+                    
                   </div>
                   </header>
                   </div>
@@ -34,14 +43,17 @@ class App extends React.Component{
                     <ScrollBar/>
                     <div className="hw-app__poster-container">
                     {this.postersUrlArray
+                        .filter((el)=>{
+                            return el.title.indexOf(this.state.textValue)!==-1;
+                        })
                         .map((item,index)=>{
-                            return (<Poster url={item}
-                                key = {index}/>)
+                            return (<Poster url={item.poster_path}
+                                key = {item.title}
+                                />)
                     })}
                     </div>
                   </div>                
                 </div>
-                
             </div>            
         );
     }
@@ -50,23 +62,5 @@ class App extends React.Component{
 
 ReactDom.render(<App/>,document.getElementById('test'));
 
-function getData(url){
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.send();
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4){
-            if(xhr.status == 200){
-                console.log(xhr.responseText);
-            }
-            else{
-                console.log('LL');
-            }
-        }
-        else{
-            console.log('LLL');
-        }
-    }
-}
 
 

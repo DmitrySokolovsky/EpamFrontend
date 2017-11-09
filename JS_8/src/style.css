@@ -52,3 +52,10 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.d{
+    color:white;
+    background-color: black;
+    height: 200px;
+    width: 200px;
+}
