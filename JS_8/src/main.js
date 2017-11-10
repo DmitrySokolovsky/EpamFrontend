@@ -13,8 +13,7 @@ var data = require('./data.json');
 
 class App extends React.Component{
     constructor(props){
-        super(props);
-        this.postersUrlArray = data.movies;
+        super(props);        
         this.state = {
             postersArray:[],
             textValue: '',
@@ -24,7 +23,7 @@ class App extends React.Component{
                     textValue: newValue
                 });
             },
-            onClickAddMovie: ()=>{
+            onClickOpenForm: ()=>{
                 console.log('click from app' + this.state.isFormOpened);                
                 this.setState({
                     isFormOpened: !this.state.isFormOpened
@@ -51,6 +50,18 @@ class App extends React.Component{
         });
     }
 
+    onClickCancelForm(){
+        this.setState({
+            isFormOpened: !this.state.isFormOpened,
+        });
+    }
+
+    onClickAddMovie(){
+        this.setState({
+            isFormOpened: !this.state.isFormOpened,
+        });
+    }
+
     render(){
         return(
             <div id="hw-app">
@@ -60,14 +71,16 @@ class App extends React.Component{
                   <header>
                   <div className="hw-header__container">
                     <Search onChange={this.state.onChange.bind(this)}/>
-                    <Navigation onClickAddMovie={this.state.onClickAddMovie.bind(this)}/>                                        
+                    <Navigation onClickAddMovie={this.state.onClickOpenForm.bind(this)}/>                                        
                   </div>
                   </header>
-                  <Form isFormOpened={this.state.isFormOpened}/>
+                  <Form isFormOpened={this.state.isFormOpened}
+                  onClickCancelForm={this.onClickCancelForm.bind(this)}
+                  />
                   </div>
                   <div className="hw-app__movie-container">
-                    <ScrollBar/>
-                    <div className="hw-app__poster-container">
+                    <ScrollBar isFormOpened={this.state.isFormOpened}/>
+                    <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
                     {this.state.postersArray
                         .filter((el)=>{
                             return el.title.indexOf(this.state.textValue)!==-1;
@@ -75,6 +88,7 @@ class App extends React.Component{
                         .map((item,index)=>{
                             return (<Poster url={item.poster_path}
                                 key = {item.title}
+                                data={item.title}
                                 />)
                     })}
                     </div>

@@ -1,7 +1,26 @@
 .hw-poster__container{
-    width: 192px;
+    width: 170px;
     height: 247px;
-    margin-bottom: 5px;
+    margin: 5px 5px; 
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% 100%;
+    border: 1px solid wheat;
+}
+
+.hw-poster__title{
+    font-family: Bradley;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0088CC;
+    opacity: 0.8;
+    color: white;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.hw-poster__container:hover .hw-poster__title{
+    display: flex;
 }

@@ -37,6 +37,10 @@
     overflow-y: scroll;
 }
 
+.hw-app__poster-container--small{
+    height: 335px;
+}
+
 .hw-header{
     width: 100%;
     background-color: #262126;

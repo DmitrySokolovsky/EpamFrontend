@@ -16,7 +16,7 @@ class ScrollBar extends Component{
     render(){
         return (
             <div className="hw-scrollbar">
-                <div className="hw-scrollbar__container">
+                <div className={this.props.isFormOpened?"hw-scrollbar__container hw-scrollbar__container--small":"hw-scrollbar__container"}>
                 <i className={this.arrowDown}></i>
                 </div>
             </div>

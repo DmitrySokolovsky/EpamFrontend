@@ -4,28 +4,50 @@ import './hw-form.css';
 
 class Form extends Component{
     constructor (props){
-        super(props);
-        
+        super(props);        
         this.state = {
-          genresArray:[],
-          title: '',
-          overview: '',
+            genresArray:[],
+            title: '',
+            overview: '',
         };
     }
 
-    onOverviewChange(){
-
+    componentWillMount(){
+        this.setState({isFormOpened: this.props.isFormOpened});
     }
 
-    onTitleChange(){
+    onOverviewChange(event){
+        let val = event.target.value;
+        this.setState({overview: val});
+    }
 
+    onTitleChange(event){
+        let val = event.target.value;
+        this.setState({title: val});
+    }
+    
+    //перенести в main
+    handleSubmit(event){
+        event.preventDefault();
+        var localStr = localStorage.getItem("movies");
+        var moviesArray = JSON.parse(localStr);
+        moviesArray.push({title: this.state.title, overview: this.state.overview});
+        localStorage.clear();
+        localStorage.setItem("movies",JSON.stringify(moviesArray));
+        
+        this.props.onClickCancelForm();
+    }
+
+    handleCancel(event){
+        event.preventDefault();
+        this.props.onClickCancelForm();
     }
 
     componentWillMount(){
         DataService.getGenres().then(response=>{
-          let arr = JSON.parse(response).genres;
-          console.log(arr);
-          this.setState({genresArray: arr});
+            let arr = JSON.parse(response).genres;
+            console.log(arr);
+            this.setState({genresArray: arr});
         });
     }
 
@@ -33,16 +55,19 @@ class Form extends Component{
         return (
             <div className={(this.props.isFormOpened)?"hw-form hw-form__container":"hw-form__container--closed"}>
                 <h1 className="hw-form__text">Add movie</h1>
-                <form className="hw-form__movie-description-container">
+                <form onSubmit={this.handleSubmit.bind(this)}
+                className="hw-form__movie-description-container">
                 <div className="hw-form__input-container">                  
                   <hr/>
                   <div className="hw-form__text-container">
                     <label className="hw-form__text">Title</label>
-                    <input type="text" className="hw-form__input-text"/>
+                    <input type="text" className="hw-form__input-text"
+                    onChange={this.onTitleChange.bind(this)}/>
                   </div>
                   <div className="hw-form__text-container">
                     <label className="hw-form__text">Overview</label>
-                    <textarea name="" id="" cols="30" rows="5"></textarea>
+                    <textarea name="" id="" cols="30" rows="5"
+                    onChange={this.onOverviewChange.bind(this)}></textarea>
                   </div>                 
                 </div>
                 <div className="hw-form__genre-container">
@@ -60,8 +85,10 @@ class Form extends Component{
                <div className="hw-form__submit-container">
                  <input type="file" className="hw-form__file-input hw-form__text"/>
                  <div className="hw-form__buttons">
-                   <button className="hw-form__submit-btn hw-form__text">Add</button>
-                   <button className="hw-form__cancel-btn hw-form__text">Cancel</button>
+                   <button type="submit" className="hw-form__submit-btn hw-form__text"
+                   >Add</button>
+                   <button className="hw-form__cancel-btn hw-form__text"
+                   onClick={this.handleCancel.bind(this)}>Cancel</button>
                  </div>
                  </div>
             </form>
