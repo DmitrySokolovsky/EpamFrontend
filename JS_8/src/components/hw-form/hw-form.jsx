@@ -1,15 +1,33 @@
 import React,{Component} from 'react';
+import DataService from '../../data-service.js'
 import './hw-form.css';
 
 class Form extends Component{
     constructor (props){
         super(props);
-        this.genresArray = [
-            "Action", "Adventure", "Thriller", "Comedy", "Fantasy",
-            "Drama", "Horror", "Criminal", "War" ,"Documentary" 
-        ];
+        
+        this.state = {
+          genresArray:[],
+          title: '',
+          overview: '',
+        };
     }
 
+    onOverviewChange(){
+
+    }
+
+    onTitleChange(){
+
+    }
+
+    componentWillMount(){
+        DataService.getGenres().then(response=>{
+          let arr = JSON.parse(response).genres;
+          console.log(arr);
+          this.setState({genresArray: arr});
+        });
+    }
 
     render(){
         return (
@@ -30,11 +48,11 @@ class Form extends Component{
                 <div className="hw-form__genre-container">
                   <div className="hw-form__text">Genre</div>
                   <div className="hw-form__genres-list">
-                    {this.genresArray.map((item,index)=>{
+                    {this.state.genresArray.map((item,index)=>{
                         return(
-                        <div className="hw-form__genre hw-form__text">
-                          <input type="checkbox" className={index}/>
-                          {item}
+                        <div key={item.id} className="hw-form__genre hw-form__text">
+                          <input type="checkbox" genreid={item.id} />
+                          {item.name}
                         </div>)
                     })}
                   </div>

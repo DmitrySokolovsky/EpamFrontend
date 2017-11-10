@@ -10,16 +10,13 @@ import './style.css';
 import DataService from './data-service.js';
 
 var data = require('./data.json');
-var dat=DataService.getData;
-console.log(dat);
-
 
 class App extends React.Component{
     constructor(props){
         super(props);
         this.postersUrlArray = data.movies;
-        
         this.state = {
+            postersArray:[],
             textValue: '',
             isFormOpened: true,
             onChange: (newValue)=>{                
@@ -38,9 +35,20 @@ class App extends React.Component{
         console.log(this.state.isFormOpened);
     };
 
-    onClickAddMovie(){
-        
-        
+    componentWillMount(){
+        DataService.getData().then(response=>{
+            //console.log(response);
+            var arr = JSON.parse(response).results;
+            var a = arr.map((item)=>{
+                item.poster_path = 'https://image.tmdb.org/t/p/w500'+item.poster_path;
+                return item;
+            });
+            
+            if(!localStorage.movies){
+                localStorage.setItem('movies', JSON.stringify(a));
+            }
+            this.setState({postersArray: JSON.parse(localStorage.getItem('movies'))});
+        });
     }
 
     render(){
@@ -60,7 +68,7 @@ class App extends React.Component{
                   <div className="hw-app__movie-container">
                     <ScrollBar/>
                     <div className="hw-app__poster-container">
-                    {this.postersUrlArray
+                    {this.state.postersArray
                         .filter((el)=>{
                             return el.title.indexOf(this.state.textValue)!==-1;
                         })

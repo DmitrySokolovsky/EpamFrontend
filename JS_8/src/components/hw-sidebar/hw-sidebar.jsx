@@ -48,7 +48,7 @@ class SideBar extends Component{
                 </div>
                 <div className="hw-side-bar__menu-container">
                 <div className="hw-side-bar__vertical-container">
-                {this.logosList.map((item)=>{
+                {this.logosList.map((item,index)=>{
                     return (
                         <div className="hw-side-bar__menu-item">
                         <i className={(this.state.isOpened)?item.className:item.classNameHide}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>{item.name}</p>
