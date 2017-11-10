@@ -5,10 +5,14 @@ import Search from './components/hw-search/hw-search.jsx';
 import Navigation from './components/hw-navigation/hw-navigation.jsx';
 import ScrollBar from './components/hw-scrollbar/hw-scrollbar.jsx';
 import Poster from './components/hw-poster/hw-poster.jsx';
+import Form from './components/hw-form/hw-form.jsx';
 import './style.css';
+import DataService from './data-service.js';
 
 var data = require('./data.json');
-console.log(data.movies);
+var dat=DataService.getData;
+console.log(dat);
+
 
 class App extends React.Component{
     constructor(props){
@@ -17,13 +21,27 @@ class App extends React.Component{
         
         this.state = {
             textValue: '',
+            isFormOpened: true,
             onChange: (newValue)=>{                
                 this.setState({
                     textValue: newValue
                 });
+            },
+            onClickAddMovie: ()=>{
+                console.log('click from app' + this.state.isFormOpened);                
+                this.setState({
+                    isFormOpened: !this.state.isFormOpened
+                });
             }
+            
         };
+        console.log(this.state.isFormOpened);
     };
+
+    onClickAddMovie(){
+        
+        
+    }
 
     render(){
         return(
@@ -34,10 +52,10 @@ class App extends React.Component{
                   <header>
                   <div className="hw-header__container">
                     <Search onChange={this.state.onChange.bind(this)}/>
-                    <Navigation />
-                    
+                    <Navigation onClickAddMovie={this.state.onClickAddMovie.bind(this)}/>                                        
                   </div>
                   </header>
+                  <Form isFormOpened={this.state.isFormOpened}/>
                   </div>
                   <div className="hw-app__movie-container">
                     <ScrollBar/>

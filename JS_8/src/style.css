@@ -38,22 +38,23 @@
 }
 
 .hw-header{
-    height: 70px;
     width: 100%;
     background-color: #262126;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
 .hw-header__container{
     min-width: 1030px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.d{
+.form{
     color:white;
     background-color: black;
     height: 200px;
