@@ -97,12 +97,14 @@ class App extends React.Component{
                         .map((item,index)=>{
                             return (<Poster url={item.poster_path}
                                 key = {item.title}
-                                data={item.title}
+                                data={item}
                                 />)
                         })}
                     </div>
                   </div>                
                 </div>}/>
+
+                
                 </div>
               </Router>    
             </div>               
