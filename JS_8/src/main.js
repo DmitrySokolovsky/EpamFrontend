@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import {
+  HashRouter as Router,
+  Route,
+  NavLink,
+  Switch
+} from 'react-router-dom'
 import SideBar from './components/hw-sidebar/hw-sidebar.jsx'
 import Search from './components/hw-search/hw-search.jsx';
 import Navigation from './components/hw-navigation/hw-navigation.jsx';
@@ -9,7 +15,7 @@ import Form from './components/hw-form/hw-form.jsx';
 import './style.css';
 import DataService from './data-service.js';
 
-var data = require('./data.json');
+
 
 class App extends React.Component{
     constructor(props){
@@ -17,7 +23,7 @@ class App extends React.Component{
         this.state = {
             postersArray:[],
             textValue: '',
-            isFormOpened: true,
+            isFormOpened: false,
             onChange: (newValue)=>{                
                 this.setState({
                     textValue: newValue
@@ -64,8 +70,11 @@ class App extends React.Component{
 
     render(){
         return(
-            <div id="hw-app">
+            <div className="hw-app">
+            <Router>
+            <div className="hw-app">
                 <SideBar/>
+                <Route exact path="/" children={()=>
                 <div className="hw-app__main-container">
                   <div className="hw-header">
                   <header>
@@ -90,11 +99,14 @@ class App extends React.Component{
                                 key = {item.title}
                                 data={item.title}
                                 />)
-                    })}
+                        })}
                     </div>
                   </div>                
+                </div>}/>
                 </div>
-            </div>            
+              </Router>    
+            </div>               
+            
         );
     }
 
@@ -103,4 +115,17 @@ class App extends React.Component{
 ReactDom.render(<App/>,document.getElementById('test'));
 
 
-
+                /*<Router>
+                <div>
+                <ul>
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/about">About</NavLink></li>
+                    <li><NavLink to="/topics">Topics</NavLink></li>
+                </ul>
+                <Switch>
+                <Route exact path="/" children={()=><h2>Home</h2>}/>
+                <Route path="/about" children={()=><h2>About</h2>} />
+                <Route path="/topics" children={()=><h2>topics</h2>} />
+                </Switch>
+                </div>
+                </Router>*/

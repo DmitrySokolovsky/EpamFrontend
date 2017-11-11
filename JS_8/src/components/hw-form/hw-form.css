@@ -18,15 +18,17 @@
 .hw-form__input-container{
     display: flex;
     flex-direction: column;
+    width: 33%;
 }
 
 .hw-form__genre-container{
-    margin-left: 25px;
-    width: 100%;
     height: 100%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .hw-form__text-container{
@@ -34,23 +36,22 @@
     flex-direction: column;
 }
 
-
-
 .hw-form__genres-list{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 60%;
+    width: 90%;
     height: 100%;
     border: 2px solid wheat;
     border-radius: 5px;
-
 }
 
 .hw-form__submit-container{
     height: 200px;
+    width: 33%;
     display: flex;
     flex-direction: column;
+    margin-right: 50px;
     justify-content: space-between;
 }
 
@@ -58,6 +59,24 @@
     display: block;
 }
 
+.hw-form__drop-files{
+    height: 40px;
+    width: 100%;
+    border: 2px dashed wheat;
+    background-color: #353336;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
 .hw-form__text{
     font-family: Bradley;
+}
+
+.hw-form__droped{
+    height: 120px;
+    width: 100%;
+    background-color: green;
+    overflow-x: scroll;
 }

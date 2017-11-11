@@ -1,5 +1,6 @@
 .hw-side-bar__container{
     height: 655px;
+    
     flex-direction: column;
     background-color: #363847;
 }

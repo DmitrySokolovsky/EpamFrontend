@@ -26,15 +26,13 @@ class Form extends Component{
         this.setState({title: val});
     }
     
-    //перенести в main
     handleSubmit(event){
         event.preventDefault();
         var localStr = localStorage.getItem("movies");
         var moviesArray = JSON.parse(localStr);
         moviesArray.push({title: this.state.title, overview: this.state.overview});
         localStorage.clear();
-        localStorage.setItem("movies",JSON.stringify(moviesArray));
-        
+        localStorage.setItem("movies",JSON.stringify(moviesArray));        
         this.props.onClickCancelForm();
     }
 
@@ -83,7 +81,10 @@ class Form extends Component{
                   </div>
                </div>
                <div className="hw-form__submit-container">
-                 <input type="file" className="hw-form__file-input hw-form__text"/>
+                 <div className="hw-form__drop-files">
+                    <h2 className="hw-form__text">Upload file</h2>
+                 </div>
+                 <div className="hw-form__droped"></div>
                  <div className="hw-form__buttons">
                    <button type="submit" className="hw-form__submit-btn hw-form__text"
                    >Add</button>
