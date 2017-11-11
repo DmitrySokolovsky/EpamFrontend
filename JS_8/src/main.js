@@ -12,6 +12,7 @@ import Navigation from './components/hw-navigation/hw-navigation.jsx';
 import ScrollBar from './components/hw-scrollbar/hw-scrollbar.jsx';
 import Poster from './components/hw-poster/hw-poster.jsx';
 import Form from './components/hw-form/hw-form.jsx';
+import MovieInfo from './components/hw-movie-info/hw-movie-info.jsx'
 import './style.css';
 import DataService from './data-service.js';
 
@@ -21,7 +22,7 @@ class App extends React.Component{
     constructor(props){
         super(props);        
         this.state = {
-            postersArray:[],
+            postersMovieArray:[],
             textValue: '',
             isFormOpened: false,
             onChange: (newValue)=>{                
@@ -52,7 +53,7 @@ class App extends React.Component{
             if(!localStorage.movies){
                 localStorage.setItem('movies', JSON.stringify(a));
             }
-            this.setState({postersArray: JSON.parse(localStorage.getItem('movies'))});
+            this.setState({postersMovieArray: JSON.parse(localStorage.getItem('movies'))});
         });
     }
 
@@ -73,8 +74,7 @@ class App extends React.Component{
             <div className="hw-app">
             <Router>
             <div className="hw-app">
-                <SideBar/>
-                <Route exact path="/" children={()=>
+                <SideBar/>                
                 <div className="hw-app__main-container">
                   <div className="hw-header">
                   <header>
@@ -87,10 +87,13 @@ class App extends React.Component{
                   onClickCancelForm={this.onClickCancelForm.bind(this)}
                   />
                   </div>
+                  
                   <div className="hw-app__movie-container">
                     <ScrollBar isFormOpened={this.state.isFormOpened}/>
+                    <Switch>
+                    <Route exact path="/" children={()=>
                     <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
-                    {this.state.postersArray
+                    {this.state.postersMovieArray
                         .filter((el)=>{
                             return el.title.indexOf(this.state.textValue)!==-1;
                         })
@@ -100,10 +103,24 @@ class App extends React.Component{
                                 data={item}
                                 />)
                         })}
-                    </div>
-                  </div>                
-                </div>}/>
-
+                    </div>}/> 
+                    <Route path="/tvshows" children={()=>
+                    <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
+                    {this.state.postersMovieArray
+                        .filter((el)=>{
+                            return el.title.indexOf(this.state.textValue)!==-1;
+                        })
+                        .map((item,index)=>{
+                            return (<Poster url={item.poster_path}
+                                key = {item.title}
+                                data={item}
+                                />)
+                        })}
+                    </div>}/>
+                    </Switch>
+                  </div>   
+                          
+                </div>
                 
                 </div>
               </Router>    

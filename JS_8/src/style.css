@@ -6,8 +6,13 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: bradley;
+    font-family: Bradley;
 }
+
+a{
+    display: flex;
+}
+   
 
 #test{
     width: 100%;
@@ -71,3 +76,4 @@
     display: flex;
     cursor: pointer;
 }
+  

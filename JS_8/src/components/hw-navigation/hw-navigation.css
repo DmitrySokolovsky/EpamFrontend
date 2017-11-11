@@ -4,23 +4,17 @@
 
 .hw-nav__item{
     list-style: none;
-    border-right: 1px solid #515151;
     padding-right: 15px;
     padding-left: 15px;
     cursor: pointer;
 }
 
+.hw-nav__item--hidden{
+    display: none;
+}
+
 .hw-nav__item:hover{
     color: gold;
-}
-
-.hw-nav__item--first{
-    padding-left: 0;
-}
-
-.hw-nav__item--last{
-    padding-right: 0;
-    border-right: none;
 }
 
 .hw-nav__text{

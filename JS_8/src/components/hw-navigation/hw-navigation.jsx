@@ -4,6 +4,8 @@ import './hw-navigation.css';
 class Navigation extends Component{
     constructor(props){
         super(props);
+        this.classNameItem = "hw-nav__item hw-nav__text";
+        this.classHiddenItem = "hw-nav__item--hidden";            
     };
 
     handleClick(){
@@ -16,11 +18,11 @@ class Navigation extends Component{
         return(
             <div className="hw-nav">
                 <div className="hw-nav__container">
-                <div className="hw-nav__item hw-nav__item--first hw-nav__text"
+                <div className={this.props.hideForm?this.classHiddenItem:this.classNameItem}
                 onClick={this.handleClick.bind(this)}>Add movie</div>
-                <div className="hw-nav__item hw-nav__text">About</div>
-                <div className="hw-nav__item hw-nav__text">Pricing</div>
-                <div className="hw-nav__item hw-nav__item--last hw-nav__text">Blog</div>
+                <div className={this.props.hideAbout?this.classHiddenItem:this.classNameItem}>About</div>
+                <div className={this.props.hidePricing?this.classHiddenItem:this.classNameItem}>Pricing</div>
+                <div className={this.props.hideBlog?this.classHiddenItem:this.classNameItem}>Blog</div>
                 </div>
             </div>
         );

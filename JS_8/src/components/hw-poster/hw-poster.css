@@ -19,6 +19,7 @@
     width: 100%;
     text-align: center;
     display: none;
+    cursor: pointer;
 }
 
 .hw-poster__container:hover .hw-poster__title{

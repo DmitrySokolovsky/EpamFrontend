@@ -32,20 +32,27 @@ class SideBar extends Component{
                 </div>
                 <div className="hw-side-bar__menu-container">
                 <div className="hw-side-bar__vertical-container">
+                
                 <div className="hw-side-bar__menu-item">
                 <NavLink to="/" activeClassName="active-link">
                 <i className={(this.state.isOpened)?'fa fa-film fa--padding':'fa fa-film'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Movies</p>
                 </NavLink>
                 </div>
-                <div className="hw-side-bar__menu-item">               
+               
+                <div className="hw-side-bar__menu-item">  
+                <NavLink to="/tvshows" activeClassName="active-link">             
                 <i className={(this.state.isOpened)?'fa fa-television fa--padding':'fa fa-television'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>TV Shows</p>                
+                </NavLink>
                 </div>
+
                 <div className="hw-side-bar__menu-item">
                 <i className={(this.state.isOpened)?'fa fa-book fa--padding':'fa fa-book'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>My Library</p>
                 </div>
+
                 <div className="hw-side-bar__menu-item">
                 <i className={(this.state.isOpened)?'fa fa-user-circle fa--padding':'fa fa-user-circle'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Support</p>
-                </div>            
+                </div>  
+
                 </div>
                 </div>
         </div>);
