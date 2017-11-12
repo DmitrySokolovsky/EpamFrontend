@@ -1,5 +1,10 @@
+.hw-nav{
+    width: 100%;
+}
+
 .hw-nav__container{
     display: flex;
+    justify-content: flex-end;
 }
 
 .hw-nav__item{
@@ -21,8 +26,4 @@
     color: #0088CC;
     font-family: Bradley;
     text-decoration: underline;
-}
-
-.hw-nav__container:last-child{
-    border-right: none;
 }

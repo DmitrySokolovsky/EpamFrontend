@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './hw-movie-info.css';
+import Navigation from '../hw-navigation/hw-navigation.jsx';
 
 class MovieInfo extends Component{
     constructor(props){

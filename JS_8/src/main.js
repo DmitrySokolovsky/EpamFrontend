@@ -137,12 +137,12 @@ class App extends React.Component{
                     </Switch>
                   </div>   
                           
+                </div>                
                 </div>
-                
-                </div>
-              </Router>    
-            </div>               
-            
+              </Router>   <br/>
+              <MovieInfo/> 
+            </div> 
+
         );
     }
 

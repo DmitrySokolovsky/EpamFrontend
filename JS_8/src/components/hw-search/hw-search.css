@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     border: 1px solid #476280;
+    margin-left: 25px;
 }
 
 .hw-search__icon{
