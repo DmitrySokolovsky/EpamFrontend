@@ -1,3 +1,13 @@
 .hw-movie-info__container{
     width: 100%;
 }
+
+.hw-movie-info__description-container{
+    display: flex;
+}
+
+.hw-movie-info__poster-container{
+    height: 440px;
+    width: 350px;
+    background-size: 100% 100%;
+}
