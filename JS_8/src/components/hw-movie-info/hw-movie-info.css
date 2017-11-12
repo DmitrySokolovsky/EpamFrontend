@@ -1,5 +1,6 @@
 .hw-movie-info__container{
     width: 100%;
+    background-color: #262127;
 }
 
 .hw-movie-info__description-container{
@@ -7,7 +8,23 @@
 }
 
 .hw-movie-info__poster-container{
-    height: 440px;
-    width: 350px;
+    height: 390px;
+    width: 300px;
     background-size: 100% 100%;
+    border: 1px solid white;
+}
+
+.hw-movie-info__overview-container{
+    width: 900px;
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid white;
+}
+
+.hw-movie-info__recomindation-list{
+    width: 80%;
+    height: 150px;
+    overflow-x: scroll; 
+    border: 1px solid white;
+    
 }

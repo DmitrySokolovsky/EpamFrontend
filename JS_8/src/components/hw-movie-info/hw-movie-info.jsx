@@ -17,9 +17,9 @@ class MovieInfo extends Component{
                 </header>
                 <div className="hw-movie-info__description-container">
                     <div className="hw-movie-info__poster-container"></div>
-                    <div className="hw-movie-info__overview-container">
-                        <h1 className="hw-movie-info__text"></h1>
-                        <p className="hw-movie-info__text"></p>
+                    <div className="hw-movie-info__info-container">
+                        <h1 className="hw-movie-info__text">Film</h1>
+                        <div className="hw-movie-info__text hw-movie-info__overview-container"></div>
                     </div>
                 </div>
                 <div className="hw-movie-info__genre-container">
