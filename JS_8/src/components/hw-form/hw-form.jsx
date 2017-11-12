@@ -42,7 +42,8 @@ class Form extends Component{
     }
 
     componentWillMount(){
-        DataService.getGenres().then(response=>{
+        var url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&language=en-US'        
+        DataService.getData(url).then(response=>{
             let arr = JSON.parse(response).genres;
             console.log(arr);
             this.setState({genresArray: arr});

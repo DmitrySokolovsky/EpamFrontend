@@ -42,7 +42,8 @@ class App extends React.Component{
     };
 
     componentWillMount(){
-        DataService.getData().then(response=>{
+        var url = 'https://api.themoviedb.org/3/discover/movie?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2'
+        DataService.getData(url).then(response=>{
             //console.log(response);
             var arr = JSON.parse(response).results;
             var a = arr.map((item)=>{
