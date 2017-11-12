@@ -23,6 +23,7 @@ class App extends React.Component{
         super(props);        
         this.state = {
             postersMovieArray:[],
+            tvShowArray:[],
             textValue: '',
             isFormOpened: false,
             onChange: (newValue)=>{                
@@ -42,19 +43,34 @@ class App extends React.Component{
     };
 
     componentWillMount(){
-        var url = 'https://api.themoviedb.org/3/discover/movie?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2'
-        DataService.getData(url).then(response=>{
+        var urlMovie = 'https://api.themoviedb.org/3/discover/movie?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2'
+        var urlTv = 'https://api.themoviedb.org/3/tv/popular?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&language=en-US&page=1';
+        DataService.getData(urlMovie).then(response=>{
             //console.log(response);
             var arr = JSON.parse(response).results;
             var a = arr.map((item)=>{
                 item.poster_path = 'https://image.tmdb.org/t/p/w500'+item.poster_path;
                 return item;
-            });
-            
+            });           
+
             if(!localStorage.movies){
                 localStorage.setItem('movies', JSON.stringify(a));
             }
             this.setState({postersMovieArray: JSON.parse(localStorage.getItem('movies'))});
+        });
+
+        DataService.getData(urlTv).then(response=>{
+            console.log(response);
+            var arr = JSON.parse(response).results;
+            var a = arr.map((item)=>{
+                item.poster_path = 'https://image.tmdb.org/t/p/w500'+item.poster_path;
+                return item;
+            });
+
+            if(!localStorage.tvShows){
+                localStorage.setItem('tvShows', JSON.stringify(a));
+            }
+            this.setState({tvShowArray: JSON.parse(localStorage.getItem('tvShows'))});
         });
     }
 
@@ -107,13 +123,13 @@ class App extends React.Component{
                     </div>}/> 
                     <Route path="/tvshows" children={()=>
                     <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
-                    {this.state.postersMovieArray
+                    {this.state.tvShowArray
                         .filter((el)=>{
-                            return el.title.indexOf(this.state.textValue)!==-1;
+                            return el.original_name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
                             return (<Poster url={item.poster_path}
-                                key = {item.title}
+                                key = {item.original_name}
                                 data={item}
                                 />)
                         })}

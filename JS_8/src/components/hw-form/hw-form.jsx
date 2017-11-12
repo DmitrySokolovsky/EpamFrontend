@@ -74,7 +74,7 @@ class Form extends Component{
                   <div className="hw-form__genres-list">
                     {this.state.genresArray.map((item,index)=>{
                         return(
-                        <div key={item.id} className="hw-form__genre hw-form__text">
+                        <div key={item.name} className="hw-form__genre hw-form__text">
                           <input type="checkbox" genreid={item.id} />
                           {item.name}
                         </div>)

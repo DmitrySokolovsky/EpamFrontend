@@ -15,7 +15,9 @@ class Poster extends Component{
             <div className="hw-poster">
                 <div className="hw-poster__container"
                 style={this.posterImage} >
-                    <div className="hw-poster__title">{this.props.data.title}</div>               
+                    <div className="hw-poster__title">
+                    {(this.props.data.title)?this.props.data.title:this.props.data.name}
+                    </div>               
                 </div>
             </div>
         );
