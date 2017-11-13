@@ -45,6 +45,10 @@ class App extends React.Component{
     componentWillMount(){
         var urlMovie = 'https://api.themoviedb.org/3/discover/movie?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2'
         var urlTv = 'https://api.themoviedb.org/3/tv/popular?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&language=en-US&page=1';
+        
+        this.setState({postersMovieArray: JSON.parse(localStorage.getItem('movies'))});
+        this.setState({tvShowArray: JSON.parse(localStorage.getItem('tvShows'))});
+        
         DataService.getData(urlMovie).then(response=>{
             //console.log(response);
             var arr = JSON.parse(response).results;
@@ -91,7 +95,9 @@ class App extends React.Component{
             <div className="hw-app">
             <Router>
             <div className="hw-app">
-                <SideBar/>                
+                <SideBar/> 
+                <Switch>
+                <Route exact path="/movies" children={()=>               
                 <div className="hw-app__main-container">
                   <div className="hw-header">
                   <header>
@@ -107,45 +113,66 @@ class App extends React.Component{
                   
                   <div className="hw-app__movie-container">
                     <ScrollBar isFormOpened={this.state.isFormOpened}/>
-                    <Switch>
-                    <Route exact path="/" children={()=>
+                    
                     <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
                     {this.state.postersMovieArray
                         .filter((el)=>{
                             return el.title.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return (<Poster url={item.poster_path}
+                            return ( <NavLink to={`/movies/${item.id}`}>
+                                <Poster url={item.poster_path}
                                 key = {item.title}
                                 data={item}
-                                />)
+                                /></NavLink>
+                            )
                         })}
-                    </div>}/> 
-                    <Route path="/tvshows" children={()=>
+                    </div>                  
+                  </div>                           
+                </div> }/>
+                <Route exact path="/tvshows" children={()=> 
+                    <div className="hw-app__main-container">
+                  <div className="hw-header">
+                  <header>
+                  <div className="hw-header__container">
+                    <Search onChange={this.state.onChange.bind(this)}/>
+                    <Navigation onClickAddMovie={this.state.onClickOpenForm.bind(this)}/>                                        
+                  </div>
+                  </header>
+                  <Form isFormOpened={this.state.isFormOpened}
+                  onClickCancelForm={this.onClickCancelForm.bind(this)}
+                  />
+                  </div>
+                  
+                  <div className="hw-app__movie-container">
+                    <ScrollBar isFormOpened={this.state.isFormOpened}/>
+                    
                     <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
                     {this.state.tvShowArray
                         .filter((el)=>{
-                            return el.original_name.indexOf(this.state.textValue)!==-1;
+                            return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return (<Poster url={item.poster_path}
-                                key = {item.original_name}
+                            return (<NavLink to={`/tvshows/${item.id}`}>
+                                <Poster url={item.poster_path}
+                                key = {item.name}
                                 data={item}
-                                />)
+                                /></NavLink>
+                            )
                         })}
-                    </div>}/>
-                    </Switch>
-                  </div>   
-                          
-                </div>                
+                    </div>                  
+                  </div>                           
                 </div>
-              </Router>   <br/>
-              <MovieInfo/> 
+                }/>
+                <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.postersMovieArray}{...props}/>}/>
+                <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.state.tvShowArray}{...props}/>}/>
+                </Switch>               
+                </div>
+              </Router>   
+               
             </div> 
-
         );
     }
-
 }
 
 ReactDom.render(<App/>,document.getElementById('test'));
@@ -165,3 +192,16 @@ ReactDom.render(<App/>,document.getElementById('test'));
                 </Switch>
                 </div>
                 </Router>*/
+
+               /* <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
+                    {this.state.tvShowArray
+                        .filter((el)=>{
+                            return el.original_name.indexOf(this.state.textValue)!==-1;
+                        })
+                        .map((item,index)=>{
+                            return (<Poster url={item.poster_path}
+                                key = {item.original_name}
+                                data={item}
+                                />)
+                        })}
+                    </div>}*/

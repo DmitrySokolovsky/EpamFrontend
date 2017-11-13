@@ -34,7 +34,7 @@ class SideBar extends Component{
                 <div className="hw-side-bar__vertical-container">
                 
                 <div className="hw-side-bar__menu-item">
-                <NavLink to="/" activeClassName="active-link">
+                <NavLink to="/movies" activeClassName="active-link">
                 <i className={(this.state.isOpened)?'fa fa-film fa--padding':'fa fa-film'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Movies</p>
                 </NavLink>
                 </div>
