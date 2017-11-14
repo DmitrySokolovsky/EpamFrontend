@@ -9,7 +9,7 @@ import {
 import Navigation from '../hw-navigation/hw-navigation.jsx';
 import DataService from '../../data-service.js';
 
-class MovieInfo extends Component{
+export class MovieInfo extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -63,4 +63,3 @@ class MovieInfo extends Component{
     }
 }
 
-export default MovieInfo;

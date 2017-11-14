@@ -6,13 +6,16 @@ import {
   NavLink,
   Switch
 } from 'react-router-dom'
-import SideBar from './components/hw-sidebar/hw-sidebar.jsx'
-import Search from './components/hw-search/hw-search.jsx';
-import Navigation from './components/hw-navigation/hw-navigation.jsx';
-import ScrollBar from './components/hw-scrollbar/hw-scrollbar.jsx';
-import Poster from './components/hw-poster/hw-poster.jsx';
-import Form from './components/hw-form/hw-form.jsx';
-import MovieInfo from './components/hw-movie-info/hw-movie-info.jsx'
+
+import {
+    SideBar,
+    Search,
+    Navigation,
+    ScrollBar,
+    Poster,
+    Form,
+    MovieInfo
+} from "./components";
 import './style.css';
 import DataService from './data-service.js';
 
@@ -64,7 +67,6 @@ class App extends React.Component{
         });
 
         DataService.getData(urlTv).then(response=>{
-            console.log(response);
             var arr = JSON.parse(response).results;
             var a = arr.map((item)=>{
                 item.poster_path = 'https://image.tmdb.org/t/p/w500'+item.poster_path;
@@ -120,7 +122,7 @@ class App extends React.Component{
                             return el.title.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return ( <NavLink to={`/movies/${item.id}`}>
+                            return ( <NavLink to={`/movies/${item.id}`} key={item.id}>
                                 <Poster url={item.poster_path}
                                 key = {item.title}
                                 data={item}
@@ -143,6 +145,7 @@ class App extends React.Component{
                   onClickCancelForm={this.onClickCancelForm.bind(this)}
                   />
                   </div>
+
                   
                   <div className="hw-app__movie-container">
                     <ScrollBar isFormOpened={this.state.isFormOpened}/>

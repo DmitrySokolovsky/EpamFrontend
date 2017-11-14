@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './hw-poster.css';
 
 
-class Poster extends Component{
+export class Poster extends Component{
     constructor(props){
         super(props);
         this.posterImage = {

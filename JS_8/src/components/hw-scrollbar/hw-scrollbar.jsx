@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './hw-scrollbar.css';
 
-class ScrollBar extends Component{
+export class ScrollBar extends Component{
     constructor(props){
         super(props);
         this.arrowDown = "fa fa-angle-double-down fa-2x";
@@ -24,4 +24,3 @@ class ScrollBar extends Component{
     }
 }
 
-export default ScrollBar;

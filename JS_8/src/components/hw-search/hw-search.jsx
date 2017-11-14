@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './hw-search.css';
 
-class Search extends Component{
+export class Search extends Component{
     constructor(props){
         super(props);
         this.state = { textValue: this.props.textValue };
@@ -25,5 +25,3 @@ class Search extends Component{
         }
     }
 }
-
-export default Search;

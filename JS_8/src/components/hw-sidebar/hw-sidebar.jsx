@@ -9,7 +9,7 @@ import {
 import './hw-sidebar.css';
 
 //fa fa-window-close-o
-class SideBar extends Component{
+export class SideBar extends Component{
     constructor(props){
         super(props);       
         this.state = {isOpened: true};
@@ -59,4 +59,3 @@ class SideBar extends Component{
     }
 }
 
-export default SideBar;

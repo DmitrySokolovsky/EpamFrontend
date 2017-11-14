@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './hw-navigation.css';
 
-class Navigation extends Component{
+export class Navigation extends Component{
     constructor(props){
         super(props);
         this.classNameItem = "hw-nav__item hw-nav__text";
@@ -29,6 +29,5 @@ class Navigation extends Component{
     }
 }
 
-export default Navigation;
 
 
