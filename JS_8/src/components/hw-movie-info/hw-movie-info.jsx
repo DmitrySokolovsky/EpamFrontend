@@ -11,8 +11,12 @@ import {Navigation} from '../../components';
 
 export class MovieInfo extends Component{
     constructor(props){
-        super(props);     
+        super(props);       
     }
+
+componentWillMount(){
+    console.log(this.props.data);
+}
 
     render(){
         return (
@@ -24,12 +28,12 @@ export class MovieInfo extends Component{
                 </header>
                 <div className="hw-movie-info__description-container">
                     <div className="hw-movie-info__poster-container"
-                    
+                    style = {{backgroundImage: this.props.data.poster}}
                     ></div>
                     <div className="hw-movie-info__info-container">
-                        <h1 className="hw-movie-info__text"></h1>
+                        <h1 className="hw-movie-info__text">{this.props.data.name}</h1>
                         <div className="hw-movie-info__text hw-movie-info__overview-container">
-                        
+                            {this.props.data.description}
                         </div>
                     </div>
                 </div>

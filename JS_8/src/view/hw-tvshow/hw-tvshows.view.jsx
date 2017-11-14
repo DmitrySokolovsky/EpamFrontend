@@ -40,10 +40,6 @@ export class TvShowView extends React.Component{
         };
     }
     
-    componentWillMount(){
-        
-    }
-
     onClickCancelForm(){
         this.setState({
             isFormOpened: !this.state.isFormOpened,
@@ -74,14 +70,14 @@ export class TvShowView extends React.Component{
                     <Form isFormOpened={this.state.isFormOpened}
                     onClickCancelForm={this.onClickCancelForm.bind(this)}
                     />
-                    {this.state.postersMovieArray
+                    {this.props.showsArray
                         .filter((el)=>{
-                            return el.title.indexOf(this.state.textValue)!==-1;
+                            return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
                             return ( <NavLink to={`/movies/${item.id}`} key={item.id}>
-                                <Poster url={item.poster_path}
-                                key = {item.title}
+                                <Poster url={item.poster}
+                                key = {item.name}
                                 data={item}
                                 /></NavLink>
                             )

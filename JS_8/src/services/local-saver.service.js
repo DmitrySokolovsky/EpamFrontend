@@ -25,7 +25,7 @@ export class LocalSaver {
        });
     }
 
-    getMoviesfromLocal(){
+    getShowsfromLocal(){
         let showsString = localStorage.getItem("tvshows");
         return JSON.parse(showsString);
     }    

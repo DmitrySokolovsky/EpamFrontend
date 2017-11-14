@@ -24,14 +24,23 @@ class App extends React.Component{
     constructor(props){
         super(props);   
         this.state={
-            postersMovieArray:[]
+            movieArray:[],
+            showsArray:[]
         }        
     };
 
     componentWillMount(){
-        var lS = new LocalSaver();
-        lS.saveMoviesLocal();
-        lS.saveTvLocal();
+        var localSaver = new LocalSaver();
+        var movies = localSaver.getMoviesfromLocal();
+        var shows = localSaver.getShowsfromLocal();
+        if(!movies){
+            localSaver.saveMoviesLocal();            
+        }
+        this.setState({movieArray: movies});
+        if(!shows){
+            localSaver.saveTvLocal();
+        }
+        this.setState({showsArray: shows});
     }
 
     render(){
@@ -41,10 +50,10 @@ class App extends React.Component{
             <div className="hw-app">
                 <SideBar/> 
                 <Switch>
-                <Route exact path="/movies" render={(props)=><MovieView postersMovieArray={this.state.postersMovieArray}{...props}/>}/>
-                <Route path="/tvshows" component={TvShowView}/>
-                <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.postersMovieArray}{...props}/>}/>
-                <Route path="/tvshows/:id" component={MovieInfo}/>               
+                <Route exact path="/movies" render={(props)=><MovieView movieArray={this.state.movieArray}{...props}/>}/>
+                <Route path="/tvshows" render={(props)=><TvShowView showsArray={this.state.showsArray}{...props}/>}/>
+                <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.movieArray}{...props}/>}/>
+                <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.state.showsArray}{...props}/>}/>               
                 </Switch>               
                 </div>
               </Router>             

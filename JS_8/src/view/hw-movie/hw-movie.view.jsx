@@ -70,7 +70,7 @@ export class MovieView extends React.Component{
                     <Form isFormOpened={this.state.isFormOpened}
                     onClickCancelForm={this.onClickCancelForm.bind(this)}
                     />
-                    {this.props.postersMovieArray
+                    {this.props.movieArray
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
