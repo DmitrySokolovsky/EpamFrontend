@@ -17,7 +17,7 @@ import {
     MovieInfo
 } from "../../components";
 import "../../style.css";
-import {EntityMovieService} from "../../services/entity.service.js";
+import {EntityMovieService} from "../../services/movie-entity.service.js";
 
 export class TvShowView extends React.Component{
     constructor(props){

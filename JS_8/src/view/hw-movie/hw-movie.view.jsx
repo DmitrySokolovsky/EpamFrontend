@@ -13,11 +13,11 @@ import {
     Navigation,
     ScrollBar,
     Poster,
-    Form,
-    MovieInfo
+    Form
 } from "../../components";
+import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "../../style.css";
-import { EntityMovieService } from "../../services/movie-entity.service.js";
+import {EntityMovieService} from "../../services/movie-entity.service.js";
 
 export class MovieView extends React.Component{
     constructor(props){
@@ -40,13 +40,6 @@ export class MovieView extends React.Component{
         };
     }
     
-    componentWillMount(){
-        var entityService = new EntityMovieService();
-        entityService.getMovieEntities().then((movies)=>{
-            this.setState({postersMovieArray: movies});
-        });
-    }
-
     onClickCancelForm(){
         this.setState({
             isFormOpened: !this.state.isFormOpened,
@@ -77,7 +70,7 @@ export class MovieView extends React.Component{
                     <Form isFormOpened={this.state.isFormOpened}
                     onClickCancelForm={this.onClickCancelForm.bind(this)}
                     />
-                    {this.state.postersMovieArray
+                    {this.props.postersMovieArray
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
@@ -85,14 +78,13 @@ export class MovieView extends React.Component{
                             return ( <NavLink to={`/movies/${item.id}`} key={item.id}>
                                 <Poster url={item.poster}
                                 key = {item.name}
-                                data={item}
+                                data={item}                                
                                 /></NavLink>
                             )
                         })}
                     </div>                  
                   </div> 
-                  <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.postersMovieArray}{...props}/>}/>
-                                          
+                                                    
                 </div>
         );
     }

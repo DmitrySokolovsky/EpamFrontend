@@ -18,12 +18,23 @@ import {
     MovieInfo
 } from "./components";
 import './style.css';
-import {EntityMovieService} from "./services/entity.service.js";
+import {EntityMovieService} from "./services/movie-entity.service.js"
+
 
 class App extends React.Component{
     constructor(props){
-        super(props);           
+        super(props);   
+        this.state={
+            postersMovieArray:[]
+        }        
     };
+
+    componentWillMount(){
+        var entityService = new EntityMovieService();
+        entityService.getMovieEntities().then((movies)=>{
+            this.setState({postersMovieArray: movies});
+        });
+    }
 
     render(){
         return(
@@ -32,8 +43,10 @@ class App extends React.Component{
             <div className="hw-app">
                 <SideBar/> 
                 <Switch>
-                <Route exact path="/movies" component={MovieView}/>
-                <Route exact path="/tvshows" component={TvShowView}/>                
+                <Route exact path="/movies" render={(props)=><MovieView postersMovieArray={this.state.postersMovieArray}{...props}/>}/>
+                <Route path="/tvshows" component={TvShowView}/>
+                <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.postersMovieArray}{...props}/>}/>
+                <Route path="/tvshows/:id" component={MovieInfo}/>               
                 </Switch>               
                 </div>
               </Router>             
