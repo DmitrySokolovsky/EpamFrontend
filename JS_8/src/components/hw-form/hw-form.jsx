@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import DataService from '../../data-service.js'
+import DataService from "../../services";
 import './hw-form.css';
 
 export class Form extends Component{
@@ -41,14 +41,14 @@ export class Form extends Component{
         this.props.onClickCancelForm();
     }
 
-    componentWillMount(){
+   /* componentWillMount(){
         var url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&language=en-US'        
         DataService.getData(url).then(response=>{
             let arr = JSON.parse(response).genres;
             localStorage.setItem("genres",response);
             this.setState({genresArray: arr});            
         });
-    }
+    }*/
 
     render(){
         return (

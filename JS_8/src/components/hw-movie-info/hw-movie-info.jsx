@@ -7,7 +7,7 @@ import {
     Switch
   } from 'react-router-dom';
 import Navigation from '../hw-navigation/hw-navigation.jsx';
-import DataService from '../../data-service.js';
+
 
 export class MovieInfo extends Component{
     constructor(props){
