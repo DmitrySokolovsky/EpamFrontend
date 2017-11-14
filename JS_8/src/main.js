@@ -7,6 +7,7 @@ import {
   Switch
 } from 'react-router-dom'
 import {MovieView} from "./view/hw-movie/hw-movie.view.jsx";
+import {LocalSaver} from "./services/local-saver.service";
 import {TvShowView} from "./view/hw-tvshow/hw-tvshows.view.jsx";
 import {
     SideBar,
@@ -18,8 +19,6 @@ import {
     MovieInfo
 } from "./components";
 import './style.css';
-import {EntityMovieService} from "./services/movie-entity.service.js"
-
 
 class App extends React.Component{
     constructor(props){
@@ -30,10 +29,9 @@ class App extends React.Component{
     };
 
     componentWillMount(){
-        var entityService = new EntityMovieService();
-        entityService.getMovieEntities().then((movies)=>{
-            this.setState({postersMovieArray: movies});
-        });
+        var lS = new LocalSaver();
+        lS.saveMoviesLocal();
+        lS.saveTvLocal();
     }
 
     render(){

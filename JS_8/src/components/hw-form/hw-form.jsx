@@ -28,11 +28,7 @@ export class Form extends Component{
     
     handleSubmit(event){
         event.preventDefault();
-        var localStr = localStorage.getItem("movies");
-        var moviesArray = JSON.parse(localStr);
-        moviesArray.push({title: this.state.title, overview: this.state.overview});
-        localStorage.clear();
-        localStorage.setItem("movies",JSON.stringify(moviesArray));        
+                
         this.props.onClickCancelForm();
     }
 
@@ -41,14 +37,7 @@ export class Form extends Component{
         this.props.onClickCancelForm();
     }
 
-   /* componentWillMount(){
-        var url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&language=en-US'        
-        DataService.getData(url).then(response=>{
-            let arr = JSON.parse(response).genres;
-            localStorage.setItem("genres",response);
-            this.setState({genresArray: arr});            
-        });
-    }*/
+   
 
     render(){
         return (
@@ -72,13 +61,9 @@ export class Form extends Component{
                 <div className="hw-form__genre-container">
                   <div className="hw-form__text">Genre</div>
                   <div className="hw-form__genres-list">
-                    {this.state.genresArray.map((item,index)=>{
-                        return(
-                        <div key={item.name} className="hw-form__genre hw-form__text">
-                          <input type="checkbox" genreid={item.id} />
-                          {item.name}
-                        </div>)
-                    })}
+                    
+
+                  
                   </div>
                </div>
                <div className="hw-form__submit-container">

@@ -19,7 +19,7 @@ export class MovieInfo extends Component{
             <div className="hw-movie-info hw-movie-info__container">
                 <header>
                     <div className="hw-header__container">                
-                       {/*<Navigation hideForm={true}/>*/     }                                   
+                       <Navigation hideForm={true}/>                                   
                     </div>
                 </header>
                 <div className="hw-movie-info__description-container">
