@@ -17,9 +17,7 @@ import {
     MovieInfo
 } from "./components";
 import './style.css';
-import DataService from './data-service.js';
-
-
+import {DataService} from "./services";
 
 class App extends React.Component{
     constructor(props){

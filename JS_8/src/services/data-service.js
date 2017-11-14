@@ -1,4 +1,4 @@
-function DataServise(){ }
+export function DataServise(){ }
 
 DataServise.getData = function(url){
     return new Promise(function(resolve, reject) {
@@ -20,7 +20,7 @@ DataServise.getData = function(url){
     });
 }
 
-export default DataServise;
+
 
 
 
