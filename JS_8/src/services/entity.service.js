@@ -9,7 +9,7 @@ export class EntityMovieService {
 
     getMovieEntities() {
         return this.dataServise.getData(this.url).then(result => {
-            var arr = JSON.parse(result).results;
+            let arr = JSON.parse(result).results;
             let movies = arr.map((item)=>{
                 return new MovieEntity(item);
             });

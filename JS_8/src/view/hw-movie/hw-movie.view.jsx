@@ -41,7 +41,10 @@ export class MovieView extends React.Component{
     }
     
     componentWillMount(){
-
+        var entityService = new EntityMovieService();
+        entityService.getMovieEntities().then((movies)=>{
+            this.setState({postersMovieArray: movies});
+        });
     }
 
     onClickCancelForm(){
@@ -76,12 +79,12 @@ export class MovieView extends React.Component{
                     />
                     {this.state.postersMovieArray
                         .filter((el)=>{
-                            return el.title.indexOf(this.state.textValue)!==-1;
+                            return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
                             return ( <NavLink to={`/movies/${item.id}`} key={item.id}>
-                                <Poster url={item.poster_path}
-                                key = {item.title}
+                                <Poster url={item.poster}
+                                key = {item.name}
                                 data={item}
                                 /></NavLink>
                             )
@@ -89,7 +92,7 @@ export class MovieView extends React.Component{
                     </div>                  
                   </div> 
                   <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.postersMovieArray}{...props}/>}/>
-                <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.state.tvShowArray}{...props}/>}/>                          
+                                          
                 </div>
         );
     }
