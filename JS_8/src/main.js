@@ -8,14 +8,10 @@ import {
 } from 'react-router-dom'
 import {MovieView} from "./view/hw-movie/hw-movie.view.jsx";
 import {LocalSaver} from "./services/local-saver.service";
+import {GenresService} from "./services/genres.service.js"
 import {TvShowView} from "./view/hw-tvshow/hw-tvshows.view.jsx";
 import {
-    SideBar,
-    Search,
-    Navigation,
-    ScrollBar,
-    Poster,
-    Form,
+    SideBar,   
     MovieInfo
 } from "./components";
 import './style.css';
@@ -33,14 +29,22 @@ class App extends React.Component{
         var localSaver = new LocalSaver();
         var movies = localSaver.getMoviesfromLocal();
         var shows = localSaver.getShowsfromLocal();
+        var genres = localStorage.getItem("genres");
+        var genresService = new GenresService();
+        if(!genres){
+            genresService.saveGenresLocal();
+        }
+
         if(!movies){
             localSaver.saveMoviesLocal();            
         }
         this.setState({movieArray: movies});
+
         if(!shows){
             localSaver.saveTvLocal();
         }
         this.setState({showsArray: shows});
+        
     }
 
     render(){

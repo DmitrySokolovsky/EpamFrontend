@@ -29,18 +29,21 @@
     justify-content: center;
     margin-left: 15px;
     margin-right: 15px;
+    margin-top: 10px;
 }
 
 .hw-form__text-container{
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .hw-form__genres-list{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 90%;
+    width: 95%;
     height: 100%;
     border: 2px solid wheat;
     border-radius: 5px;

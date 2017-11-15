@@ -1,43 +1,59 @@
 import React,{Component} from 'react';
-import DataService from "../../services";
+import {GenresService} from "../../services/genres.service.js";
+import {TextBox} from "../../components";
 import './hw-form.css';
 
 export class Form extends Component{
     constructor (props){
-        super(props);        
+        super(props); 
+        this.service = new GenresService();      
         this.state = {
             genresArray:[],
-            title: '',
-            overview: '',
+            name: '',
+            description: '',
+            poster: "../src/default_poster.png",
+            genre_ids: []
         };
     }
 
     componentWillMount(){
         this.setState({isFormOpened: this.props.isFormOpened});
+        
+        this.setState({genresArray: this.service.getGenresFromLocal()})
     }
 
-    onOverviewChange(event){
-        let val = event.target.value;
-        this.setState({overview: val});
+    onOverviewChange(value){
+        let val = value;
+        this.setState({description: val});
     }
 
-    onTitleChange(event){
-        let val = event.target.value;
-        this.setState({title: val});
+    onTitleChange(value){
+        let val = value;
+        this.setState({name: val});
     }
     
     handleSubmit(event){
-        event.preventDefault();
-                
-        this.props.onClickCancelForm();
+        event.preventDefault(); 
+        let item = {
+            id: Math.random(1000),
+            name: this.state.name,
+            description: this.state.description,
+            genre_ids: this.state.genre_ids,
+            poster: this.state.poster
+        }
+        console.log(item);
+        this.props.onClickAddMovie(item);
+        this.props.onClickCloseForm();
     }
 
     handleCancel(event){
         event.preventDefault();
-        this.props.onClickCancelForm();
-    }
+        this.props.onClickCloseForm();
+    }   
 
-   
+    handleGenreChange(event){
+        this.state.genre_ids.push(event.target.name);
+    }
 
     render(){
         return (
@@ -49,21 +65,30 @@ export class Form extends Component{
                   <hr/>
                   <div className="hw-form__text-container">
                     <label className="hw-form__text">Title</label>
-                    <input type="text" className="hw-form__input-text"
-                    onChange={this.onTitleChange.bind(this)}/>
+                    <TextBox onChange={this.onTitleChange.bind(this)}
+                    placeholder="Title"/>
                   </div>
                   <div className="hw-form__text-container">
                     <label className="hw-form__text">Overview</label>
-                    <textarea name="" id="" cols="30" rows="5"
-                    onChange={this.onOverviewChange.bind(this)}></textarea>
+                    <TextBox onChange={this.onOverviewChange.bind(this)}
+                    placeholder = "Overview"/>
                   </div>                 
                 </div>
                 <div className="hw-form__genre-container">
                   <div className="hw-form__text">Genre</div>
-                  <div className="hw-form__genres-list">
-                    
-
-                  
+                  <div className="hw-form__genres-list"
+                  onChange = {this.handleGenreChange.bind(this)}
+                  > 
+                  {
+                      this.state.genresArray.map((item)=>{
+                          return (
+                              <div key={item.name}>
+                                  <input type="checkbox" name={item.id}/>
+                                  <label htmlFor={item.id}>{item.name}</label>
+                              </div>
+                          );
+                      })
+                  }                
                   </div>
                </div>
                <div className="hw-form__submit-container">

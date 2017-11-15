@@ -6,7 +6,7 @@ export class Poster extends Component{
     constructor(props){
         super(props);
         this.posterImage = {
-            backgroundImage: 'url(' + this.props.url + ')'
+            backgroundImage: 'url(' + this.props.data.poster + ')'
         }
     }
 
@@ -16,7 +16,7 @@ export class Poster extends Component{
                 <div className="hw-poster__container"
                 style={this.posterImage} >
                     <div className="hw-poster__title">
-                    {(this.props.data.title)?this.props.data.title:this.props.data.name}
+                    {this.props.data.name}
                     </div>               
                 </div>
             </div>

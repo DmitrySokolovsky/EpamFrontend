@@ -1,0 +1,14 @@
+.hw-textbox__input{    
+    height: 30px;
+    background-color: #314052;
+    border: none;
+}
+
+.hw-textbox__text{
+    font-family: Bradley;
+    font-size: 18px;
+}
+
+.hw-textbox__text--dark{
+    color: #515151;
+}

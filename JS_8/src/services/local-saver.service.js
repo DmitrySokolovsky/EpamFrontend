@@ -15,7 +15,13 @@ export class LocalSaver {
     getMoviesfromLocal(){
         let moviesString = localStorage.getItem("movies");
         return JSON.parse(moviesString);
-    }    
+    }
+    
+    setLocal(array,key){
+        let string = JSON.stringify(array);
+        localStorage.removeItem(key);
+        localStorage.setItem(key,string);
+    }
 
     saveTvLocal(){
        let entityTvService = new EntityTvService();

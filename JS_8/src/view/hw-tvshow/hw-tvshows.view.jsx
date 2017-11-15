@@ -9,7 +9,7 @@ import {
 
 import {
     SideBar,
-    Search,
+    TextBox,
     Navigation,
     ScrollBar,
     Poster,
@@ -58,7 +58,7 @@ export class TvShowView extends React.Component{
                   <div className="hw-header">
                   <header>
                   <div className="hw-header__container">
-                    <Search onChange={this.state.onChange.bind(this)}/>
+                    <TextBox onChange={this.state.onChange.bind(this)}/>
                     <Navigation onClickAddMovie={this.state.onClickOpenForm.bind(this)}/>                                        
                   </div>
                   </header>                  

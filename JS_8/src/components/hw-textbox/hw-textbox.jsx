@@ -1,20 +1,17 @@
 import React,{Component} from 'react';
-import './hw-search.css';
+import './hw-textbox.css';
 
-export class Search extends Component{
+export class TextBox extends Component{
     constructor(props){
         super(props);
         this.state = { textValue: this.props.textValue };
     }
     render(){
         return(
-            <div className="hw-search hw-search__container">
-                <div className="hw-search__icon">
-                <i className="fa fa-search hw-search__text--dark"></i>
-                </div>                
+            <div className="hw-textbox hw-textbox__container">                                
                 <input type="search" 
-                className="hw-search__input hw-search__text"
-                placeholder="  Search..."
+                className="hw-textbox__input hw-textbox__text"
+                placeholder={this.props.placeholder}
                 onChange={this.onInputChange.bind(this)}/>
             </div>
         );

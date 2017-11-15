@@ -9,21 +9,22 @@ import {
 
 import {
     SideBar,
-    Search,
+    TextBox,
     Navigation,
     ScrollBar,
     Poster,
     Form
 } from "../../components";
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
-import "../../style.css";
-import {EntityMovieService} from "../../services/movie-entity.service.js";
+import "./hw-movie.view.css";
+import {LocalSaver} from "../../services/local-saver.service.js";
 
 export class MovieView extends React.Component{
     constructor(props){
         super(props);
+        this.service = new LocalSaver();
         this.state = {
-            postersMovieArray:[],
+            movieArray:this.props.movieArray,
             textValue: '',
             isFormOpened: false,
             onChange: (newValue)=>{                
@@ -40,16 +41,17 @@ export class MovieView extends React.Component{
         };
     }
     
-    onClickCancelForm(){
+    onClickCloseForm(){
         this.setState({
             isFormOpened: !this.state.isFormOpened,
         });
     }
 
-    onClickAddMovie(){
-        this.setState({
-            isFormOpened: !this.state.isFormOpened,
-        });
+    onClickAddMovie(item){
+       let movies = this.service.getMoviesfromLocal();
+       movies.push(item);
+       this.service.setLocal(movies,"movies");
+       this.setState({movieArray: movies});
     }
 
     render(){
@@ -58,7 +60,14 @@ export class MovieView extends React.Component{
                   <div className="hw-header">
                   <header>
                   <div className="hw-header__container">
-                    <Search onChange={this.state.onChange.bind(this)}/>
+                  <div className="hw-header__search-container">
+                    <div className="hw-header__search-icon">
+                      <i className="fa fa-search hw-search__text--dark"></i>
+                    </div>
+                    <TextBox onChange={this.state.onChange.bind(this)}
+                    placeholder="...Search"/>
+                  </div>
+                  
                     <Navigation onClickAddMovie={this.state.onClickOpenForm.bind(this)}/>                                        
                   </div>
                   </header>                  
@@ -68,14 +77,15 @@ export class MovieView extends React.Component{
                     <ScrollBar/>                    
                     <div className="hw-app__poster-container">
                     <Form isFormOpened={this.state.isFormOpened}
-                    onClickCancelForm={this.onClickCancelForm.bind(this)}
+                    onClickCloseForm={this.onClickCloseForm.bind(this)}
+                    onClickAddMovie={this.onClickAddMovie.bind(this)}
                     />
-                    {this.props.movieArray
+                    {this.state.movieArray
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return ( <NavLink to={`/movies/${item.id}`} key={item.id}>
+                            return ( <NavLink to={`/movies/${item.id}`} key={item.name}>
                                 <Poster url={item.poster}
                                 key = {item.name}
                                 data={item}                                
