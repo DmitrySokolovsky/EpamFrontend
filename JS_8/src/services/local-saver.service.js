@@ -15,6 +15,7 @@ export class LocalSaver {
     getMoviesfromLocal(){
         let moviesString = localStorage.getItem("movies");
         return JSON.parse(moviesString);
+        console.log("Get movies");
     }
     
     setLocal(array,key){
@@ -34,5 +35,6 @@ export class LocalSaver {
     getShowsfromLocal(){
         let showsString = localStorage.getItem("tvshows");
         return JSON.parse(showsString);
+        console.log("genres local");
     }    
 }

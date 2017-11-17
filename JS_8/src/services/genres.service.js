@@ -1,8 +1,9 @@
 import {DataServise} from "./data-service.js";
+import {apiUrl} from "./api.config.js";
 
 export class GenresService{
     constructor(){ 
-        this.url = "https://api.themoviedb.org/3/genre/movie/list?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&language=en-US"
+        this.url = apiUrl.genreUrl;
     }
 
     saveGenresLocal(){

@@ -7,7 +7,7 @@ import {
   Switch
 } from 'react-router-dom'
 import {MovieView} from "./view/hw-movie/hw-movie.view.jsx";
-import {LocalSaver} from "./services/local-saver.service";
+import {MoviesLoader} from "./services/movies-loader.service.js";
 import {GenresService} from "./services/genres.service.js"
 import {TvShowView} from "./view/hw-tvshow/hw-tvshows.view.jsx";
 import {
@@ -26,25 +26,14 @@ class App extends React.Component{
     };
 
     componentWillMount(){
-        var localSaver = new LocalSaver();
-        var movies = localSaver.getMoviesfromLocal();
-        var shows = localSaver.getShowsfromLocal();
+        var moviesLoader = new MoviesLoader();
         var genres = localStorage.getItem("genres");
-        var genresService = new GenresService();
+         var genresService = new GenresService();
         if(!genres){
             genresService.saveGenresLocal();
         }
-
-        if(!movies){
-            localSaver.saveMoviesLocal();            
-        }
-        this.setState({movieArray: movies});
-
-        if(!shows){
-            localSaver.saveTvLocal();
-        }
-        this.setState({showsArray: shows});
-        
+               
+        this.setState({movieArray: moviesLoader.viewMovies()});        
     }
 
     render(){

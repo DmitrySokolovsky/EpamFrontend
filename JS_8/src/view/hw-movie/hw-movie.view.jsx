@@ -80,7 +80,7 @@ export class MovieView extends React.Component{
                     onClickCloseForm={this.onClickCloseForm.bind(this)}
                     onClickAddMovie={this.onClickAddMovie.bind(this)}
                     />
-                    {this.state.movieArray
+                    {this.props.movieArray
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })

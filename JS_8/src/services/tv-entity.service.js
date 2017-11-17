@@ -1,10 +1,11 @@
 import {TvShowEntity} from "./tvshow.entity.dto.js";
 import {DataServise} from "./data-service.js";
+import {apiUrl} from "./api.config.js";
 
 export class EntityTvService {
     constructor() {
         this.dataServise = new DataServise();
-        this.url = 'https://api.themoviedb.org/3/tv/popular?api_key=ed17cc3db4b89c8d4e968b98ff4f8266&language=en-US&page=1';
+        this.url = apiUrl.showUrl;
     }
 
     getTvEntities() {
