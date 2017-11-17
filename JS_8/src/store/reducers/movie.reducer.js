@@ -1,7 +1,7 @@
 import { INIT_MOVIES } from './../actions';
-import { LocalService } from "./../../services/local-saver.service";
+import { LocalSaver } from "./../../services/local-saver.service";
 
-const localService = new LocalService();
+const localService = new LocalSaver();
 
 const initialState = {
     state: 'INITIAL',
@@ -13,7 +13,7 @@ export function movieReducer(state = initialState, action) {
         case INIT_MOVIES:
             return {
                 ...state,
-                values: localService.getMoviesfromLocal();
+                values: localService.getMoviesfromLocal()
             };
 
         default:

@@ -16,6 +16,11 @@ import {
 } from "./components";
 import './style.css';
 
+import {initMovies} from "./store/actions"
+
+import appStore from './store';
+import { Provider } from 'react-redux';
+
 class App extends React.Component{
     constructor(props){
         super(props);   
@@ -26,14 +31,15 @@ class App extends React.Component{
     };
 
     componentWillMount(){
-        var moviesLoader = new MoviesLoader();
+        this.props.initMovies();
+        /*var moviesLoader = new MoviesLoader();
         var genres = localStorage.getItem("genres");
          var genresService = new GenresService();
         if(!genres){
             genresService.saveGenresLocal();
         }
                
-        this.setState({movieArray: moviesLoader.viewMovies()});        
+        this.setState({movieArray: moviesLoader.viewMovies()});   */     
     }
 
     render(){
@@ -43,7 +49,7 @@ class App extends React.Component{
             <div className="hw-app">
                 <SideBar/> 
                 <Switch>
-                <Route exact path="/movies" render={(props)=><MovieView movieArray={this.state.movieArray}{...props}/>}/>
+                <Route exact path="/movies" render={(props)=><MovieView movieArray={this.props.values}{...props}/>}/>
                 <Route path="/tvshows" render={(props)=><TvShowView showsArray={this.state.showsArray}{...props}/>}/>
                 <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.movieArray}{...props}/>}/>
                 <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.state.showsArray}{...props}/>}/>               
@@ -55,7 +61,24 @@ class App extends React.Component{
     }
 }
 
-ReactDom.render(<App/>,document.getElementById('test'));
+const mapStateToProps = (state) => {
+    const values = state.movies.values;
+    const moviesState = state.movies.state;
+
+    return { values, state: moviesState };
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    initMovies: (movies) => dispatch(initMovies(movies))
+});
+
+connect(mapStateToProps, mapDispatchToProps)(App);
+
+ReactDom.render(
+    <Provider store={appStore}>
+    <App/>
+    </Provider>
+    ,document.getElementById('test'));
 
 
                
