@@ -58,30 +58,4 @@ class App extends React.Component{
 ReactDom.render(<App/>,document.getElementById('test'));
 
 
-                /*<Router>
-                <div>
-                <ul>
-                    <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/about">About</NavLink></li>
-                    <li><NavLink to="/topics">Topics</NavLink></li>
-                </ul>
-                <Switch>
-                <Route exact path="/" children={()=><h2>Home</h2>}/>
-                <Route path="/about" children={()=><h2>About</h2>} />
-                <Route path="/topics" children={()=><h2>topics</h2>} />
-                </Switch>
-                </div>
-                </Router>*/
-
-               /* <div className={(this.state.isFormOpened)?"hw-app__poster-container hw-app__poster-container--small":"hw-app__poster-container"}>
-                    {this.state.tvShowArray
-                        .filter((el)=>{
-                            return el.original_name.indexOf(this.state.textValue)!==-1;
-                        })
-                        .map((item,index)=>{
-                            return (<Poster url={item.poster_path}
-                                key = {item.original_name}
-                                data={item}
-                                />)
-                        })}
-                    </div>}*/
+               
