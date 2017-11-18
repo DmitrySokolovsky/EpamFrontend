@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { connect } from 'react-redux';
+
 import {
   HashRouter as Router,
   Route,
@@ -15,9 +17,14 @@ import {
     Poster,
     Form
 } from "../../components";
+
+import { toggleForm } from "../../store/actions"; 
+
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-movie.view.css";
 import {LocalSaver} from "../../services/local-saver.service.js";
+
+
 
 export class MovieView extends React.Component{
     constructor(props){
@@ -31,13 +38,7 @@ export class MovieView extends React.Component{
                 this.setState({
                     textValue: newValue
                 });
-            },
-            onClickOpenForm: ()=>{
-                console.log('click from app' + this.state.isFormOpened);                
-                this.setState({
-                    isFormOpened: !this.state.isFormOpened
-                });
-            }            
+            }                        
         };
     }
     
@@ -68,7 +69,7 @@ export class MovieView extends React.Component{
                     placeholder="...Search"/>
                   </div>
                   
-                    <Navigation onClickAddMovie={this.state.onClickOpenForm.bind(this)}/>                                        
+                    <Navigation/>                                        
                   </div>
                   </header>                  
                   </div>
@@ -76,7 +77,7 @@ export class MovieView extends React.Component{
                   <div className="hw-app__movie-container">
                     <ScrollBar/>                    
                     <div className="hw-app__poster-container">
-                    <Form isFormOpened={this.state.isFormOpened}
+                    <Form
                     onClickCloseForm={this.onClickCloseForm.bind(this)}
                     onClickAddMovie={this.onClickAddMovie.bind(this)}
                     />

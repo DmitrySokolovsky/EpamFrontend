@@ -1,9 +1,14 @@
 import React,{Component} from 'react';
+import {connect} from "react-redux";
+
 import {GenresService} from "../../services/genres.service.js";
 import {TextBox} from "../../components";
 import './hw-form.css';
 
-export class Form extends Component{
+import { toggleForm } from "../../store/actions"; 
+
+
+class FormMovie extends Component{
     constructor (props){
         super(props); 
         this.service = new GenresService();      
@@ -17,8 +22,7 @@ export class Form extends Component{
     }
 
     componentWillMount(){
-        this.setState({isFormOpened: this.props.isFormOpened});
-        
+        this.setState({isFormOpened: this.props.isFormOpened});        
         this.setState({genresArray: this.service.getGenresFromLocal()})
     }
 
@@ -109,6 +113,14 @@ export class Form extends Component{
     }
 }
 
+const mapStateToProps = (state) =>{
+    isOpened: state.form.isFormOpened;
+    return{
+        isOpened
+    };
+};
+
+export const Form = connect(mapStateToProps)(FormMovie);
 
 
 

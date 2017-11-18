@@ -1,2 +1,2 @@
-export * from './movie-action.actions';
-export * from './movie-action.types';
+export * from "./form-action.actions";
+export * from "./form-action.types";

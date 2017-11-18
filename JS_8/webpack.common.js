@@ -5,7 +5,7 @@ module.exports = {
     context: __dirname,
     devtool: "source-map",
     entry: {
-        app: './src/main.js'
+        app: './src/app.js'
     },
     output: {
         path: __dirname + "/dist",

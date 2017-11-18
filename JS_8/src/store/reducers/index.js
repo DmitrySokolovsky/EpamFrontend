@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { movieReducer } from './movie.reducer.js';
+import { formReducer } from "./form.reducer";
 
 export const appReducers = combineReducers({
-    movie: movieReducer
+    form: formReducer
 });
