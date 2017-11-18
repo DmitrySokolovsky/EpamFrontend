@@ -49,10 +49,10 @@ export class MovieView extends React.Component{
     }
 
     onClickAddMovie(item){
-       let movies = this.service.getMoviesfromLocal();
+       /*let movies = this.service.getMoviesfromLocal();
        movies.push(item);
        this.service.setLocal(movies,"movies");
-       this.setState({movieArray: movies});
+       this.setState({movieArray: movies});*/
     }
 
     render(){

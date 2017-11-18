@@ -16,7 +16,7 @@ class Nav extends Component{
             <div className="hw-nav">
                 <div className="hw-nav__container">
                 <div className={this.props.hideForm?this.classHiddenItem:this.classNameItem}
-                onClick={this.props.toggleForm()}>Add movie</div>
+                onClick={this.props.toggleForm}>Add movie</div>
                 <div className={this.props.hideAbout?this.classHiddenItem:this.classNameItem}>About</div>
                 <div className={this.props.hidePricing?this.classHiddenItem:this.classNameItem}>Pricing</div>
                 <div className={this.props.hideBlog?this.classHiddenItem:this.classNameItem}>Blog</div>
@@ -30,7 +30,14 @@ const mapDispatchToProps = (dispatch) => ({
     toggleForm: () => dispatch(toggleForm())
 });
 
-export const Navigation = connect(mapDispatchToProps)(Nav);
+const mapStateToProps = (state) =>{
+    var isOpened= state.form.isFormOpened;
+    return{
+        isOpened
+    };
+};
+
+export const Navigation = connect(mapStateToProps,mapDispatchToProps)(Nav);
 
 
 

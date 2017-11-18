@@ -5,7 +5,7 @@ import {GenresService} from "../../services/genres.service.js";
 import {TextBox} from "../../components";
 import './hw-form.css';
 
-import { toggleForm } from "../../store/actions"; 
+import { closeForm } from "../../store/actions"; 
 
 
 class FormMovie extends Component{
@@ -22,8 +22,7 @@ class FormMovie extends Component{
     }
 
     componentWillMount(){
-        this.setState({isFormOpened: this.props.isFormOpened});        
-        this.setState({genresArray: this.service.getGenresFromLocal()})
+       // console.log(this.props);
     }
 
     onOverviewChange(value){
@@ -37,7 +36,7 @@ class FormMovie extends Component{
     }
     
     handleSubmit(event){
-        event.preventDefault(); 
+       /* event.preventDefault(); 
         let item = {
             id: Math.random(1000),
             name: this.state.name,
@@ -45,9 +44,9 @@ class FormMovie extends Component{
             genre_ids: this.state.genre_ids,
             poster: this.state.poster
         }
-        console.log(item);
         this.props.onClickAddMovie(item);
         this.props.onClickCloseForm();
+        */
     }
 
     handleCancel(event){
@@ -61,7 +60,7 @@ class FormMovie extends Component{
 
     render(){
         return (
-            <div className={(this.props.isFormOpened)?"hw-form hw-form__container":"hw-form__container--closed"}>
+            <div className={(this.props.isOpened)?"hw-form hw-form__container":"hw-form__container--closed"}>
                 <h1 className="hw-form__text">Add movie</h1>
                 <form onSubmit={this.handleSubmit.bind(this)}
                 className="hw-form__movie-description-container">
@@ -104,7 +103,7 @@ class FormMovie extends Component{
                    <button type="submit" className="hw-form__submit-btn hw-form__text"
                    >Add</button>
                    <button className="hw-form__cancel-btn hw-form__text"
-                   onClick={this.handleCancel.bind(this)}>Cancel</button>
+                   onClick={this.props.closeForm}>Cancel</button>
                  </div>
                  </div>
             </form>
@@ -114,13 +113,20 @@ class FormMovie extends Component{
 }
 
 const mapStateToProps = (state) =>{
-    isOpened: state.form.isFormOpened;
+    var isOpened = state.form.isFormOpen;
     return{
         isOpened
     };
 };
 
-export const Form = connect(mapStateToProps)(FormMovie);
+const mapDispatchToProps = (dispatch) =>({
+    closeForm: (event)=> {
+        dispatch(closeForm())
+        event.preventDefault();
+    }
+})
+
+export const Form = connect(mapStateToProps, mapDispatchToProps)(FormMovie);
 
 
 

@@ -19,7 +19,7 @@ export function closeForm(payload){
 }
 
 export function toggleForm(payload){
-    return{
+    return{        
         type: TOGGLE_FORM,
         payload
     }

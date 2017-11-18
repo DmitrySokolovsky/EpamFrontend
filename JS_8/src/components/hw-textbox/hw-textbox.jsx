@@ -4,7 +4,6 @@ import './hw-textbox.css';
 export class TextBox extends Component{
     constructor(props){
         super(props);
-        this.state = { textValue: this.props.textValue };
     }
     render(){
         return(
