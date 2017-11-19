@@ -29,7 +29,7 @@ import {LocalSaver} from "../../services/local-saver.service.js";
 export class MovieViewMDB extends React.Component{
     constructor(props){
         super(props);
-        
+        this.props.initMovieData();
         this.service = new LocalSaver();
         this.state = {
             movieArray:this.props.movieArray,
@@ -44,7 +44,7 @@ export class MovieViewMDB extends React.Component{
     }
     
     componentWillMount(){
-       this.props.initMovieData();
+       
         console.log(this.props)
     }
 
