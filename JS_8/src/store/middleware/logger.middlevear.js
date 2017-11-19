@@ -3,14 +3,11 @@ import { DataServise } from "../../services/data-service";
 import { MovieEntity } from "../../services/movie.entity.dto";
 import { apiUrl } from "../../services/api.config"
 
-let localSaver = new LocalSaver();
 let dataService = new DataServise();
 
 const movieLoad = store => next => action => {
     console.log("Тип события" + action.type);
-    if(action.type===MOVIE_DATA_INIT){
-        console.log("INIT!!!");     
-        
+    if(action.type===MOVIE_DATA_INIT){       
         dataService.getData(apiUrl.movieUrl).then((result)=>{
             let arr = JSON.parse(result).results;
             let movies = arr.map((item)=>{
@@ -25,7 +22,6 @@ const movieLoad = store => next => action => {
             });
         });      
     }
-    console.log(store.getState())
     return next(action);
 };
 

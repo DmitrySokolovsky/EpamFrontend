@@ -5,7 +5,11 @@ import {GenresService} from "../../services/genres.service.js";
 import {TextBox} from "../../components";
 import './hw-form.css';
 
-import { closeForm } from "../../store/actions"; 
+import {
+    closeForm,
+    addUserMovie
+} from "../../store/actions"; 
+
 
 
 class FormMovie extends Component{
@@ -22,7 +26,9 @@ class FormMovie extends Component{
     }
 
     componentWillMount(){
-       // console.log(this.props);
+        let genresService = new GenresService();
+        genresService.saveGenresLocal();
+        this.setState({genresArray: genresService.getGenresFromLocal()});
     }
 
     onOverviewChange(value){
@@ -36,17 +42,15 @@ class FormMovie extends Component{
     }
     
     handleSubmit(event){
-       /* event.preventDefault(); 
+        event.preventDefault(); 
         let item = {
             id: Math.random(1000),
             name: this.state.name,
             description: this.state.description,
             genre_ids: this.state.genre_ids,
             poster: this.state.poster
-        }
-        this.props.onClickAddMovie(item);
-        this.props.onClickCloseForm();
-        */
+        }   
+        this.props.addUserMovie(item);    
     }
 
     handleCancel(event){
@@ -123,6 +127,9 @@ const mapDispatchToProps = (dispatch) =>({
     closeForm: (event)=> {
         dispatch(closeForm())
         event.preventDefault();
+    },
+    addUserMovie: (item)=>{
+        dispatch(addUserMovie(item));
     }
 })
 
