@@ -44,7 +44,7 @@ class FormMovie extends Component{
     handleSubmit(event){
         event.preventDefault(); 
         let item = {
-            id: Math.random(1000),
+            id: Math.round(Math.random()*1000),
             name: this.state.name,
             description: this.state.description,
             genre_ids: this.state.genre_ids,

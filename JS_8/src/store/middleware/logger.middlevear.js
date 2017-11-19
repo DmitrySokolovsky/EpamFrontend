@@ -13,9 +13,13 @@ const movieLoad = store => next => action => {
             let movies = arr.map((item)=>{
                 return new MovieEntity(item);
             });
-            let data = movies;
-            var movieString = JSON.stringify(movies);
-            localStorage.setItem("movies",movieString);
+            let data = movies;            
+            let customMoviesSTR = localStorage.getItem("userMovies");
+            
+            if(customMoviesSTR){
+                let customMovies = JSON.parse(customMoviesSTR);
+                data = movies.concat(customMovies);
+            }
              store.dispatch({
                 type: GET_MOVIE_DATA,
                 payload: data
