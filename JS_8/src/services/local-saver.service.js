@@ -15,7 +15,6 @@ export class LocalSaver {
     getMoviesfromLocal(){
         let moviesString = localStorage.getItem("movies");
         return JSON.parse(moviesString);
-        console.log("Get movies");
     }
     
     setLocal(array,key){

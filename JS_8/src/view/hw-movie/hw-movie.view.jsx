@@ -18,7 +18,7 @@ import {
     Form
 } from "../../components";
 
-import { toggleForm } from "../../store/actions"; 
+import { toggleForm,initMovieData } from "../../store/actions"; 
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-movie.view.css";
@@ -26,9 +26,10 @@ import {LocalSaver} from "../../services/local-saver.service.js";
 
 
 
-export class MovieView extends React.Component{
+export class MovieViewMDB extends React.Component{
     constructor(props){
         super(props);
+        
         this.service = new LocalSaver();
         this.state = {
             movieArray:this.props.movieArray,
@@ -42,6 +43,11 @@ export class MovieView extends React.Component{
         };
     }
     
+    componentWillMount(){
+       this.props.initMovieData();
+        console.log(this.props)
+    }
+
     onClickCloseForm(){
         this.setState({
             isFormOpened: !this.state.isFormOpened,
@@ -56,6 +62,7 @@ export class MovieView extends React.Component{
     }
 
     render(){
+        
         return(
             <div className="hw-app__main-container">
                   <div className="hw-header">
@@ -77,16 +84,13 @@ export class MovieView extends React.Component{
                   <div className="hw-app__movie-container">
                     <ScrollBar/>                    
                     <div className="hw-app__poster-container">
-                    <Form
-                    onClickCloseForm={this.onClickCloseForm.bind(this)}
-                    onClickAddMovie={this.onClickAddMovie.bind(this)}
-                    />
-                    {this.props.movieArray
+                    <Form />
+                    {this.props.movies
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return ( <NavLink to={`/movies/${item.id}`} key={item.name}>
+                            return ( <NavLink to={`/movies/${item.id}`} key={item.name+"nav"}>
                                 <Poster url={item.poster}
                                 key = {item.name}
                                 data={item}                                
@@ -100,3 +104,18 @@ export class MovieView extends React.Component{
         );
     }
 }
+
+const mapStateToProps = (state) =>{
+    var movies = state.init.movies;
+    return{
+        movies
+    };
+};
+
+const mapDispatchToProps = (dispatch) =>({
+    initMovieData: ()=> {
+        dispatch(initMovieData());
+    }
+})
+
+export const MovieView = connect(mapStateToProps, mapDispatchToProps)(MovieViewMDB)
