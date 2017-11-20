@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 import React from "react";
 import {App} from "./components/hw-main/hw-main.jsx"; 
 import {appStore} from "./store";
+import "./style.css";
 
 ReactDom.render(
     <Provider store={appStore}>

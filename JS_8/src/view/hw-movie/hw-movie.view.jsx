@@ -18,7 +18,11 @@ import {
     Form
 } from "../../components";
 
-import { toggleForm,initMovieData } from "../../store/actions"; 
+import { 
+    toggleForm,
+    initMovieData,
+    addUserMovie
+ } from "../../store/actions"; 
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-movie.view.css";
@@ -32,9 +36,7 @@ export class MovieViewMDB extends React.Component{
         this.props.initMovieData();
         this.service = new LocalSaver();
         this.state = {
-            movieArray:this.props.movieArray,
             textValue: '',
-            isFormOpened: false,
             onChange: (newValue)=>{                
                 this.setState({
                     textValue: newValue
@@ -42,27 +44,8 @@ export class MovieViewMDB extends React.Component{
             }                        
         };
     }
-    
-    componentWillMount(){
-       
-        console.log(this.props)
-    }
 
-    onClickCloseForm(){
-        this.setState({
-            isFormOpened: !this.state.isFormOpened,
-        });
-    }
-
-    onClickAddMovie(item){
-       /*let movies = this.service.getMoviesfromLocal();
-       movies.push(item);
-       this.service.setLocal(movies,"movies");
-       this.setState({movieArray: movies});*/
-    }
-
-    render(){
-        
+    render(){        
         return(
             <div className="hw-app__main-container">
                   <div className="hw-header">
@@ -84,7 +67,7 @@ export class MovieViewMDB extends React.Component{
                   <div className="hw-app__movie-container">
                     <ScrollBar/>                    
                     <div className="hw-app__poster-container">
-                    <Form />
+                    <Form addItem={this.props.addUserMovie}/>
                     {this.props.movies
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
@@ -115,6 +98,9 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>({
     initMovieData: ()=> {
         dispatch(initMovieData());
+    },
+    addUserMovie: (item)=>{
+        dispatch(addUserMovie(item));
     }
 })
 

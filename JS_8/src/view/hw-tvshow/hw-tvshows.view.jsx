@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { connect } from 'react-redux';
+
 import {
   HashRouter as Router,
   Route,
@@ -13,43 +15,30 @@ import {
     Navigation,
     ScrollBar,
     Poster,
-    Form,
-    MovieInfo
+    Form
 } from "../../components";
-import "../../style.css";
+
+import {
+    toggleForm,
+    initTvShowData,
+    addUserTvShow
+} from "../../store/actions";
+
+import "./hw-tvshows.view.css";
 import {EntityMovieService} from "../../services/movie-entity.service.js";
 
-export class TvShowView extends React.Component{
+class TvShowViewMDB extends React.Component{
     constructor(props){
         super(props);
+        this.props.initTvShowData();
         this.state = {
-            postersMovieArray:[],
             textValue: '',
-            isFormOpened: false,
             onChange: (newValue)=>{                
                 this.setState({
                     textValue: newValue
                 });
-            },
-            onClickOpenForm: ()=>{
-                console.log('click from app' + this.state.isFormOpened);                
-                this.setState({
-                    isFormOpened: !this.state.isFormOpened
-                });
-            }            
+            }           
         };
-    }
-    
-    onClickCancelForm(){
-        this.setState({
-            isFormOpened: !this.state.isFormOpened,
-        });
-    }
-
-    onClickAddMovie(){
-        this.setState({
-            isFormOpened: !this.state.isFormOpened,
-        });
     }
 
     render(){
@@ -58,8 +47,14 @@ export class TvShowView extends React.Component{
                   <div className="hw-header">
                   <header>
                   <div className="hw-header__container">
-                    <TextBox onChange={this.state.onChange.bind(this)}/>
-                    <Navigation onClickAddMovie={this.state.onClickOpenForm.bind(this)}/>                                        
+                  <div className="hw-header__search-container">
+                    <div className="hw-header__search-icon">
+                      <i className="fa fa-search hw-search__text--dark"></i>
+                    </div>
+                    <TextBox onChange={this.state.onChange.bind(this)}
+                    placeholder="...Search"/>
+                  </div>
+                    <Navigation/>                                        
                   </div>
                   </header>                  
                   </div>
@@ -67,10 +62,8 @@ export class TvShowView extends React.Component{
                   <div className="hw-app__movie-container">
                     <ScrollBar/>                    
                     <div className="hw-app__poster-container">
-                    <Form isFormOpened={this.state.isFormOpened}
-                    onClickCancelForm={this.onClickCancelForm.bind(this)}
-                    />
-                    {this.props.showsArray
+                    <Form addItem={this.props.addUserTvShow} />
+                    {this.props.tvshows
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
@@ -88,3 +81,21 @@ export class TvShowView extends React.Component{
         );
     }
 }
+
+const mapStateToProps = (state) =>{
+    var tvshows = state.initTv.tvshows;
+    return{
+        tvshows
+    };
+};
+
+const mapDispatchToProps = (dispatch) =>({
+    initTvShowData: ()=> {
+        dispatch(initTvShowData());
+    },
+    addUserTvShow: (item)=>{
+        dispatch(addUserTvShow(item));
+    }
+});
+
+export const TvShowView = connect(mapStateToProps, mapDispatchToProps)(TvShowViewMDB)

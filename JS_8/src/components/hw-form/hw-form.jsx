@@ -50,7 +50,10 @@ class FormMovie extends Component{
             genre_ids: this.state.genre_ids,
             poster: this.state.poster
         }   
-        this.props.addUserMovie(item);    
+       
+        if(this.props.addItem){
+            this.props.addItem(item); 
+        }
     }
 
     handleCancel(event){
@@ -127,10 +130,7 @@ const mapDispatchToProps = (dispatch) =>({
     closeForm: (event)=> {
         dispatch(closeForm())
         event.preventDefault();
-    },
-    addUserMovie: (item)=>{
-        dispatch(addUserMovie(item));
-    }
+    }    
 })
 
 export const Form = connect(mapStateToProps, mapDispatchToProps)(FormMovie);

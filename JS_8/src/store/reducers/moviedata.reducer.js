@@ -23,6 +23,7 @@ export function initMoviesAppReducer(state = initialState, action){
                 ...state,
                 movies: [...state.movies,action.payload]    
             }
+        
         default:
             return state;
     }
