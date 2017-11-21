@@ -21,8 +21,7 @@ import {
 import { 
     toggleForm,
     initMovieData,
-    addUserMovie,
-    scrolling
+    addUserMovie
  } from "../../store/actions"; 
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
@@ -34,9 +33,11 @@ import {LocalSaver} from "../../services/local-saver.service.js";
 export class MovieViewMDB extends React.Component{
     constructor(props){
         super(props);
+        this.lastScroll = 0;
         this.props.initMovieData();
         this.service = new LocalSaver();
         this.state = {
+            isScrollDown: true,
             textValue: '',
             onChange: (newValue)=>{                
                 this.setState({
@@ -44,6 +45,41 @@ export class MovieViewMDB extends React.Component{
                 });
             }                        
         };
+    }
+
+    componentDidMount(){
+        var div = document.getElementsByClassName("hw-app__poster-container")[0];
+        var currentScroll = div.scrollTop;
+        console.log(div.style);
+    }
+
+    scrollingHandler(){        
+        var div = document.getElementsByClassName("hw-app__poster-container")[0];
+        var currentScroll = div.scrollTop;
+        
+        if(currentScroll === 0){
+            this.setState({isScrollDown: true});
+        }
+
+        if(currentScroll>0){
+            console.log(currentScroll);
+            this.setState({isScrollDown: false});
+        }
+        console.log(currentScroll);
+    }
+
+    changingArrow(){
+        var div = document.getElementsByClassName("hw-app__poster-container")[0];
+        var currentScroll = div.scrollTop;
+
+        if(currentScroll!==0){
+            this.setState({isScrollDown: !this.state.isScrollDown});
+            div.scrollTo(0,0);
+        }
+        else{
+            div.scrollTo(0, 1000000000);
+        }
+        
     }
 
     render(){        
@@ -66,8 +102,9 @@ export class MovieViewMDB extends React.Component{
                   </div>
                   
                   <div className="hw-app__movie-container">
-                    <ScrollBar/>                    
-                    <div onScroll = {this.props.scrollingHandler}
+                    <ScrollBar isScrollDown = {this.state.isScrollDown}
+                    onClick={this.changingArrow.bind(this)}/>                    
+                    <div onScroll = {this.scrollingHandler.bind(this)}
                     className="hw-app__poster-container">
                     <Form addItem={this.props.addUserMovie}/>
                     {this.props.movies
@@ -92,22 +129,14 @@ export class MovieViewMDB extends React.Component{
 
 const mapStateToProps = (state) =>{
     var movies = state.init.movies;
-    var arrowDown = state.scroll.isScrollDown;
     return{
-        movies,
-        arrowDown
+        movies
     };
 };
 
 const mapDispatchToProps = (dispatch) =>({
     initMovieData: ()=> {
         dispatch(initMovieData());
-    },
-    addUserMovie: (item)=>{
-        dispatch(addUserMovie(item));
-    },
-    scrollingHandler: () => {
-        dispatch(scrolling());
     }
 })
 

@@ -7,8 +7,6 @@ import {
   Switch
 } from 'react-router-dom'
 import {MovieView} from "../../view/hw-movie/hw-movie.view.jsx";
-import {MoviesLoader} from "../../services/movies-loader.service.js";
-import {GenresService} from "../../services/genres.service.js"
 import {TvShowView} from "../../view/hw-tvshow/hw-tvshows.view.jsx";
 import {
     SideBar,   
@@ -20,24 +18,17 @@ import './hw-main.css';
 export class App extends React.Component{
     constructor(props){
         super(props);   
+        this.lastScroll = 0;
         this.state={
-            movieArray: [],
-            showsArray:[]
+            isScrollDown: false
         }        
     };
 
     componentWillMount(){
-
-       console.log(this.props)
-        /*var moviesLoader = new MoviesLoader();
-        var genres = localStorage.getItem("genres");
-         var genresService = new GenresService();
-        if(!genres){
-            genresService.saveGenresLocal();
-        }
-               
-        this.setState({movieArray: moviesLoader.viewMovies()});   */     
+        
     }
+
+    
 
     render(){
         return(
@@ -46,10 +37,19 @@ export class App extends React.Component{
             <div className="hw-app">
                 <SideBar/> 
                 <Switch>
-                <Route exact path="/movies" render={(props)=><MovieView movieArray={this.state.movieArray}{...props}/>}/>
-                <Route path="/tvshows" render={(props)=><TvShowView showsArray={this.state.showsArray}{...props}/>}/>
-                <Route path="/movies/:id" render={(props)=><MovieInfo data={this.state.movieArray}{...props}/>}/>
-                <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.state.showsArray}{...props}/>}/>               
+                
+                <Route exact path="/movies" render={(props)=>
+                <MovieView movieArray={this.state.movieArray} {...props}/>}/>
+
+                <Route path="/tvshows" render={(props)=>
+                <TvShowView showsArray={this.state.showsArray}{...props}/>}/>
+
+                <Route path="/movies/:id" render={(props)=>
+                <MovieInfo data={this.state.movieArray}{...props}/>}/>
+
+                <Route path="/tvshows/:id" render={(props)=>
+                <MovieInfo data={this.state.showsArray}{...props}/>}/>       
+
                 </Switch>               
                 </div>
               </Router>             

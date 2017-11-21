@@ -1,21 +1,22 @@
 import React,{Component} from 'react';
 import './hw-scrollbar.css';
-import { connect } from 'react-redux';
 
-import {
-    toggleScroll
-} from "../../store/actions";
 
-export class ScrollBarMDB extends Component{
+export class ScrollBar extends Component{
     constructor(props){
         super(props);
         this.arrowDown = "fa fa-angle-double-down fa-2x";
         this.arrowUp = "fa fa-angle-double-up fa-2x";
-        this.state = {scrolledDown: true};
     }
 
     scrolled() {
         this.setState({scrolledDown: !this.scrolledDown});
+    }
+
+    onClick(){
+        if(this.props.onClick){
+            this.props.onClick();
+        }
     }
 
     render(){
@@ -26,23 +27,10 @@ export class ScrollBarMDB extends Component{
                     "hw-scrollbar__container"}
                     onClick={this.props.toggleScroll}
                     >
-                <i className={this.props.arrowDown?this.arrowUp:this.arrowDown}></i>
+                <i className={(this.props.isScrollDown)?this.arrowDown:this.arrowUp}
+                onClick={this.onClick.bind(this)}></i>
                 </div>
             </div>
         );
     }
 }
-
-const mapStateToProps = (state) =>{
-    var arrowDown = state.scroll.isScrollDown;
-    return{
-        arrowDown
-    };
-};
-
-const mapDispatchToProps = (dispatch) =>({
-    toggleScroll:() => dispatch(toggleScroll())
-});
-
-export const ScrollBar = connect(mapStateToProps, mapDispatchToProps)(ScrollBarMDB);
-
