@@ -32,6 +32,7 @@ class TvShowViewMDB extends React.Component{
         super(props);
         this.props.initTvShowData();
         this.state = {
+            isScrollDown: true,
             textValue: '',
             onChange: (newValue)=>{                
                 this.setState({
@@ -39,6 +40,35 @@ class TvShowViewMDB extends React.Component{
                 });
             }           
         };
+    }
+
+    scrollingHandler(){        
+        var div = document.getElementsByClassName("hw-app__poster-container")[0];
+        var currentScroll = div.scrollTop;
+        
+        if(currentScroll === 0){
+            this.setState({isScrollDown: true});
+        }
+
+        if(currentScroll>0){
+            console.log(currentScroll);
+            this.setState({isScrollDown: false});
+        }
+        console.log(currentScroll);
+    }
+
+    changingArrow(){
+        var div = document.getElementsByClassName("hw-app__poster-container")[0];
+        var currentScroll = div.scrollTop;
+
+        if(currentScroll!==0){
+            this.setState({isScrollDown: !this.state.isScrollDown});
+            div.scrollTo(0,0);
+        }
+        else{
+            div.scrollTo(0, 1000000000);
+        }
+        
     }
 
     render(){
@@ -60,8 +90,10 @@ class TvShowViewMDB extends React.Component{
                   </div>
                   
                   <div className="hw-app__movie-container">
-                    <ScrollBar/>                    
-                    <div className="hw-app__poster-container">
+                    <ScrollBar isScrollDown = {this.state.isScrollDown}
+                    onClick={this.changingArrow.bind(this)}/>                    
+                    <div onScroll = {this.scrollingHandler.bind(this)}
+                    className="hw-app__poster-container">
                     <Form addItem={this.props.addUserTvShow} />
                     {this.props.tvshows
                         .filter((el)=>{
