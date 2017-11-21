@@ -26,7 +26,7 @@ export class ScrollBarMDB extends Component{
                     "hw-scrollbar__container"}
                     onClick={this.props.toggleScroll}
                     >
-                <i className={this.props.arrowDown?this.arrowDown:this.arrowUp}></i>
+                <i className={this.props.arrowDown?this.arrowUp:this.arrowDown}></i>
                 </div>
             </div>
         );
@@ -44,5 +44,5 @@ const mapDispatchToProps = (dispatch) =>({
     toggleScroll:() => dispatch(toggleScroll())
 });
 
-export const ScrollBar = connect(mapStateToProps, mapDispatchToProps)(ScrollBarMDB)
+export const ScrollBar = connect(mapStateToProps, mapDispatchToProps)(ScrollBarMDB);
 

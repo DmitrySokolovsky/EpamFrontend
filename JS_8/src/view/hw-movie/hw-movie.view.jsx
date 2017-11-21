@@ -90,6 +90,7 @@ export class MovieViewMDB extends React.Component{
 
 const mapStateToProps = (state) =>{
     var movies = state.init.movies;
+    var arrowDown = state.scroll.isScrollDown;
     return{
         movies
     };
