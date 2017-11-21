@@ -47,12 +47,6 @@ export class MovieViewMDB extends React.Component{
         };
     }
 
-    componentDidMount(){
-        var div = document.getElementsByClassName("hw-app__poster-container")[0];
-        var currentScroll = div.scrollTop;
-        console.log(div.style);
-    }
-
     scrollingHandler(){        
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
         var currentScroll = div.scrollTop;

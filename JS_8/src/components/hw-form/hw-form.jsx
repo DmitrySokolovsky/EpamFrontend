@@ -54,6 +54,7 @@ class FormMovie extends Component{
         if(this.props.addItem){
             this.props.addItem(item); 
         }
+        this.props.onClickCloseForm();
     }
 
     handleCancel(event){

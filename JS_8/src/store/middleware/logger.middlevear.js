@@ -18,7 +18,7 @@ const movieLoad = store => next => action => {
             
             if(customMoviesSTR){
                 let customMovies = JSON.parse(customMoviesSTR);
-                data = movies.concat(customMovies);
+                data = customMovies.concat(movies);
             }
              store.dispatch({
                 type: GET_MOVIE_DATA,
