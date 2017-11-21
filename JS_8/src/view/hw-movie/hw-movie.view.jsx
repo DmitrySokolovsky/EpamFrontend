@@ -21,7 +21,8 @@ import {
 import { 
     toggleForm,
     initMovieData,
-    addUserMovie
+    addUserMovie,
+    scrolling
  } from "../../store/actions"; 
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
@@ -66,7 +67,8 @@ export class MovieViewMDB extends React.Component{
                   
                   <div className="hw-app__movie-container">
                     <ScrollBar/>                    
-                    <div className="hw-app__poster-container">
+                    <div onScroll = {this.props.scrollingHandler}
+                    className="hw-app__poster-container">
                     <Form addItem={this.props.addUserMovie}/>
                     {this.props.movies
                         .filter((el)=>{
@@ -92,7 +94,8 @@ const mapStateToProps = (state) =>{
     var movies = state.init.movies;
     var arrowDown = state.scroll.isScrollDown;
     return{
-        movies
+        movies,
+        arrowDown
     };
 };
 
@@ -102,7 +105,10 @@ const mapDispatchToProps = (dispatch) =>({
     },
     addUserMovie: (item)=>{
         dispatch(addUserMovie(item));
+    },
+    scrollingHandler: () => {
+        dispatch(scrolling());
     }
 })
 
-export const MovieView = connect(mapStateToProps, mapDispatchToProps)(MovieViewMDB)
+export const MovieView = connect(mapStateToProps, mapDispatchToProps)(MovieViewMDB);

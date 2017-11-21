@@ -1,4 +1,8 @@
-import { TOGGLE_SCROLL } from "../actions"
+import { 
+    TOGGLE_SCROLL,
+    SCROLL_DOWN,
+    SCROLL_UP
+ } from "../actions"
 
 const initialState = {
     state: 'INITIAL',
@@ -11,6 +15,18 @@ export function scrollReducer (state = initialState, action){
             return {
                 state,
                 isScrollDown: !state.isScrollDown
+            };
+
+        case SCROLL_DOWN:
+            return {
+                state,
+                isScrollDown: true
+            };
+
+        case SCROLL_UP:
+            return {
+                state,
+                isScrollDown: false
             };
         default:
             return {
