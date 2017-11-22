@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import {MovieView} from "../../view/hw-movie/hw-movie.view.jsx";
 import {TvShowView} from "../../view/hw-tvshow/hw-tvshows.view.jsx";
+import {MyLibrary} from "../../view/hw-mylib/hw-mylib.view.jsx";
 import {
     SideBar,   
     MovieInfo
@@ -49,7 +50,8 @@ export class App extends React.Component{
 
                 <Route path="/tvshows/:id" render={(props)=>
                 <MovieInfo data={this.state.showsArray}{...props}/>}/>       
-
+                
+                <Route path="/mylib" component={MyLibrary}/>
                 </Switch>               
                 </div>
               </Router>             

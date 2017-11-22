@@ -44,11 +44,13 @@ export class SideBar extends Component{
                 <i className={(this.state.isOpened)?'fa fa-television fa--padding':'fa fa-television'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>TV Shows</p>                
                 </NavLink>
                 </div>
-
+                
                 <div className="hw-side-bar__menu-item">
+                <NavLink to="/mylib" activeClassName="active-link">
                 <i className={(this.state.isOpened)?'fa fa-book fa--padding':'fa fa-book'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>My Library</p>
+                </NavLink>
                 </div>
-
+                
                 <div className="hw-side-bar__menu-item">
                 <i className={(this.state.isOpened)?'fa fa-user-circle fa--padding':'fa fa-user-circle'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Support</p>
                 </div>  
