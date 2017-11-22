@@ -4,6 +4,7 @@ import movieLoad from "./middleware/logger.middlevear.js";
 import tvShowLoad from "./middleware/tvshowload.middlewear";
 import movieRefresh from "./middleware/addmovie.middlewear";
 import tvshowRefresh from "./middleware/addtvshow.middlewear";
+import genresLoad from './middleware/genres.middlewear';
 
 export const appStore = createStore(
     appReducers,
@@ -11,7 +12,8 @@ export const appStore = createStore(
         movieLoad,
         tvShowLoad,
         movieRefresh,
-        tvshowRefresh
+        tvshowRefresh,
+        genresLoad
     )
 );
 
