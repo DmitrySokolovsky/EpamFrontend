@@ -77,7 +77,7 @@ export class MovieViewMDB extends React.Component{
     }
 
     render(){ 
-        if(this.props.loaded) {       
+             
         return(
             <div className="hw-app__main-container">
                   <div className="hw-header">
@@ -119,11 +119,7 @@ export class MovieViewMDB extends React.Component{
                                                     
                 </div>
                     
-        )} else {
-            return (
-                <div><h1>LOADING...</h1></div>
-            );
-        }
+        )
     }
 }
 
@@ -131,8 +127,7 @@ const mapStateToProps = (state) =>{
     var movies = state.init.movies;
     var loaded = state.init.loaded;
     return{
-        movies,
-        loaded
+        movies
     };
 };
 
