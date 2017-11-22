@@ -33,11 +33,11 @@ class FormMovie extends Component{
         return true;
     }
 
-    componentWillMount(){
+   /* componentWillMount(){
         let genresService = new GenresService();
         genresService.saveGenresLocal();
         this.setState({genresArray: genresService.getGenresFromLocal()});
-    }
+    }*/
 
     onOverviewChange(value){
         let val = value;

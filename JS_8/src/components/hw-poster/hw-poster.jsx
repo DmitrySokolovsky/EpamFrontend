@@ -7,7 +7,7 @@ export class Poster extends Component{
         super(props);
         this.posterImage = {
             backgroundImage: 'url(' + this.props.data.poster + ')'
-        }
+        };
     }
 
     render(){

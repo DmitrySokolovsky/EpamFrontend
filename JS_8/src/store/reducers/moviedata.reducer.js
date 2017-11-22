@@ -1,12 +1,14 @@
 import {
      MOVIE_DATA_INIT,
      GET_MOVIE_DATA,
-     ADD_USER_MOVIE
+     ADD_USER_MOVIE,
+     GET_MOVIE_DATA_SUCCESS
     } from "../actions"
 
 const initialState = {
     state: 'INITIAL',
-    movies: []
+    movies: [],
+    loaded: false
 }
 
 export function initMoviesAppReducer(state = initialState, action){
@@ -23,7 +25,11 @@ export function initMoviesAppReducer(state = initialState, action){
                 ...state,
                 movies: [...state.movies,action.payload]    
             }
-        
+        case GET_MOVIE_DATA_SUCCESS:
+            return {
+                ...state,
+                loaded: true
+            }
         default:
             return state;
     }
