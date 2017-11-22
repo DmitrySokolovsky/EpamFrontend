@@ -61,14 +61,9 @@ class FormMovie extends Component{
        
         if(this.props.addItem){
             this.props.addItem(item); 
+            this.props.closeForm;
         }
-        this.props.closeForm;
     }
-
-    handleCancel(event){
-        event.preventDefault();
-        this.props.closeForm;
-    }   
 
     handleGenreChange(event){
         this.state.genre_ids.push(event.target.name);

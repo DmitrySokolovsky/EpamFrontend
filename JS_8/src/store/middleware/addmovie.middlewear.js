@@ -1,4 +1,7 @@
-import {ADD_USER_MOVIE} from "../actions"
+import {
+    ADD_USER_MOVIE,
+    CLOSE_FORM
+} from "../actions"
 
 const movieRefresh = store => next => action => {
     if(action.type===ADD_USER_MOVIE){
@@ -16,8 +19,13 @@ const movieRefresh = store => next => action => {
             let arrstr = JSON.stringify(localUserMovies);
             localStorage.removeItem("userMovies");
             localStorage.setItem("userMovies", arrstr);
-        }        
+        }  
+        store.dispatch({
+            type: CLOSE_FORM
+        });
     }
+    
+    
     return next(action);
 };
 
