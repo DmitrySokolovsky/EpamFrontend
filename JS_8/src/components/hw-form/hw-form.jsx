@@ -15,6 +15,7 @@ import {
 class FormMovie extends Component{
     constructor (props){
         super(props); 
+        this.validationForm = this.validationForm.bind(this);
         this.service = new GenresService();      
         this.state = {
             genresArray:[],
@@ -23,6 +24,13 @@ class FormMovie extends Component{
             poster: "../src/default_poster.png",
             genre_ids: []
         };
+    }
+
+    validationForm(){
+        if(this.state.name && this.state.description != 0){
+            return false;
+        }
+        return true;
     }
 
     componentWillMount(){
@@ -54,12 +62,12 @@ class FormMovie extends Component{
         if(this.props.addItem){
             this.props.addItem(item); 
         }
-        this.props.onClickCloseForm();
+        this.props.closeForm;
     }
 
     handleCancel(event){
         event.preventDefault();
-        this.props.onClickCloseForm();
+        this.props.closeForm;
     }   
 
     handleGenreChange(event){
@@ -108,9 +116,10 @@ class FormMovie extends Component{
                  </div>
                  <div className="hw-form__droped"></div>
                  <div className="hw-form__buttons">
-                   <button type="submit" className="hw-form__submit-btn hw-form__text"
+                   <button type="submit" className="hw-form__button hw-form__button--green hw-form__text"
+                   disabled = {this.validationForm()}
                    >Add</button>
-                   <button className="hw-form__cancel-btn hw-form__text"
+                   <button className="hw-form__button hw-form__button--red hw-form__text"
                    onClick={this.props.closeForm}>Cancel</button>
                  </div>
                  </div>

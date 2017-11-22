@@ -132,7 +132,7 @@ const mapDispatchToProps = (dispatch) =>({
     initMovieData: ()=> {
         dispatch(initMovieData());
     },
-    addUserTvShow: (item)=>{
+    addUserMovie: (item)=>{
         dispatch(addUserMovie(item));
     }
 })

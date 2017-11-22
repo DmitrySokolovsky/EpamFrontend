@@ -17,7 +17,7 @@ const tvShowLoad = store => next => action => {
             
             if(customShowsSTR){
                 let customShows = JSON.parse(customShowsSTR);
-                data = customShows.concat(shows);
+                data = shows.concat(customShows);
             }
              store.dispatch({
                 type: GET_TVSHOW_DATA,

@@ -77,9 +77,32 @@
     font-family: Bradley;
 }
 
+.hw-form__buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
 .hw-form__droped{
     height: 120px;
     width: 100%;
     background-color: green;
     overflow-x: scroll;
 }
+
+.hw-form__button{
+    padding:  2px 12px 2px 12px;
+    outline: none;
+    border-radius: 2px;
+}
+
+.hw-form__button, .hw-form__button:hover, .hw-form__button:active{
+    outline: none;
+}
+
+.hw-form__button--green{
+    background-color: #1cb824;
+}    
+
+.hw-form__button--red{
+    background-color: #db1313;
+}  

@@ -11,8 +11,12 @@
 
 a{
     display: flex;
+    text-decoration: none;
 }
-   
+
+a:visited{
+    color: white;
+}
 
 #test{
     width: 100%;
@@ -71,7 +75,7 @@ a{
     width: 200px;
 }
 
-.active-link{
+a.active-link{
     color: red;  
     display: flex;
     cursor: pointer;
