@@ -11,7 +11,12 @@ let dataService = new DataServise();
 const genresLoad = store => next => action => {
     if(action.type===GENRES_DATA_INIT){
         dataService.getData(apiUrl.genreUrl).then((result)=>{
-            console.log(result)
+            let genres = JSON.parse(result).genres;
+            let data = genres;
+            store.dispatch({
+                type: GET_GENRES_DATA,
+                payload: data
+            });
         });
     }
     return next(action);

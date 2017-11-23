@@ -56,10 +56,8 @@ export class MovieViewMDB extends React.Component{
         }
 
         if(currentScroll>0){
-            console.log(currentScroll);
             this.setState({isScrollDown: false});
         }
-        console.log(currentScroll);
     }
 
     changingArrow(){
@@ -138,6 +136,6 @@ const mapDispatchToProps = (dispatch) =>({
     addUserMovie: (item)=>{
         dispatch(addUserMovie(item));
     }
-})
+});
 
 export const MovieView = connect(mapStateToProps, mapDispatchToProps)(MovieViewMDB);

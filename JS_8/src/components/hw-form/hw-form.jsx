@@ -2,7 +2,10 @@ import React,{Component} from 'react';
 import {connect} from "react-redux";
 
 import {GenresService} from "../../services/genres.service.js";
-import {TextBox} from "../../components";
+import {
+    TextBox,
+    GenresList
+} from "../../components";
 import './hw-form.css';
 
 import {
@@ -16,9 +19,9 @@ class FormMovie extends Component{
     constructor (props){
         super(props); 
         this.validationForm = this.validationForm.bind(this);
-        this.service = new GenresService();      
+        this.service = new GenresService(); 
+        this.genre_ids = [];     
         this.state = {
-            genresArray:[],
             name: '',
             description: '',
             poster: "../src/default_poster.png",
@@ -32,12 +35,6 @@ class FormMovie extends Component{
         }
         return true;
     }
-
-   /* componentWillMount(){
-        let genresService = new GenresService();
-        genresService.saveGenresLocal();
-        this.setState({genresArray: genresService.getGenresFromLocal()});
-    }*/
 
     onOverviewChange(value){
         let val = value;
@@ -55,7 +52,7 @@ class FormMovie extends Component{
             id: Math.round(Math.random()*1000),
             name: this.state.name,
             description: this.state.description,
-            genre_ids: this.state.genre_ids,
+            genre_ids: this.genre_ids,
             poster: this.state.poster
         }   
        
@@ -65,8 +62,8 @@ class FormMovie extends Component{
         }
     }
 
-    handleGenreChange(event){
-        this.state.genre_ids.push(event.target.name);
+    handleGenreChange(item){
+        this.genre_ids.push(item);
     }
 
     render(){
@@ -90,20 +87,7 @@ class FormMovie extends Component{
                 </div>
                 <div className="hw-form__genre-container">
                   <div className="hw-form__text">Genre</div>
-                  <div className="hw-form__genres-list"
-                  onChange = {this.handleGenreChange.bind(this)}
-                  > 
-                  {
-                      this.state.genresArray.map((item)=>{
-                          return (
-                              <div key={item.name}>
-                                  <input type="checkbox" name={item.id}/>
-                                  <label htmlFor={item.id}>{item.name}</label>
-                              </div>
-                          );
-                      })
-                  }                
-                  </div>
+                  <GenresList onChange={this.handleGenreChange.bind(this)}/>
                </div>
                <div className="hw-form__submit-container">
                  <div className="hw-form__drop-files">

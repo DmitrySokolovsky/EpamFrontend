@@ -1,0 +1,9 @@
+.hw-form__genres-list{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 95%;
+    height: 100%;
+    border: 2px solid wheat;
+    border-radius: 5px;
+}
