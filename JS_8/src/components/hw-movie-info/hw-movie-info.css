@@ -29,6 +29,8 @@
 
 .hw-movie-info__genre-container{
     margin-left: 60px;
+    display: flex;
+    flex-direction: column;
 }
 
 .hw-movie-info__recomindation-container{

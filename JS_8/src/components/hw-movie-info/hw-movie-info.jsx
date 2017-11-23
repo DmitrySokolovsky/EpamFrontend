@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {connect} from "react-redux";
 import './hw-movie-info.css';
 import {
     HashRouter as Router,
@@ -6,23 +7,34 @@ import {
     NavLink,
     Switch
   } from 'react-router-dom';
-import {Navigation} from '../../components';
+import {
+    Navigation,
+    GenresList
+} from '../../components';
+import {findGenres} from '../../services/genresFilter.service.js';
 
 
-export class MovieInfo extends Component{
+export class MovieInfoMDB extends Component{
     constructor(props){
         super(props);   
         this.item = {};  
         this.state = {
-            item: {}
+            item: {},
+            itemStringGenres: []
         }  
     }
 
 componentWillMount(){
-    console.log(this.props.match.params.id);
     var itemCard = getValue(this.props.data, this.props.match.params.id);
-    console.log(this.props);
-    this.setState({ item: itemCard});    
+    this.setState({ item: itemCard});
+}
+
+componentDidMount(){    
+    let genreCollection = this.props.genres;
+    let itemGenres = this.state.item.genre_ids;
+    var currentGenresNames = findGenres(genreCollection, itemGenres);
+    
+    this.setState({itemStringGenres: currentGenresNames})       
 }
 
     render(){
@@ -47,7 +59,12 @@ componentWillMount(){
                 <div className="hw-movie-info__genre-container">
                     <h3 className="hw-movie-info__text">Genres</h3>
                     <div className="hw-movie-info__genres-list">
-                        
+                    <ul>
+                       {this.state.itemStringGenres.map((item)=>{
+                           return <li className="hw-movie-info__text"
+                           key={item}>{item}</li>
+                       })}
+                    </ul>
                     </div>
                 </div>
                 <div className="hw-movie-info__recomindation-container">
@@ -58,6 +75,15 @@ componentWillMount(){
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    var genres = state.genres.genres;
+    return {
+        genres
+    };
+};
+
+export const MovieInfo = connect(mapStateToProps)(MovieInfoMDB);
 
 function getValue(array, search) {
     var i = array.length;
