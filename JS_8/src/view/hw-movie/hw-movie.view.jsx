@@ -26,9 +26,6 @@ import {
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-movie.view.css";
-import {LocalSaver} from "../../services/local-saver.service.js";
-
-
 
 export class MovieViewMDB extends React.Component{
     constructor(props){
