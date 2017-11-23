@@ -11,11 +11,18 @@ import {Navigation} from '../../components';
 
 export class MovieInfo extends Component{
     constructor(props){
-        super(props);       
+        super(props);   
+        this.item = {};  
+        this.state = {
+            item: {}
+        }  
     }
 
 componentWillMount(){
     console.log(this.props.match.params.id);
+    var itemCard = getValue(this.props.data, this.props.match.params.id);
+    console.log(this.props);
+    this.setState({ item: itemCard});    
 }
 
     render(){
@@ -28,12 +35,12 @@ componentWillMount(){
                 </header>
                 <div className="hw-movie-info__description-container">
                     <div className="hw-movie-info__poster-container"
-                   // style = {{backgroundImage: }}
+                    style = {{backgroundImage: `url(${this.state.item.poster})`}}
                     ></div>
                     <div className="hw-movie-info__info-container">
-                        <h1 className="hw-movie-info__text"></h1>
+                        <h1 className="hw-movie-info__text">{this.state.item.name}</h1>
                         <div className="hw-movie-info__text hw-movie-info__overview-container">
-                            
+                            {this.state.item.description}
                         </div>
                     </div>
                 </div>
@@ -52,3 +59,12 @@ componentWillMount(){
     }
 }
 
+function getValue(array, search) {
+    var i = array.length;
+    while (i--) {
+        if (array[i].id == search) {
+           return array[i];
+        }
+    }
+  }
+  

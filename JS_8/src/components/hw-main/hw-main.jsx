@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { connect } from 'react-redux';
 import {
   HashRouter as Router,
   Route,
@@ -13,12 +14,15 @@ import {
     SideBar,   
     MovieInfo
 } from "../../components";
+import {initMovieData, initTvShowData} from '../../store/actions';
 import './hw-main.css';
 
 
-export class App extends React.Component{
+export class AppMDB extends React.Component{
     constructor(props){
         super(props);   
+        this.props.initMovies();
+        this.props.initTvShows();
         this.lastScroll = 0;
         this.state={
             isScrollDown: false
@@ -37,9 +41,9 @@ export class App extends React.Component{
 
                 <Route exact path="/tvshows"component={TvShowView}/>
 
-                <Route path="/movies/:id" component={MovieInfo}/>
+                <Route path="/movies/:id" render={(props)=><MovieInfo data={this.props.movies}{...props}/>}/>
 
-                <Route path="/tvshows/:id" component={MovieInfo}/>       
+                <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.props.shows}{...props}/>}/>       
                 
                 <Route path="/mylib" component={MyLibrary}/>
                 
@@ -50,3 +54,19 @@ export class App extends React.Component{
         );
     }
 }
+
+const mapStateToProps = (store) => {
+    let movies = store.init.movies;
+    let shows = store.initTv.tvshows;
+    return {
+        movies,
+        shows
+    }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    initMovies:()=> {dispatch(initMovieData())},
+    initTvShows:() => dispatch(initTvShowData())
+});
+
+export const App = connect(mapStateToProps, mapDispatchToProps)(AppMDB);
