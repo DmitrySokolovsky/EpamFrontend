@@ -105,8 +105,8 @@ export class MovieViewMDB extends React.Component{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return ( <NavLink to={`/movies/${item.id}`} key={item.name+"nav"}>
-                                <Poster url={item.poster}
+                            return ( <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
+                                <Poster
                                 key = {item.name}
                                 data={item}                                
                                 /></NavLink>

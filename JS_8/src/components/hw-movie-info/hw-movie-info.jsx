@@ -15,7 +15,7 @@ export class MovieInfo extends Component{
     }
 
 componentWillMount(){
-    console.log(this.props.data);
+    console.log(this.props.match.params.id);
 }
 
     render(){
@@ -28,12 +28,12 @@ componentWillMount(){
                 </header>
                 <div className="hw-movie-info__description-container">
                     <div className="hw-movie-info__poster-container"
-                    style = {{backgroundImage: this.props.data.poster}}
+                   // style = {{backgroundImage: }}
                     ></div>
                     <div className="hw-movie-info__info-container">
-                        <h1 className="hw-movie-info__text">{this.props.data.name}</h1>
+                        <h1 className="hw-movie-info__text"></h1>
                         <div className="hw-movie-info__text hw-movie-info__overview-container">
-                            {this.props.data.description}
+                            
                         </div>
                     </div>
                 </div>
