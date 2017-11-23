@@ -108,10 +108,11 @@ export class MovieViewMDB extends React.Component{
                             return ( 
                                 <Poster
                                 key = {item.name}
-                                data={item}                                
-                                ><NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
+                                data={item}>
+                                <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
                                 <div className="hw-poster__title">{item.name}</div>
-                                </NavLink></Poster>
+                                </NavLink>
+                                </Poster>
                             )
                         })}
                     </div>                  

@@ -100,11 +100,14 @@ class TvShowViewMDB extends React.Component{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return ( <NavLink to={`/movies/${item.id}`} key={item.id}>
-                                <Poster url={item.poster}
+                            return ( 
+                                <Poster 
                                 key = {item.name}
-                                data={item}
-                                /></NavLink>
+                                data={item}>
+                                <NavLink to={`/tvshows/${item.id}`} key={item.name+item.id}>
+                                <div className="hw-poster__title">{item.name}</div>
+                                </NavLink>
+                                </Poster>
                             )
                         })}
                     </div>                  

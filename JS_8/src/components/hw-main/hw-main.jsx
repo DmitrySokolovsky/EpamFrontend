@@ -23,13 +23,7 @@ export class App extends React.Component{
         this.state={
             isScrollDown: false
         }        
-    };
-
-    componentWillMount(){
-        
-    }
-
-    
+    };   
 
     render(){
         return(
@@ -39,19 +33,16 @@ export class App extends React.Component{
                 <SideBar/> 
                 <Switch>
                 
-                <Route exact path="/movies" render={(props)=>
-                <MovieView movieArray={this.state.movieArray} {...props}/>}/>
+                <Route exact path="/movies" component={MovieView}/>
 
-                <Route path="/tvshows" render={(props)=>
-                <TvShowView showsArray={this.state.showsArray}{...props}/>}/>
+                <Route exact path="/tvshows"component={TvShowView}/>
 
-                <Route path="/movies/:id" render={(props)=>
-                <MovieInfo data={this.state.movieArray}{...props}/>}/>
+                <Route path="/movies/:id" component={MovieInfo}/>
 
-                <Route path="/tvshows/:id" render={(props)=>
-                <MovieInfo data={this.state.showsArray}{...props}/>}/>       
+                <Route path="/tvshows/:id" component={MovieInfo}/>       
                 
                 <Route path="/mylib" component={MyLibrary}/>
+                
                 </Switch>               
                 </div>
               </Router>             

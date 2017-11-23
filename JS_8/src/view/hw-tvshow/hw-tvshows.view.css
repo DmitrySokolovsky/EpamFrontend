@@ -51,3 +51,18 @@
     border: 1px solid #476280;
     margin-left: 25px;
 }
+
+.hw-poster__title{
+    font-family: Bradley;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0088CC;
+    opacity: 0.8;
+    color: white;
+    height: 220px;
+    width: 100%;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+}
