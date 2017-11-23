@@ -12,7 +12,6 @@ export class NoLibraryData extends React.Component{
         return (
             <div className="hw-nodata hw-nodata__container">
                 <h1 className="hw-nodata__text">There is no data in your library</h1>
-                <img src='../../sad.png' alt="SAD" className="hw-nodata__img"/>
             </div>
         );
     }
