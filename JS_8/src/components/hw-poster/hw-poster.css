@@ -7,26 +7,11 @@
     border: 1px solid wheat;
 }
 
-.hw-poster__title{
-    font-family: Bradley;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0088CC;
-    opacity: 0.8;
-    color: white;
-    height: 85%;
-    width: 100%;
-    text-align: center;
-    display: none;
-    cursor: pointer;
-}
-
 .hw-poster__buttons{
     display: none;
     justify-content: space-around;
     align-items: center;
-    height: 15%;
+    height:27px;
     width: 170px;
     background-color: #222329;
     color: black;

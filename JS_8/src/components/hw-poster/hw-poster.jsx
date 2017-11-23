@@ -18,11 +18,8 @@ export class Poster extends Component{
                     <div className="hw-poster__buttons">
                             <i className="fa fa-check"></i>
                             <i className="fa fa-times"></i>
-                    </div>
-                    <div className="hw-poster__title">
-                    
-                    {this.props.data.name}
-                    </div>               
+                    </div>                    
+                    {this.props.children}                                   
                 </div>
             </div>
         );
