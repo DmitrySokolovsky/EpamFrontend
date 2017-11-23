@@ -32,7 +32,6 @@ export class MovieViewMDB extends React.Component{
         super(props);
         this.lastScroll = 0;
         this.props.initMovieData();
-        this.service = new LocalSaver();
         this.state = {
             isScrollDown: true,
             textValue: '',

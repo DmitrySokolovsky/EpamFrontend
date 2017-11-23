@@ -1,7 +1,8 @@
 import {
     ADD_USER_MOVIE,
     CLOSE_FORM
-} from "../actions"
+} from "../actions";
+import {setLocal, setLocalRemoveLast} from '../../services/local-saver.service';
 
 const movieRefresh = store => next => action => {
     if(action.type===ADD_USER_MOVIE){
@@ -10,15 +11,12 @@ const movieRefresh = store => next => action => {
         if(!localUserMoviesSTR){
             var tempArray = [];
             tempArray.push(item);
-            let tempArrayStr = JSON.stringify(tempArray);
-            localStorage.setItem("userMovies",tempArrayStr);
+            setLocal(tempArray, "userMovies");
         }
         else{
             let localUserMovies = JSON.parse(localUserMoviesSTR);
             localUserMovies.push(item);
-            let arrstr = JSON.stringify(localUserMovies);
-            localStorage.removeItem("userMovies");
-            localStorage.setItem("userMovies", arrstr);
+            setLocalRemoveLast(localUserMovies, "userMovies");
         }  
         store.dispatch({
             type: CLOSE_FORM

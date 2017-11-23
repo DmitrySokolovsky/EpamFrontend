@@ -1,7 +1,10 @@
-import {EntityMovieService} from "./movie-entity.service.js";
-import {EntityTvService} from "./tv-entity.service.js";
- 
 export function setLocal(array,key){
-        let string = JSON.stringify(array);
-        localStorage.setItem(key,string);
-    }
+    let string = JSON.stringify(array);
+    localStorage.setItem(key,string);
+}
+
+export function setLocalRemoveLast(array,key){
+    let string = JSON.stringify(array);
+    localStorage.removeItem(key);
+    localStorage.setItem(key, string);
+}
