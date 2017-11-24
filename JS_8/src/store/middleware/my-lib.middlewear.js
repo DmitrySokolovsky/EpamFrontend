@@ -10,7 +10,7 @@ const addToMyLibMiddlewear = store => next => action => {
             let tempArrayStr = JSON.stringify(tempArray);
             localStorage.setItem("mylib",tempArrayStr);
         }else{
-            var myLib = JSON.parse(localUserTvShowSTR);
+            var myLib = JSON.parse(myLibStr);
             myLib.push(item);
             let arrstr = JSON.stringify(myLib);
             localStorage.removeItem("mylib");

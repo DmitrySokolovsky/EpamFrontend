@@ -31,3 +31,7 @@
 .hw-poster__container:hover .hw-poster__buttons{
     display: flex;
 }
+
+.hw-poster__button--green-hover:hover{
+    color: green;
+}
