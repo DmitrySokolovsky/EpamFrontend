@@ -6,5 +6,6 @@ export class TvShowEntity {
         this.poster = 'https://image.tmdb.org/t/p/w500' + entity.poster_path || '';
         this.genre_ids = entity.genre_ids || '';
         this.vote = entity.vote_average || '';
+        this.isInLibrary = false;
     }
 }

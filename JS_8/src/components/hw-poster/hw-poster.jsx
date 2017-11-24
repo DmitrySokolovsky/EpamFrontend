@@ -10,6 +10,7 @@ export class PosterMDB extends Component{
         this.posterImage = {
             backgroundImage: 'url(' + this.props.data.poster + ')'
         };
+
     }
 
     addItemToLibtary(event){

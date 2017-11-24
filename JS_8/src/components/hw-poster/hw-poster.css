@@ -7,6 +7,10 @@
     border: 1px solid wheat;
 }
 
+.hw-poster__container--border{
+    border: 2px solid white;
+}
+
 .hw-poster__buttons{
     display: none;
     align-items: center;
