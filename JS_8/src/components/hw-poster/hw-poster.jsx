@@ -16,8 +16,8 @@ export class Poster extends Component{
                 <div className="hw-poster__container"
                 style={this.posterImage} >
                     <div className="hw-poster__buttons">
-                            <i className="fa fa-check"></i>
-                            <i className="fa fa-times"></i>
+                            <i className="fa fa-info-circle hw-poster__button"></i>
+                            <i className="fa fa-times hw-poster__button"></i>
                     </div>                    
                     {this.props.children}                                   
                 </div>

@@ -28,15 +28,11 @@ import {
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-mylib.view.css";
-import {LocalSaver} from "../../services/local-saver.service.js";
-
-
 
 export class MyLibrary extends React.Component{
     constructor(props){
         super(props);
         this.lastScroll = 0;
-        this.service = new LocalSaver();
         this.state = {
             movies:[],
             isScrollDown: true,

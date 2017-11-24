@@ -6,7 +6,7 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
     devServer: {    
         contentBase: path.join(__dirname, "dist"),           
-        port: 10000
+        port: 8081
     },
     plugins:[
         new webpack.NamedModulesPlugin(),       

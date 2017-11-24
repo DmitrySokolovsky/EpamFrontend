@@ -13,7 +13,7 @@ import {
     addUserMovie
 } from "../../store/actions"; 
 
-
+let defaultPoster = require('../../../src/default_poster.png');
 
 class FormMovie extends Component{
     constructor (props){
@@ -24,7 +24,7 @@ class FormMovie extends Component{
         this.state = {
             name: '',
             description: '',
-            poster: "../src/default_poster.png",
+            poster: defaultPoster,
             genre_ids: []
         };
     }

@@ -1,0 +1,3 @@
+export const MYLIB_DATA_INIT = "[MOVIEDB][LIB] MYLIB_DATA_INIT";
+export const GET_MYLIB_DATA = "[MOVIEDB][LIB] GET_MYLIB_DATA";
+export const ADD_TO_LIB = "[MOVIEDB][LIB] ADD_TO_LIB";

@@ -9,8 +9,8 @@
 
 .hw-poster__buttons{
     display: none;
-    justify-content: space-around;
     align-items: center;
+    justify-content: flex-end;
     height:27px;
     width: 170px;
     background-color: #222329;
@@ -20,6 +20,9 @@
     z-index: 1;
 }
 
+.hw-poster__button{
+    margin-right: 10px;
+}
 
 .hw-poster__container:hover .hw-poster__title{
     display: flex;

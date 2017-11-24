@@ -6,3 +6,5 @@ export * from "./tvshow-action.actions";
 export * from "./tvshow-action.types";
 export * from './genres-acton.actions';
 export * from './genres-action.types';
+export * from './mylib-action.actions';
+export * from './mylib-action.types';
