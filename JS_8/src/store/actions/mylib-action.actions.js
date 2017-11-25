@@ -1,6 +1,7 @@
 import { 
-    ADD_TO_LIB,
-    MYLIB_DATA_INIT
+    MOVIE_ADD_TO_LIB,
+    MYLIB_DATA_INIT,
+    TVSHOW_ADD_TO_LIB
 } from './mylib-action.types';
 
 export function initMyLibData() {
@@ -9,9 +10,16 @@ export function initMyLibData() {
     }
 }
 
-export function addToMyLib(payload){
+export function addMovieToMyLib(payload){
     return {
-        type: ADD_TO_LIB,
+        type: MOVIE_ADD_TO_LIB,
+        payload
+    }
+}
+
+export function addShowToMyLib(payload){
+    return {
+        type: TVSHOW_ADD_TO_LIB,
         payload
     }
 }

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import './hw-poster.css';
-import { connect } from 'react-redux';
-import {addToMyLib} from '../../store/actions';
 
-export class PosterMDB extends Component{
+export class Poster extends Component{
     constructor(props){
         super(props);
         this.selectedClass = 'hw-poster__container hw-poster__container--border';
@@ -15,8 +13,12 @@ export class PosterMDB extends Component{
 
     }
 
-    addItemToLibtary(event){
-        this.props.addToLib(this.props.data);
+    addItemToLibtary(){
+        console.log(this.props.data);
+        if(this.props.addItemToLibrary){
+            this.props.addItemToLibrary(this.props.data);
+        }
+        //this.props.addToLib(this.props.data);
     }
 
     render(){
@@ -36,19 +38,3 @@ export class PosterMDB extends Component{
 
     }
 }
-const mapStateToProps = (state) =>{
-    var movies = state.init.movies;
-    var shows = state.initTv.tvshows;
-    return{
-        movies,
-        shows
-    };
-};
-
-const mapDispatchToProps = (dispatch) =>({
-    addToLib: (item)=>{
-        dispatch(addToMyLib(item));
-    }
-});
-
-export const Poster = connect(mapStateToProps, mapDispatchToProps)(PosterMDB);

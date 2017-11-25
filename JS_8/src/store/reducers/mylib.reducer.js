@@ -1,7 +1,8 @@
 import {
     MYLIB_DATA_INIT,
-    ADD_TO_LIB,
-    GET_MYLIB_DATA
+    MOVIE_ADD_TO_LIB,
+    GET_MYLIB_DATA,
+    TVSHOW_ADD_TO_LIB
 } from '../actions';
 
 const initialState = {
@@ -18,7 +19,13 @@ export function addToMyLibReducer(state = initialState, action){
                 tvshows: action.payload
             }
 
-        case ADD_TO_LIB:
+        case MOVIE_ADD_TO_LIB:
+            return{
+                ...state,
+                myLibItems: [...state.myLibItems, action.payload]
+            }
+
+        case TVSHOW_ADD_TO_LIB:
             return{
                 ...state,
                 myLibItems: [...state.myLibItems, action.payload]

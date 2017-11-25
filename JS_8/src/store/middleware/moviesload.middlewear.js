@@ -38,7 +38,6 @@ const movieLoad = store => next => action =>{
         } else {
             let moviesLS = localStorage.getItem('movies');
             let movies = JSON.parse(moviesLS);
-            console.log(movies);
             store.dispatch({
                 type: GET_MOVIE_DATA,
                 payload: movies

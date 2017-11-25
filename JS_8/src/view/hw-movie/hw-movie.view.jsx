@@ -21,7 +21,8 @@ import {
 import { 
     toggleForm,
     initMovieData,
-    addUserMovie
+    addUserMovie,
+    addMovieToMyLib
  } from "../../store/actions"; 
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
@@ -56,8 +57,8 @@ export class MovieViewMDB extends React.Component{
         }
     }
 
-    componentDidMount(){
-        console.log(this.props.movies);
+    addItemToLibrary(item){
+        this.props.addToLib(item);
     }
 
     changingArrow(){
@@ -75,8 +76,6 @@ export class MovieViewMDB extends React.Component{
     }
 
     render(){ 
-        console.log("in render movie view");
-        console.log(this.props.movies);
         return(
             <div className="hw-app__main-container">
                   <div className="hw-header">
@@ -109,7 +108,8 @@ export class MovieViewMDB extends React.Component{
                             return ( 
                                 <Poster
                                 key = {item.name}
-                                data={item}>
+                                data={item}
+                                addItemToLibrary={this.addItemToLibrary.bind(this)}>
                                 <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
                                 <div className="hw-poster__title">{item.name}</div>
                                 </NavLink>
@@ -139,6 +139,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     addUserMovie: (item)=>{
         dispatch(addUserMovie(item));
+    },
+    addToLib: (item)=>{
+        dispatch(addMovieToMyLib(item));
     }
 });
 

@@ -98,6 +98,7 @@ class TvShowViewMDB extends React.Component{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
+                            console.log(item.id)
                             return ( 
                                 <Poster 
                                 key = {item.name}
