@@ -51,10 +51,8 @@ class TvShowViewMDB extends React.Component{
         }
 
         if(currentScroll>0){
-            console.log(currentScroll);
             this.setState({isScrollDown: false});
         }
-        console.log(currentScroll);
     }
 
     changingArrow(){

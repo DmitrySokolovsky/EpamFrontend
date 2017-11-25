@@ -6,6 +6,8 @@ import {addToMyLib} from '../../store/actions';
 export class PosterMDB extends Component{
     constructor(props){
         super(props);
+        this.selectedClass = 'hw-poster__buttons hw-poster__container--border';
+        this.notSelectedClass = 'hw-poster__buttons';
         this.item = this.props.data;
         this.posterImage = {
             backgroundImage: 'url(' + this.props.data.poster + ')'
@@ -22,7 +24,7 @@ export class PosterMDB extends Component{
             <div className="hw-poster">
                 <div className="hw-poster__container"
                 style={this.posterImage} >
-                    <div className="hw-poster__buttons">
+                    <div className={(this.item.isInLibrary)?this.selectedClass:this.notSelectedClass}>
                             <i className="fa fa-info-circle hw-poster__button"></i>
                             <i className="fa fa-check hw-poster__button hw-poster__button--green-hover"
                             onClick={this.addItemToLibtary.bind(this)}></i>
@@ -35,7 +37,12 @@ export class PosterMDB extends Component{
     }
 }
 const mapStateToProps = (state) =>{
-    return{};
+    var movies = state.init.movies;
+    var shows = state.initTv.tvshows;
+    return{
+        movies,
+        shows
+    };
 };
 
 const mapDispatchToProps = (dispatch) =>({

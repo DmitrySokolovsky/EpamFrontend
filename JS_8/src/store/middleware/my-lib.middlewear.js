@@ -16,6 +16,7 @@ const addToMyLibMiddlewear = store => next => action => {
             localStorage.removeItem("mylib");
             localStorage.setItem("mylib", arrstr);
         } 
+        console.log(item);
     }
     return next(action);
 }
