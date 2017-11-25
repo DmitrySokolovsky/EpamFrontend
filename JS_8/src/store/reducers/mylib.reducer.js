@@ -2,7 +2,9 @@ import {
     MYLIB_DATA_INIT,
     MOVIE_ADD_TO_LIB,
     GET_MYLIB_DATA,
-    TVSHOW_ADD_TO_LIB
+    TVSHOW_ADD_TO_LIB,
+    MOVIE_REMOVE_FROM_LIB,
+    TVSHOW_REMOVE_FROM_LIB
 } from '../actions';
 
 const initialState = {
@@ -29,6 +31,13 @@ export function addToMyLibReducer(state = initialState, action){
             return{
                 ...state,
                 myLibItems: [...state.myLibItems, action.payload]
+            }
+
+        case MOVIE_REMOVE_FROM_LIB:
+            let newMovies = state.myLibItems.filter(v => v !== action.payload);
+            return{
+                ...state,
+                myLibItems: [...newMovies]
             }
 
         default:
