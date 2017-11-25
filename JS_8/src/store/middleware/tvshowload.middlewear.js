@@ -13,7 +13,7 @@ const tvShowLoad = store => next => action => {
     if(action.type===TVSHOW_DATA_INIT){ 
         console.log(action.type);
       
-        let tvshowsLS = localStorage.getItem("tvshow");
+        let tvshowsLS = localStorage.getItem("tvshows");
         if(!tvshowsLS){
             dataService.getData(apiUrl.showUrl).then((result)=>{       
                 let arr = JSON.parse(result).results;
@@ -21,7 +21,7 @@ const tvShowLoad = store => next => action => {
                     return new TvShowEntity(item);
                 });
                 let data = tvshows;            
-                let customShowsSTR = localStorage.getItem("tvshow");
+                let customShowsSTR = localStorage.getItem("tvshows");
             
                 if(customShowsSTR){
                     let customShows = JSON.parse(customShowsSTR);
@@ -29,7 +29,7 @@ const tvShowLoad = store => next => action => {
                 }
 
                 let dataString = JSON.stringify(data);
-                localStorage.setItem('tvshow',dataString);
+                localStorage.setItem('tvshows',dataString);
 
                 store.dispatch({
                     type: GET_TVSHOW_DATA,
@@ -37,7 +37,7 @@ const tvShowLoad = store => next => action => {
                 });
             });
         } else {
-            let tvshowsLS = localStorage.getItem('tvshow');
+            let tvshowsLS = localStorage.getItem('tvshows');
             let shows = JSON.parse(tvshowsLS);
             store.dispatch({
                 type: GET_TVSHOW_DATA,

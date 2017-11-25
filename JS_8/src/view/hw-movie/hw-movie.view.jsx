@@ -25,14 +25,12 @@ import {
     addMovieToMyLib
  } from "../../store/actions"; 
 
-import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-movie.view.css";
 
 export class MovieViewMDB extends React.Component{
     constructor(props){
         super(props);
         this.lastScroll = 0;
-        //this.props.initMovieData();
         this.state = {
             isScrollDown: true,
             textValue: '',
@@ -127,16 +125,12 @@ export class MovieViewMDB extends React.Component{
 
 const mapStateToProps = (state) =>{
     var movies = state.init.movies;
-    var loaded = state.init.loaded;
     return{
         movies
     };
 };
 
 const mapDispatchToProps = (dispatch) =>({
-    initMovieData: ()=> {
-        dispatch(initMovieData());
-    },
     addUserMovie: (item)=>{
         dispatch(addUserMovie(item));
     },

@@ -21,7 +21,8 @@ import {
 import {
     toggleForm,
     initTvShowData,
-    addUserTvShow
+    addUserTvShow,
+    addShowToMyLib
 } from "../../store/actions";
 
 import "./hw-tvshows.view.css";
@@ -30,7 +31,6 @@ import {EntityMovieService} from "../../services/movie-entity.service.js";
 class TvShowViewMDB extends React.Component{
     constructor(props){
         super(props);
-        this.props.initTvShowData();
         this.state = {
             isScrollDown: true,
             textValue: '',
@@ -53,6 +53,10 @@ class TvShowViewMDB extends React.Component{
         if(currentScroll>0){
             this.setState({isScrollDown: false});
         }
+    }
+
+    addItemToLibrary(item){
+        this.props.addToLibShow(item);
     }
 
     changingArrow(){
@@ -102,7 +106,8 @@ class TvShowViewMDB extends React.Component{
                             return ( 
                                 <Poster 
                                 key = {item.name}
-                                data={item}>
+                                data={item}
+                                addItemToLibrary={this.addItemToLibrary.bind(this)}>
                                 <NavLink to={`/tvshows/${item.id}`} key={item.name+item.id}>
                                 <div className="hw-poster__title">{item.name}</div>
                                 </NavLink>
@@ -124,11 +129,11 @@ const mapStateToProps = (state) =>{
 };
 
 const mapDispatchToProps = (dispatch) =>({
-    initTvShowData: ()=> {
-        dispatch(initTvShowData());
-    },
     addUserTvShow: (item)=>{
         dispatch(addUserTvShow(item));
+    },
+    addToLibShow: (item) => {
+        dispatch(addShowToMyLib(item));
     }
 });
 

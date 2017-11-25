@@ -66,7 +66,7 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => ({
     initMovies:()=> {dispatch(initMovieData())},
-    initTvShows:() => dispatch(initTvShowData())
+    initTvShows:() => {dispatch(initTvShowData())}
 });
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(AppMDB);

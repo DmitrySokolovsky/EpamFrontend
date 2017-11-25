@@ -60,9 +60,11 @@
     background-color: #0088CC;
     opacity: 0.8;
     color: white;
-    height: 220px;
-    width: 100%;
+    height: 140px;
+    width: 140px;
     text-align: center;
     display: none;
     cursor: pointer;
+    border-radius: 70px;
+    margin-top: 35px;
 }
