@@ -31,7 +31,7 @@ export class MovieViewMDB extends React.Component{
     constructor(props){
         super(props);
         this.lastScroll = 0;
-        this.props.initMovieData();
+        //this.props.initMovieData();
         this.state = {
             isScrollDown: true,
             textValue: '',
@@ -56,6 +56,10 @@ export class MovieViewMDB extends React.Component{
         }
     }
 
+    componentDidMount(){
+        console.log(this.props.movies);
+    }
+
     changingArrow(){
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
         var currentScroll = div.scrollTop;
@@ -71,7 +75,8 @@ export class MovieViewMDB extends React.Component{
     }
 
     render(){ 
-             
+        console.log("in render movie view");
+        console.log(this.props.movies);
         return(
             <div className="hw-app__main-container">
                   <div className="hw-header">

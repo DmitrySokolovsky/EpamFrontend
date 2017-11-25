@@ -6,8 +6,8 @@ import {addToMyLib} from '../../store/actions';
 export class PosterMDB extends Component{
     constructor(props){
         super(props);
-        this.selectedClass = 'hw-poster__buttons hw-poster__container--border';
-        this.notSelectedClass = 'hw-poster__buttons';
+        this.selectedClass = 'hw-poster__container hw-poster__container--border';
+        this.notSelectedClass = 'hw-poster__container';
         this.item = this.props.data;
         this.posterImage = {
             backgroundImage: 'url(' + this.props.data.poster + ')'
@@ -22,9 +22,9 @@ export class PosterMDB extends Component{
     render(){
         return(
             <div className="hw-poster">
-                <div className="hw-poster__container"
+                <div className={(this.props.data.isInLibrary)?this.selectedClass:this.notSelectedClass}
                 style={this.posterImage} >
-                    <div className={(this.item.isInLibrary)?this.selectedClass:this.notSelectedClass}>
+                    <div className="hw-poster__buttons">
                             <i className="fa fa-info-circle hw-poster__button"></i>
                             <i className="fa fa-check hw-poster__button hw-poster__button--green-hover"
                             onClick={this.addItemToLibtary.bind(this)}></i>

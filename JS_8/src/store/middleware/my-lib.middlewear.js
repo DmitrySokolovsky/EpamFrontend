@@ -1,9 +1,12 @@
-import { ADD_TO_LIB } from '../actions';
+import {
+    ADD_TO_LIB,
+    MOVIE_ADDED_TO_LIB } from '../actions';
 
 const addToMyLibMiddlewear = store => next => action => {
     if(action.type===ADD_TO_LIB){
         let myLibStr = localStorage.getItem("mylib");
         let item = action.payload;
+        
         if(!myLibStr){
             var tempArray = [];
             tempArray.push(item);
@@ -16,7 +19,11 @@ const addToMyLibMiddlewear = store => next => action => {
             localStorage.removeItem("mylib");
             localStorage.setItem("mylib", arrstr);
         } 
-        console.log(item);
+        store.dispatch({
+            type: MOVIE_ADDED_TO_LIB,
+            payload: item
+        });
+        
     }
     return next(action);
 }

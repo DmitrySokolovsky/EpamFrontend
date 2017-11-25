@@ -1,7 +1,8 @@
 import {
      MOVIE_DATA_INIT,
      GET_MOVIE_DATA,
-     ADD_USER_MOVIE
+     ADD_USER_MOVIE,
+     MOVIE_ADDED_TO_LIB
     } from "../actions"
 
 const initialState = {
@@ -22,6 +23,15 @@ export function initMoviesAppReducer(state = initialState, action){
             return {
                 ...state,
                 movies: [...state.movies,action.payload]    
+            }
+
+        case MOVIE_ADDED_TO_LIB:
+            return {
+                ...state,
+                movies: state.movies.map(item => 
+                (item.id === action.payload.id)?
+                {...item, isInLibrary:true}:
+                item)
             }
 
         default:
