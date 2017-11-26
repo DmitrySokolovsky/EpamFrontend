@@ -38,7 +38,7 @@ export function initMoviesAppReducer(state = initialState, action){
         case MOVIE_REMOVED_FROM_LIB:
             return {
                 ...state,
-                movies: state.movies.filter(item => 
+                movies: state.movies.map(item => 
                 (item.id === action.payload.id)?
                 {...item, isInLibrary:false}:
                 item)

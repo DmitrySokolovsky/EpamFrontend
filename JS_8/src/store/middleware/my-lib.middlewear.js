@@ -70,11 +70,12 @@ const operationsWithMyLibMiddlewear = store => next => action => {
             type: MOVIE_REMOVED_FROM_LIB,
             payload: item
         });
-
+        
         localStorage.removeItem('movies');
         let currentMovies = store.getState().init.movies;
         let currentMoviesString = JSON.stringify(currentMovies);
-        localStorage.setItem('movies', currentMoviesString);             
+        localStorage.setItem('movies', currentMoviesString); 
+        console.log('it writes to LS');          
     }
 
     if(action.type===TVSHOW_REMOVE_FROM_LIB){
@@ -86,6 +87,7 @@ const operationsWithMyLibMiddlewear = store => next => action => {
         });
 
         localStorage.removeItem('tvshows');
+
         let currentMovies = store.getState().initTv.tvshows;
         let currentMoviesString = JSON.stringify(currentMovies);
         localStorage.setItem('tvshows', currentMoviesString);             
