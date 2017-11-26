@@ -33,7 +33,7 @@ export function addToMyLibReducer(state = initialState, action){
             }
 
         case MOVIE_REMOVE_FROM_LIB:
-            let newMovies = state.myLibItems.filter(v => v !== action.payload);
+            var newMovies = state.myLibItems.filter(v => v.id !== action.payload.id);
             return{
                 ...state,
                 myLibItems: [...newMovies]

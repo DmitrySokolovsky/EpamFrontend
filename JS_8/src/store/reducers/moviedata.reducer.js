@@ -3,7 +3,8 @@ import {
      GET_MOVIE_DATA,
      ADD_USER_MOVIE,
      MOVIE_ADDED_TO_LIB,
-     MOVIE_REMOVE_FROM_LIB
+     MOVIE_REMOVE_FROM_LIB,
+     MOVIE_REMOVED_FROM_LIB
     } from "../actions"
 
 const initialState = {
@@ -35,7 +36,7 @@ export function initMoviesAppReducer(state = initialState, action){
                 item)
             }
 
-        case MOVIE_REMOVE_FROM_LIB:
+        case MOVIE_REMOVED_FROM_LIB:
             return {
                 ...state,
                 movies: state.movies.filter(item => 

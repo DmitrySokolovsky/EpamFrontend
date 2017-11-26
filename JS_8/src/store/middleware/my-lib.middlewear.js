@@ -3,12 +3,12 @@ import {
     MOVIE_ADDED_TO_LIB,
     TVSHOW_ADD_TO_LIB,
     TVSHOW_ADDED_TO_LIB,
-    MOVIE_REMOVE_FROM_LIB
+    MOVIE_REMOVE_FROM_LIB,
+    MOVIE_REMOVED_FROM_LIB
 } from '../actions';
 
 const addToMyLibMiddlewear = store => next => action => {
     console.log(action.type);
-    console.log( store.getState().addToLib.myLibItems);
     if(action.type===MOVIE_ADD_TO_LIB){
         let myLibStr = localStorage.getItem("mylib");
         let item = action.payload;
@@ -63,7 +63,24 @@ const addToMyLibMiddlewear = store => next => action => {
 
     if(action.type===MOVIE_REMOVE_FROM_LIB){
         let currentLibrary = store.getState().addToLib.myLibItems;
+        console.log(currentLibrary);
+        let item = action.payload;
+        item.isInLibrary = false;
+        store.dispatch({
+            type: MOVIE_REMOVED_FROM_LIB,
+            payload: item
+        });
+        console.log(currentLibrary);
 
+        localStorage.removeItem('mylib');
+        localStorage.setItem('mylib', currentLibrary);
+
+
+        localStorage.removeItem('movies');
+        let currentMovies = store.getState().init.movies;
+        let currentMoviesString = JSON.stringify(currentMovies);
+        localStorage.setItem('movies', currentMoviesString);
+        console.log(store.getState().addToLib.myLibItems);        
     }
 
     return next(action);
