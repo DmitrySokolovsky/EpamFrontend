@@ -17,8 +17,7 @@ export function addToMyLibReducer(state = initialState, action){
 
         case GET_MYLIB_DATA:
             return {
-                ...state,
-                tvshows: action.payload
+                ...state                
             }
 
         case MOVIE_ADD_TO_LIB:
