@@ -15,21 +15,18 @@ export class Poster extends Component{
     }
 
     addItemToLibtary(){
-        console.log(this.props.data);
         if(this.props.addItemToLibrary){
             this.props.addItemToLibrary(this.props.data);
         }
     }
 
     removeItemFromLibrary(){
-        console.log(this.props.data);
         if(this.props.removeItemFromLibrary){
             this.props.removeItemFromLibrary(this.props.data);
         }
     }
 
     render(){
-        console.log(this.props.data);
         return(
             <div className="hw-poster">
                 <div className={(this.props.data.isInLibrary)?this.selectedClass:this.notSelectedClass}
