@@ -8,5 +8,6 @@ export class MovieEntity {
         this.genre_ids = entity.genre_ids || '';
         this.vote = entity.vote_average || '';
         this.isInLibrary = false;
+        this.type = 'movie';
     }
 }

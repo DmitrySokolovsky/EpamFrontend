@@ -24,7 +24,8 @@ import {
     toggleForm,
     initMovieData,
     addUserMovie,
-    removeMovieFromMyLib
+    removeMovieFromMyLib,
+    removeShowFromMyLib
  } from "../../store/actions"; 
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
@@ -45,8 +46,12 @@ export class MyLibraryMDB extends React.Component{
         };
     }
 
-    removeItemFromLibrary(item){
-        this.props.removeFromLib(item);
+    removeMovieFromLib(item){
+        this.props.removeMovieFromLib(item);
+    }
+
+    removeShowFromLib(item){
+        this.props.removeShowFromMyLib(item);
     }
 
     scrollingHandler(){        
@@ -118,7 +123,9 @@ export class MyLibraryMDB extends React.Component{
                                 <Poster
                                 key = {item.name}
                                 data={item}
-                                removeItemFromLibrary={this.removeItemFromLibrary.bind(this)}>
+                                removeItemFromLibrary={item.type==='movie'?
+                                this.removeMovieFromLib.bind(this):
+                                this.removeShowFromLib.bind(this)}>
                                 <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
                                 <div className="hw-poster__title">{item.name}</div>
                                 </NavLink>
@@ -141,8 +148,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) =>({
-    removeFromLib: (item) =>{
+    removeMovieFromLib: (item) =>{
         dispatch(removeMovieFromMyLib(item));
+    },
+    removeShowFromMyLib: (item) => {
+        dispatch(removeShowFromMyLib(item));
     }
 });
 

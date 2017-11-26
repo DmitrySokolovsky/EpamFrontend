@@ -7,5 +7,6 @@ export class TvShowEntity {
         this.genre_ids = entity.genre_ids || '';
         this.vote = entity.vote_average || '';
         this.isInLibrary = false;
+        this.type = 'tvshow';
     }
 }
