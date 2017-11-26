@@ -9,7 +9,7 @@ const addToMyLibMiddlewear = store => next => action => {
     if(action.type===MOVIE_ADD_TO_LIB){
         let myLibStr = localStorage.getItem("mylib");
         let item = action.payload;
-        
+        item.isInLibrary = true;
         if(!myLibStr){
             var tempArray = [];
             tempArray.push(item);
@@ -35,7 +35,7 @@ const addToMyLibMiddlewear = store => next => action => {
     if(action.type===TVSHOW_ADD_TO_LIB){
         let myLibStr = localStorage.getItem("mylib");
         let item = action.payload;
-        
+        item.isInLibrary = true;
         if(!myLibStr){
             var tempArray = [];
             tempArray.push(item);

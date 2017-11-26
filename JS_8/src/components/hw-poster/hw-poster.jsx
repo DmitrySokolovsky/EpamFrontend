@@ -21,6 +21,13 @@ export class Poster extends Component{
         }
     }
 
+    removeItemFromLibrary(){
+        console.log(this.props.data);
+        if(this.props.removeItemFromLibrary){
+            this.props.removeItemFromLibrary(this.props.data);
+        }
+    }
+
     render(){
         console.log(this.props.data);
         return(
@@ -30,7 +37,7 @@ export class Poster extends Component{
                     <div className="hw-poster__buttons">
                             <i className="fa fa-info-circle hw-poster__button"></i>
                             <i className={(this.props.data.isInLibrary)?this.removeButtonClass:this.addButtonClass}
-                            onClick={this.addItemToLibtary.bind(this)}></i>
+                            onClick={(this.props.data.isInLibrary)? this.removeItemFromLibrary.bind(this):this.addItemToLibtary.bind(this)}></i>
                     </div>                    
                     {this.props.children}                                   
                 </div>

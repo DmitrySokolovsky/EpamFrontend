@@ -22,7 +22,8 @@ import {
     toggleForm,
     initMovieData,
     addUserMovie,
-    addMovieToMyLib
+    addMovieToMyLib,
+    removeMovieFromMyLib
  } from "../../store/actions"; 
 
 import "./hw-movie.view.css";
@@ -57,6 +58,10 @@ export class MovieViewMDB extends React.Component{
 
     addItemToLibrary(item){
         this.props.addToLib(item);
+    }
+
+    removeItemFromLibrary(item){
+        this.props.removeFromLib(item);
     }
 
     changingArrow(){
@@ -107,7 +112,8 @@ export class MovieViewMDB extends React.Component{
                                 <Poster
                                 key = {item.name}
                                 data={item}
-                                addItemToLibrary={this.addItemToLibrary.bind(this)}>
+                                addItemToLibrary={this.addItemToLibrary.bind(this)}
+                                removeItemFromLibrary={this.removeItemFromLibrary.bind(this)}>
                                 <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
                                 <div className="hw-poster__title">{item.name}</div>
                                 </NavLink>
@@ -136,6 +142,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     addToLib: (item)=>{
         dispatch(addMovieToMyLib(item));
+    },
+    removeFromLib: (item) =>{
+        dispatch(removeMovieFromMyLib(item));
     }
 });
 
