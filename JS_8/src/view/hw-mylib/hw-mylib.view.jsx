@@ -23,18 +23,18 @@ import {NoLibraryData} from "./hw-mylib-nodata.view.jsx";
 import { 
     toggleForm,
     initMovieData,
-    addUserMovie
+    addUserMovie,
+    removeMovieFromMyLib
  } from "../../store/actions"; 
 
 import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-mylib.view.css";
 
-export class MyLibrary extends React.Component{
+export class MyLibraryMDB extends React.Component{
     constructor(props){
         super(props);
         this.lastScroll = 0;
         this.state = {
-            movies:[],
             isScrollDown: true,
             textValue: '',
             onChange: (newValue)=>{                
@@ -43,6 +43,10 @@ export class MyLibrary extends React.Component{
                 });
             }                        
         };
+    }
+
+    removeItemFromLibrary(item){
+        this.props.removeFromLib(item);
     }
 
     scrollingHandler(){        
@@ -75,7 +79,8 @@ export class MyLibrary extends React.Component{
     }
 
     render(){ 
-        if(!localStorage.getItem("mylib")){
+        let string = localStorage.getItem("mylib")
+        if(string==="[]"){
             return(
                 <NoLibraryData/>
             );
@@ -93,7 +98,7 @@ export class MyLibrary extends React.Component{
                     placeholder="...Search"/>
                   </div>
                   
-                    <Navigation/>                                        
+                    <Navigation hideForm={true}/>                                        
                   </div>
                   </header>                  
                   </div>
@@ -104,16 +109,20 @@ export class MyLibrary extends React.Component{
                     <div onScroll = {this.scrollingHandler.bind(this)}
                     className="hw-app__poster-container">
                     <Form/>
-                    {this.state.movies
+                    {this.props.mylib
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            return ( <NavLink to={`/movies/${item.id}`} key={item.name+"nav"}>
-                                <Poster url={item.poster}
+                            return ( 
+                                <Poster
                                 key = {item.name}
-                                data={item}                                
-                                /></NavLink>
+                                data={item}
+                                removeItemFromLibrary={this.removeItemFromLibrary.bind(this)}>
+                                <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
+                                <div className="hw-poster__title">{item.name}</div>
+                                </NavLink>
+                                </Poster>
                             )
                         })}
                     </div>                  
@@ -124,3 +133,17 @@ export class MyLibrary extends React.Component{
     }
 }
 
+const mapStateToProps = (state) => {
+    var mylib = state.addToLib.myLibItems;
+    return {
+        mylib
+    };
+}
+
+const mapDispatchToProps = (dispatch) =>({
+    removeFromLib: (item) =>{
+        dispatch(removeMovieFromMyLib(item));
+    }
+});
+
+export const MyLibrary = connect(mapStateToProps, mapDispatchToProps)(MyLibraryMDB);

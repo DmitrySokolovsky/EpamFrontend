@@ -23,7 +23,7 @@ import {
     initTvShowData,
     addUserTvShow,
     addShowToMyLib,
-    removeMovieFromMyLib
+    removeShowFromMyLib
 } from "../../store/actions";
 
 import "./hw-tvshows.view.css";
@@ -107,7 +107,6 @@ class TvShowViewMDB extends React.Component{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
                         .map((item,index)=>{
-                            console.log(item.id)
                             return ( 
                                 <Poster 
                                 key = {item.name}
@@ -142,7 +141,7 @@ const mapDispatchToProps = (dispatch) =>({
         dispatch(addShowToMyLib(item));
     },
     removeFromLib: (item) => {
-        dispatch(removeMovieFromMyLib(item));
+        dispatch(removeShowFromMyLib(item));
     }
 });
 

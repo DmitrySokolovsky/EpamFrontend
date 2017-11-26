@@ -3,7 +3,6 @@ import {
      GET_MOVIE_DATA,
      ADD_USER_MOVIE,
      MOVIE_ADDED_TO_LIB,
-     MOVIE_REMOVE_FROM_LIB,
      MOVIE_REMOVED_FROM_LIB
     } from "../actions"
 

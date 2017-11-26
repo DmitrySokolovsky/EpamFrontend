@@ -2,7 +2,8 @@ import {
     TVSHOW_DATA_INIT,
     GET_TVSHOW_DATA,
     ADD_USER_TVSHOW,
-    TVSHOW_ADDED_TO_LIB
+    TVSHOW_ADDED_TO_LIB,
+    TVSHOW_REMOVED_FROM_LIB
 } from "../actions";
 
 const initialState = {
@@ -31,6 +32,15 @@ export function initTvShowAppReducer(state = initialState, action){
                 tvshows: state.tvshows.map(item => 
                 (item.id === action.payload.id)?
                 {...item, isInLibrary:true}:
+                item)
+            }
+
+        case TVSHOW_REMOVED_FROM_LIB:
+            return {
+                ...state,
+                tvshows: state.tvshows.map(item => 
+                (item.id === action.payload.id)?
+                {...item, isInLibrary:false}:
                 item)
             }
         

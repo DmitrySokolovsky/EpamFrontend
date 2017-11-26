@@ -4,7 +4,9 @@ import {
     TVSHOW_ADD_TO_LIB,
     TVSHOW_ADDED_TO_LIB,
     MOVIE_REMOVE_FROM_LIB,
-    MOVIE_REMOVED_FROM_LIB
+    MOVIE_REMOVED_FROM_LIB,
+    TVSHOW_REMOVE_FROM_LIB,
+    TVSHOW_REMOVED_FROM_LIB
 } from '../actions';
 
 const operationsWithMyLibMiddlewear = store => next => action => {
@@ -73,6 +75,20 @@ const operationsWithMyLibMiddlewear = store => next => action => {
         let currentMovies = store.getState().init.movies;
         let currentMoviesString = JSON.stringify(currentMovies);
         localStorage.setItem('movies', currentMoviesString);             
+    }
+
+    if(action.type===TVSHOW_REMOVE_FROM_LIB){
+        let item = action.payload;
+        item.isInLibrary = false;
+        store.dispatch({
+            type: TVSHOW_REMOVED_FROM_LIB,
+            payload: item
+        });
+
+        localStorage.removeItem('tvshows');
+        let currentMovies = store.getState().initTv.tvshows;
+        let currentMoviesString = JSON.stringify(currentMovies);
+        localStorage.setItem('tvshows', currentMoviesString);             
     }
 
     return next(action);

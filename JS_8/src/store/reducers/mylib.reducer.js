@@ -43,6 +43,16 @@ export function addToMyLibReducer(state = initialState, action){
                 myLibItems: newMovies
             }
 
+        case TVSHOW_REMOVE_FROM_LIB:
+            var newMovies = state.myLibItems.filter(v => v.id !== action.payload.id);
+            var currentLibraryString = JSON.stringify(newMovies);
+            localStorage.removeItem('mylib');
+            localStorage.setItem('mylib', currentLibraryString);
+            return{
+                ...state,
+                myLibItems: newMovies
+            }
+
         default:
             return state;
     }

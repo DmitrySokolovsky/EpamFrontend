@@ -145,6 +145,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     removeFromLib: (item) =>{
         dispatch(removeMovieFromMyLib(item));
+    },
+    initMovies:()=> {
+        dispatch(initMovieData());
     }
 });
 
