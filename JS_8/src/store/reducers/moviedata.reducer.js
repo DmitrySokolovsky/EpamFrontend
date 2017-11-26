@@ -39,7 +39,7 @@ export function initMoviesAppReducer(state = initialState, action){
             return {
                 ...state,
                 movies: state.movies.filter(item => 
-                (item.id !== action.payload.id)?
+                (item.id === action.payload.id)?
                 {...item, isInLibrary:false}:
                 item)
             }
