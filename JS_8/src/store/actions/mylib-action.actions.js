@@ -8,7 +8,7 @@ import {
 
 export function initMyLibData() {
     return {
-        type: MYLIB_DATA_INIT        
+        type: MYLIB_DATA_INIT     
     }
 }
 

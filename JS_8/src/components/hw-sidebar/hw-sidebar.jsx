@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import '../../css/font-awesome.min.css'
+import {connect} from "react-redux";
+import '../../css/font-awesome.min.css';
 import {
     HashRouter as Router,
     Route,
@@ -9,17 +10,27 @@ import {
 import './hw-sidebar.css';
 
 //fa fa-window-close-o
-export class SideBar extends Component{
+export class SideBarMDB extends Component{
     constructor(props){
         super(props);       
-        this.state = {isOpened: true};
+        this.state = {
+            isOpened: true,
+            libraryCount:0
+        };
         this.closeIcon = 'fa fa-window-close-o fa-2x fa--padding';
         this.logoClass = 'hw-side-bar__text hw-side-bar__text--big';
         this.hideClass = 'hw-side-bar__hide';
+        this.libraryArray = null;
     }
 
     toggleState(){
         this.setState({isOpened: !this.state.isOpened});
+    }
+
+    componentWillMount(){
+        if(this.props.mylib){
+            this.setState({libraryCount: this.props.mylib.length});
+        }
     }
 
     render(){
@@ -35,24 +46,29 @@ export class SideBar extends Component{
                 
                 <div className="hw-side-bar__menu-item">
                 <NavLink to="/movies" activeClassName="active-link">
-                <i className={(this.state.isOpened)?'fa fa-film fa--padding':'fa fa-film'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Movies</p>
+                <i className={(this.state.isOpened)?'fa fa-film fa--padding':'fa fa-film'}></i>
+                <p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Movies</p>
                 </NavLink>
                 </div>
                
                 <div className="hw-side-bar__menu-item">  
                 <NavLink to="/tvshows" activeClassName="active-link">             
-                <i className={(this.state.isOpened)?'fa fa-television fa--padding':'fa fa-television'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>TV Shows</p>                
+                <i className={(this.state.isOpened)?'fa fa-television fa--padding':'fa fa-television'}></i>
+                <p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>TV Shows</p>                
                 </NavLink>
                 </div>
                 
                 <div className="hw-side-bar__menu-item">
                 <NavLink to="/mylib" activeClassName="active-link">
-                <i className={(this.state.isOpened)?'fa fa-book fa--padding':'fa fa-book'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>My Library</p>
+                <i className={(this.state.isOpened)?'fa fa-book fa--padding':'fa fa-book'}></i>
+                <p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>My Library 
+                {(this.state.libraryCount > 0) ?`(${this.state.libraryCount})`:''}</p>
                 </NavLink>
                 </div>
                 
                 <div className="hw-side-bar__menu-item">
-                <i className={(this.state.isOpened)?'fa fa-user-circle fa--padding':'fa fa-user-circle'}></i><p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Support</p>
+                <i className={(this.state.isOpened)?'fa fa-user-circle fa--padding':'fa fa-user-circle'}></i>
+                <p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>Support</p>
                 </div>  
 
                 </div>
@@ -61,3 +77,11 @@ export class SideBar extends Component{
     }
 }
 
+const mapStateToProps = (state) => {
+    var mylib = state.addToLib.myLibItems;
+    return {
+        mylib
+    };
+}
+
+export const SideBar = connect(mapStateToProps)(SideBarMDB);

@@ -7,7 +7,7 @@ import {
     MOVIE_REMOVED_FROM_LIB
 } from '../actions';
 
-const addToMyLibMiddlewear = store => next => action => {
+const operationsWithMyLibMiddlewear = store => next => action => {
     console.log(action.type);
     if(action.type===MOVIE_ADD_TO_LIB){
         let myLibStr = localStorage.getItem("mylib");
@@ -62,28 +62,20 @@ const addToMyLibMiddlewear = store => next => action => {
     }
 
     if(action.type===MOVIE_REMOVE_FROM_LIB){
-        let currentLibrary = store.getState().addToLib.myLibItems;
-        console.log(currentLibrary);
         let item = action.payload;
         item.isInLibrary = false;
         store.dispatch({
             type: MOVIE_REMOVED_FROM_LIB,
             payload: item
         });
-        console.log(currentLibrary);
-
-        localStorage.removeItem('mylib');
-        localStorage.setItem('mylib', currentLibrary);
-
 
         localStorage.removeItem('movies');
         let currentMovies = store.getState().init.movies;
         let currentMoviesString = JSON.stringify(currentMovies);
-        localStorage.setItem('movies', currentMoviesString);
-        console.log(store.getState().addToLib.myLibItems);        
+        localStorage.setItem('movies', currentMoviesString);             
     }
 
     return next(action);
 }
 
-export default addToMyLibMiddlewear;
+export default operationsWithMyLibMiddlewear;

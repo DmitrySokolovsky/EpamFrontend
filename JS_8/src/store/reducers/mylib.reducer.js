@@ -1,7 +1,7 @@
 import {
     MYLIB_DATA_INIT,
-    MOVIE_ADD_TO_LIB,
     GET_MYLIB_DATA,
+    MOVIE_ADD_TO_LIB,
     TVSHOW_ADD_TO_LIB,
     MOVIE_REMOVE_FROM_LIB,
     TVSHOW_REMOVE_FROM_LIB
@@ -17,7 +17,8 @@ export function addToMyLibReducer(state = initialState, action){
 
         case GET_MYLIB_DATA:
             return {
-                ...state                
+                ...state,
+                myLibItems: action.payload              
             }
 
         case MOVIE_ADD_TO_LIB:
@@ -34,9 +35,12 @@ export function addToMyLibReducer(state = initialState, action){
 
         case MOVIE_REMOVE_FROM_LIB:
             var newMovies = state.myLibItems.filter(v => v.id !== action.payload.id);
+            let currentLibraryString = JSON.stringify(newMovies);
+            localStorage.removeItem('mylib');
+            localStorage.setItem('mylib', currentLibraryString);
             return{
                 ...state,
-                myLibItems: [...newMovies]
+                myLibItems: newMovies
             }
 
         default:

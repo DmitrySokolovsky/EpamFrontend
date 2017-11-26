@@ -14,7 +14,11 @@ import {
     SideBar,   
     MovieInfo
 } from "../../components";
-import {initMovieData, initTvShowData} from '../../store/actions';
+import {
+    initMovieData, 
+    initTvShowData,
+    initMyLibData
+} from '../../store/actions';
 import './hw-main.css';
 
 
@@ -23,6 +27,7 @@ export class AppMDB extends React.Component{
         super(props);   
         this.props.initMovies();
         this.props.initTvShows();
+        this.props.initMyLibData();
         this.lastScroll = 0;
         this.state={
             isScrollDown: false
@@ -65,8 +70,15 @@ const mapStateToProps = (store) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    initMovies:()=> {dispatch(initMovieData())},
-    initTvShows:() => {dispatch(initTvShowData())}
+    initMovies:()=> {
+        dispatch(initMovieData());
+    },
+    initTvShows:() => {
+        dispatch(initTvShowData());
+    },
+    initMyLibData:() => {
+        dispatch(initMyLibData());
+    }
 });
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(AppMDB);
