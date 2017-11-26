@@ -18,8 +18,6 @@ class Nav extends Component{
                 <div className={this.props.hideForm?this.classHiddenItem:this.classNameItem}
                 onClick={this.props.toggleForm}>Add movie</div>
                 <div className={this.props.hideAbout?this.classHiddenItem:this.classNameItem}>About</div>
-                <div className={this.props.hidePricing?this.classHiddenItem:this.classNameItem}>Pricing</div>
-                <div className={this.props.hideBlog?this.classHiddenItem:this.classNameItem}>Blog</div>
                 </div>
             </div>
         );

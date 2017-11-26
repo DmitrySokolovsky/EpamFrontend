@@ -23,7 +23,7 @@ import {
     initMovieData,
     addUserMovie,
     addMovieToMyLib,
-    removeMovieFromMyLib
+    removeMovieFromMyLib,
  } from "../../store/actions"; 
 
 import "./hw-movie.view.css";

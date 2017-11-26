@@ -22,7 +22,8 @@ import {
     toggleForm,
     initTvShowData,
     addUserTvShow,
-    addShowToMyLib
+    addShowToMyLib,
+    removeMovieFromMyLib
 } from "../../store/actions";
 
 import "./hw-tvshows.view.css";
@@ -57,6 +58,10 @@ class TvShowViewMDB extends React.Component{
 
     addItemToLibrary(item){
         this.props.addToLibShow(item);
+    }
+
+    removeItemFromLibrary(item){
+        this.props.removeFromLib(item);
     }
 
     changingArrow(){
@@ -107,7 +112,8 @@ class TvShowViewMDB extends React.Component{
                                 <Poster 
                                 key = {item.name}
                                 data={item}
-                                addItemToLibrary={this.addItemToLibrary.bind(this)}>
+                                addItemToLibrary={this.addItemToLibrary.bind(this)}
+                                removeItemFromLibrary={this.removeItemFromLibrary.bind(this)}>
                                 <NavLink to={`/tvshows/${item.id}`} key={item.name+item.id}>
                                 <div className="hw-poster__title">{item.name}</div>
                                 </NavLink>
@@ -134,6 +140,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     addToLibShow: (item) => {
         dispatch(addShowToMyLib(item));
+    },
+    removeFromLib: (item) => {
+        dispatch(removeMovieFromMyLib(item));
     }
 });
 

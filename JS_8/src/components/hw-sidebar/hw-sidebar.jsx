@@ -14,8 +14,7 @@ export class SideBarMDB extends Component{
     constructor(props){
         super(props);       
         this.state = {
-            isOpened: true,
-            libraryCount:0
+            isOpened: true
         };
         this.closeIcon = 'fa fa-window-close-o fa-2x fa--padding';
         this.logoClass = 'hw-side-bar__text hw-side-bar__text--big';
@@ -25,12 +24,6 @@ export class SideBarMDB extends Component{
 
     toggleState(){
         this.setState({isOpened: !this.state.isOpened});
-    }
-
-    componentWillMount(){
-        if(this.props.mylib){
-            this.setState({libraryCount: this.props.mylib.length});
-        }
     }
 
     render(){
@@ -62,7 +55,7 @@ export class SideBarMDB extends Component{
                 <NavLink to="/mylib" activeClassName="active-link">
                 <i className={(this.state.isOpened)?'fa fa-book fa--padding':'fa fa-book'}></i>
                 <p className={(this.state.isOpened) ?"hw-side-bar__text" :this.hideClass}>My Library 
-                {(this.state.libraryCount > 0) ?`(${this.state.libraryCount})`:''}</p>
+                {(this.props.mylib.length > 0) ?`(${this.props.mylib.length})`:''}</p>
                 </NavLink>
                 </div>
                 
