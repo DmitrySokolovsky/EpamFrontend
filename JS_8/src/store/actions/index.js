@@ -8,3 +8,5 @@ export * from './genres-acton.actions';
 export * from './genres-action.types';
 export * from './mylib-action.actions';
 export * from './mylib-action.types';
+export * from './advancedsearch-action.actions';
+export * from './advancedsearch-action.types';
