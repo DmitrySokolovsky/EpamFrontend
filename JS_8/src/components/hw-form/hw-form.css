@@ -106,3 +106,8 @@
 .hw-form__button--red{
     background-color: #db1313;
 }  
+
+.hw-form__dropped-image{
+    height: 120px;
+    width: 60px;
+}

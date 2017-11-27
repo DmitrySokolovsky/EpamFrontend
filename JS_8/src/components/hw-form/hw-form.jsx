@@ -21,12 +21,31 @@ class FormMovie extends Component{
         this.validationForm = this.validationForm.bind(this);
         this.service = new GenresService(); 
         this.genre_ids = [];     
+        this.dataArray = [];
         this.state = {
             name: '',
             description: '',
             poster: defaultPoster,
             genre_ids: []
         };
+    }
+
+    componentDidMount(){
+        console.log(this.dropped);
+       this.dropzone.ondrop = (e)=>{
+            e.preventDefault();
+            var file = e.dataTransfer.files[0];
+            console.log(this.dropped);
+            loadInView(file, this.dropped);
+       }
+
+       this.dropzone.ondragover = function(){
+           return false;
+       }
+
+       this.dropzone.ondragleave = function(){
+           return false;
+       }
     }
 
     validationForm(){
@@ -90,10 +109,14 @@ class FormMovie extends Component{
                   <GenresList onChange={this.handleGenreChange.bind(this)}/>
                </div>
                <div className="hw-form__submit-container">
-                 <div className="hw-form__drop-files">
-                    <h2 className="hw-form__text">Upload file</h2>
+                 <div className="hw-form__drop-files" draggable="true"
+                 ref={div=>{this.dropzone=div}}>
+                    
                  </div>
-                 <div className="hw-form__droped"></div>
+                 <div className="hw-form__droped">
+                    <img src="" alt="" className="hw-form__dropped-image"
+                    ref={img=>{this.dropped=img}}/>
+                 </div>
                  <div className="hw-form__buttons">
                    <button type="submit" className="hw-form__button hw-form__button--green hw-form__text"
                    disabled = {this.validationForm()}
@@ -124,5 +147,16 @@ const mapDispatchToProps = (dispatch) =>({
 
 export const Form = connect(mapStateToProps, mapDispatchToProps)(FormMovie);
 
+
+function loadInView(file,elem){
+    var fileReader = new FileReader();
+    fileReader.onloadend = ()=>{            
+        elem.src = fileReader.result;
+        
+    }
+    fileReader.readAsDataURL(file);
+}
+
+    
 
 
