@@ -1,0 +1,48 @@
+.hw-ad-search__container{
+    width: 600px;
+    height: 400px;
+    display: flex;
+    position: fixed;
+    background-color: #353336;
+    margin-top: 10px;
+    margin-left: 300px;
+    color: white;    
+}
+
+.hw-ad-search__input-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.hw-ad-search__item{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.hw-ad-search__item--margin-top{
+    margin-top: 110px;
+}
+
+.hw-prog-bar__outer{
+    height: 20px;
+    width: 120px;
+    background-color: #353336;
+    border: 1px solid white;
+}
+
+.hw-prog-bar__inner{
+    width: 79%;
+    background-color: yellow;
+    height: 100%;
+}
+
+.hw-ad-search__button{
+    height: 60px;
+    width: 200px;
+    background-color: white;
+    font-size: 25px;
+    border-radius: 15px;
+}

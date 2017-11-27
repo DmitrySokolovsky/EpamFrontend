@@ -33,8 +33,7 @@
     min-width: 1030px;
     height: 70px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+
 }
 
 .hw-header__search-icon{

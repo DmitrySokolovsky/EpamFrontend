@@ -6,3 +6,4 @@ export * from "./hw-scrollbar";
 export * from "./hw-textbox";
 export * from "./hw-sidebar";
 export * from './hw-genreslist';
+export * from './hw-advanced-search';

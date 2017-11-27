@@ -15,7 +15,8 @@ import {
     Navigation,
     ScrollBar,
     Poster,
-    Form
+    Form,
+    AdvancedSearch
 } from "../../components";
 
 import { 
@@ -81,20 +82,22 @@ export class MovieViewMDB extends React.Component{
     render(){ 
         return(
             <div className="hw-app__main-container">
+                  <AdvancedSearch/> 
                   <div className="hw-header">
                   <header>
                   <div className="hw-header__container">
                   <div className="hw-header__search-container">
                     <div className="hw-header__search-icon">
                       <i className="fa fa-search hw-search__text--dark"></i>
+                      
                     </div>
                     <TextBox onChange={this.state.onChange.bind(this)}
                     placeholder="...Search"/>
-                  </div>
-                  
+                  </div>                  
                     <Navigation/>                                        
                   </div>
-                  </header>                  
+                  </header>    
+                               
                   </div>
                   
                   <div className="hw-app__movie-container">
