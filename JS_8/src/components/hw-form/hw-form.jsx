@@ -19,7 +19,6 @@ class FormMovie extends Component{
     constructor (props){
         super(props); 
         this.validationForm = this.validationForm.bind(this);
-        this.service = new GenresService(); 
         this.genre_ids = [];     
         this.dataArray = [];
         this.state = {

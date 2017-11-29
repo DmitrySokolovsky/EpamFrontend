@@ -54,7 +54,6 @@ export function advancedSearchReducer(state = initialState, action){
             }
 
         case TITLE_SEARCH_CHANGE:
-        console.log(state.titleSearch);
             return {
                 ...state,
                 titleSearch: action.payload

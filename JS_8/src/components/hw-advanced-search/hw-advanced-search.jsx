@@ -53,6 +53,13 @@ export class AdvancedSearchMDB extends Component{
         console.log(this.props.genresSearch);        
     }
 
+    onButtonClick(){
+        if(this.props.onClick){
+            this.props.onClick();
+        }
+        this.props.toggleSearch();
+    }
+
     render(){
         return (
             <div className={this.props.isSearchOpen?this.showClass:this.hiddenClass}>
@@ -94,7 +101,7 @@ export class AdvancedSearchMDB extends Component{
                     </div>
                     <div className="hw-ad-search__item">
                         <button className="hw-ad-search__button"
-                        onClick={this.props.toggleSearch.bind(this)}>
+                        onClick={this.onButtonClick.bind(this)}>
                             Search
                         </button>
                     </div>

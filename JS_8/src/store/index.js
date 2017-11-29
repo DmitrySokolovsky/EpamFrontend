@@ -7,6 +7,7 @@ import tvshowRefresh from "./middleware/addtvshow.middlewear";
 import genresLoad from './middleware/genres.middlewear';
 import operationsWithMyLibMiddlewear from './middleware/my-lib.middlewear';
 import initMyLibMiddlewear from './middleware/initMyLib.middlewear';
+import adSearchMiddlewear from './middleware/ad-search-middlewear';
 
 export const appStore = createStore(
     appReducers,
@@ -17,7 +18,8 @@ export const appStore = createStore(
         tvshowRefresh,
         genresLoad,
         initMyLibMiddlewear,
-        operationsWithMyLibMiddlewear
+        operationsWithMyLibMiddlewear,
+        adSearchMiddlewear
     )
 );
 

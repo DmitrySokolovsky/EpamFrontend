@@ -25,7 +25,8 @@ import {
     addUserMovie,
     addMovieToMyLib,
     removeMovieFromMyLib,
-    toggleSearch
+    toggleSearch,
+    applyMovieSearchConfig
  } from "../../store/actions"; 
 
 import "./hw-movie.view.css";
@@ -80,16 +81,16 @@ export class MovieViewMDB extends React.Component{
         
     }
 
-   componentWillMount(){
-       var arr = [1,2,3];
-       var brr = 
-       console.log(brr);
-   }
+    applyMovieSearchConfig(){
+        this.props.applyMovieSearchConfig();
+    }
 
     render(){ 
         return(
             <div className="hw-app__main-container">
-                  <AdvancedSearch/> 
+                  <AdvancedSearch
+                  onClick = {this.applyMovieSearchConfig.bind(this)}
+                  /> 
                   <div className="hw-header">
                   <header>
                   <div className="hw-header__container">
@@ -119,23 +120,7 @@ export class MovieViewMDB extends React.Component{
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
                         })
-                        .filter((el)=>{
-                            if(!this.props.searchState.genresSearch[0]){
-                                return true;
-                            }
-                            let stateArrGen = this.props.searchState.genresSearch.map((v)=> {return +v});
-                            
-                            let x = [];
-                            //return !el.genre_ids.indexOf([+this.props.searchState.genresSearch[0],+this.props.searchState.genresSearch[1]]);  
-                            for(let i =0;i<stateArrGen.length;i++){
-                               if(el.genre_ids.indexOf(stateArrGen[i]) !==-1) x.push('1');
-                               else x.push('');
-                            }
-                            for(let j = 0; j<x.length;j++){
-                                if(x[j] == '') return false;
-                            }
-                            return true;
-                        })
+                       
                         .map((item,index)=>{
                             return ( 
                                 <Poster
@@ -182,6 +167,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     toggleSearch: () => {
         dispatch(toggleSearch());
+    },
+    applyMovieSearchConfig: () => {
+        dispatch(applyMovieSearchConfig());
     }
 });
 

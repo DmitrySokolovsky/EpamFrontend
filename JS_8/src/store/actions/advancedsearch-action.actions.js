@@ -7,12 +7,18 @@ import {
     TITLE_SEARCH_CHANGE,
     OVERVIEW_SEARCH_CHANGE,
     SAVE_SEARCH_CONFIG,
-    APPLY_SEARCH_CONFIG
+    APPLY_MOVIE_SEARCH_CONFIG
 } from './advancedsearch-action.types';
 
 export function toggleSearch() {
     return {
         type: TOGGLE_SEARCH
+    }
+}
+
+export function applyMovieSearchConfig(){
+    return {
+        type: APPLY_MOVIE_SEARCH_CONFIG
     }
 }
 
