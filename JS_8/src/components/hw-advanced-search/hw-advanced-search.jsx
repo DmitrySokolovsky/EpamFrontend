@@ -9,14 +9,14 @@ import {
 } from "../../components";
 
 import {
-    toggleSearch,
-    changeGenre,
-    changeAdult,
-    changeVote,
-    changeTitle,
-    changeOverview,
-    saveSearchConfig,
-    removeGenre
+    toggleMovieSearch,
+    changeMovieGenre,
+    changeMovieAdult,
+    changeMovieVote,
+    changeMovieTitle,
+    changeMovieOverview,
+    saveMovieSearchConfig,
+    removeMovieGenre
 } from '../../store/actions';
 
 export class AdvancedSearchMDB extends Component{
@@ -27,37 +27,58 @@ export class AdvancedSearchMDB extends Component{
     }
 
     onOverviewChange(value){
-        this.props.changeOverview(value);
+        if(this.props.searchType==='movie'){
+            this.props.changeMovieOverview(value);
+        } else {
+
+        }        
     }
 
-    onAduktChecked(){
-        if(this.inputAdult.checked){
-            this.props.changeAdult("");
-        }
-        else{
-            this.props.changeAdult("1");
+    onAdultChecked(){
+        if(this.props.searchType==='movie') {
+            if(!this.inputAdult.checked){
+                console.log('121132132')
+                this.props.changeMovieAdult("");
+            }
+            else{
+                this.props.changeMovieAdult("1");
+            }
         }
     }
 
     onTitleChange(value){
-        this.props.changeTitle(value);
+        if(this.props.searchType==='movie'){
+            this.props.changeMovieTitle(value);
+        } else {
+
+        }
     }
     
     handleGenreChange(item){
-        this.props.changeGenre(item);
-        console.log(this.props.genresSearch);
+        if(this.props.searchType==='movie'){
+            this.props.changeMovieGenre(item);
+        } else {
+
+        }        
     }
 
     onRemoveChange(item){
-        this.props.removeGenre(item);
-        console.log(this.props.genresSearch);        
+        if(this.props.searchType==='movie'){
+            this.props.removeMovieGenre(item); 
+        } else {
+
+        }              
     }
 
-    onButtonClick(){
-        if(this.props.onClick){
-            this.props.onClick();
-        }
-        this.props.toggleSearch();
+    onButtonClick(){       
+        if(this.props.searchType==='movie'){
+            if(this.props.onClick){
+                this.props.onClick();
+            }
+            this.props.toggleMovieSearch();
+        } else {
+
+        }     
     }
 
     render(){
@@ -86,7 +107,7 @@ export class AdvancedSearchMDB extends Component{
                     <div className="hw-ad-search__item">
                         <input type="checkbox" name="hw-adult" id=""
                         ref={(input)=>{this.inputAdult = input;}}
-                        onChange={this.onAduktChecked.bind(this)}/>
+                        onChange={this.onAdultChecked.bind(this)}/>
                         <label htmlFor="">Adult</label>
                     </div>
                     <div className="hw-ad-search__item">
@@ -112,29 +133,29 @@ export class AdvancedSearchMDB extends Component{
     }
 }
 const mapStateToProps = (state) => {
-    let isSearchOpen = state.adSearch.isSearchOpen;
-    let genresSearch = state.adSearch.genresSearch;
-    let adultSearch = state.adSearch.adultSearch;
-    let voteSearch = state.adSearch.voteSearch;
-    let titleSearch = state.adSearch.titleSearch;
-    let overviewSearch = state.adSearch.overviewSearch;
+    let isMovieSearchOpen = state.adMovieSearch.isSearchOpen;
+    let genresMovieSearch = state.adMovieSearch.genresSearch;
+    let adultMovieSearch = state.adMovieSearch.adultSearch;
+    let voteMovieSearch = state.adMovieSearch.voteSearch;
+    let titleMovieSearch = state.adMovieSearch.titleSearch;
+    let overviewMovieSearch = state.adMovieSearch.overviewSearch;
     return {
-        isSearchOpen,
-        genresSearch,
-        voteSearch,
-        adultSearch,
-        titleSearch,
-        overviewSearch
+        isMovieSearchOpen,
+        genresMovieSearch,
+        adultMovieSearch,
+        voteMovieSearch,
+        titleMovieSearch,
+        overviewMovieSearch
     };
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    changeGenre:(item) => dispatch(changeGenre(item)),
-    removeGenre: (item) => dispatch(removeGenre(item)),
-    changeTitle: (title) => dispatch(changeTitle(title)),
-    changeOverview: (overview) => dispatch(changeOverview(overview)),
-    changeAdult: (value) => dispatch(changeAdult(value)),
-    toggleSearch: () => dispatch(toggleSearch())
+    changeMovieGenre:(item) => dispatch(changeMovieGenre(item)),
+    removeMovieGenre: (item) => dispatch(removeMovieGenre(item)),
+    changeMovieTitle: (title) => dispatch(changeMovieTitle(title)),
+    changeMovieOverview: (overview) => dispatch(changeMovieOverview(overview)),
+    changeMovieAdult: (value) => dispatch(changeMovieAdult(value)),
+    toggleMovieSearch: () => dispatch(toggleMovieSearch())
 });
 
 export const AdvancedSearch = connect(mapStateToProps, mapDispatchToProps)(AdvancedSearchMDB);

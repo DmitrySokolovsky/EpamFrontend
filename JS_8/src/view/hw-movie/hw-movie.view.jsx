@@ -25,7 +25,7 @@ import {
     addUserMovie,
     addMovieToMyLib,
     removeMovieFromMyLib,
-    toggleSearch,
+    toggleMovieSearch,
     applyMovieSearchConfig
  } from "../../store/actions"; 
 
@@ -90,6 +90,8 @@ export class MovieViewMDB extends React.Component{
             <div className="hw-app__main-container">
                   <AdvancedSearch
                   onClick = {this.applyMovieSearchConfig.bind(this)}
+                  isSearchOpen={this.props.isSearchOpen}
+                  searchType = 'movie'
                   /> 
                   <div className="hw-header">
                   <header>
@@ -145,10 +147,10 @@ export class MovieViewMDB extends React.Component{
 
 const mapStateToProps = (state) =>{
     var movies = state.init.movies;
-    var searchState = state.adSearch;
+    var isSearchOpen = state.adMovieSearch.isMovieSearchOpen;
     return{
         movies,
-        searchState
+        isSearchOpen
     };
 };
 
@@ -166,7 +168,7 @@ const mapDispatchToProps = (dispatch) =>({
         dispatch(initMovieData());
     },
     toggleSearch: () => {
-        dispatch(toggleSearch());
+        dispatch(toggleMovieSearch());
     },
     applyMovieSearchConfig: () => {
         dispatch(applyMovieSearchConfig());

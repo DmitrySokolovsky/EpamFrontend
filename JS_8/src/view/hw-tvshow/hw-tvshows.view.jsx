@@ -15,7 +15,8 @@ import {
     Navigation,
     ScrollBar,
     Poster,
-    Form
+    Form,
+    AdvancedSearch
 } from "../../components";
 
 import {
@@ -23,7 +24,9 @@ import {
     initTvShowData,
     addUserTvShow,
     addShowToMyLib,
-    removeShowFromMyLib
+    removeShowFromMyLib,
+    applyShowSearchConfig,
+    toggleSearch
 } from "../../store/actions";
 
 import "./hw-tvshows.view.css";
@@ -78,14 +81,22 @@ class TvShowViewMDB extends React.Component{
         
     }
 
+    applyShowSearchConfig(){
+        this.props.applyShowSearchConfig();
+    }
+
     render(){
         return(
             <div className="hw-app__main-container">
+                  <AdvancedSearch
+                  onClick = {this.applyShowSearchConfig.bind(this)}
+                  />
                   <div className="hw-header">
                   <header>
                   <div className="hw-header__container">
                   <div className="hw-header__search-container">
-                    <div className="hw-header__search-icon">
+                    <div className="hw-header__search-icon"
+                     onClick={this.props.toggleSearch.bind(this)}>
                       <i className="fa fa-search hw-search__text--dark"></i>
                     </div>
                     <TextBox onChange={this.state.onChange.bind(this)}
@@ -142,6 +153,12 @@ const mapDispatchToProps = (dispatch) =>({
     },
     removeFromLib: (item) => {
         dispatch(removeShowFromMyLib(item));
+    },
+    applyShowSearchConfig:() => {
+        dispatch(applyShowSearchConfig());
+    },
+    toggleSearch:() => {
+        dispatch(toggleSearch());
     }
 });
 
