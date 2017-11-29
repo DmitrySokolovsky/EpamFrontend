@@ -16,7 +16,7 @@ export function toggleSearch() {
 
 export function changeGenre(payload) {
     return {
-        type: TOGGLE_SEARCH,
+        type: GENRE_SEARCH_CHANGE,
         payload
     }
 }

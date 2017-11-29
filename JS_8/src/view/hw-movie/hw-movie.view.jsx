@@ -25,6 +25,7 @@ import {
     addUserMovie,
     addMovieToMyLib,
     removeMovieFromMyLib,
+    toggleSearch
  } from "../../store/actions"; 
 
 import "./hw-movie.view.css";
@@ -79,6 +80,12 @@ export class MovieViewMDB extends React.Component{
         
     }
 
+   componentWillMount(){
+       var arr = [1,2,3];
+       var brr = 
+       console.log(brr);
+   }
+
     render(){ 
         return(
             <div className="hw-app__main-container">
@@ -87,7 +94,8 @@ export class MovieViewMDB extends React.Component{
                   <header>
                   <div className="hw-header__container">
                   <div className="hw-header__search-container">
-                    <div className="hw-header__search-icon">
+                    <div className="hw-header__search-icon"
+                    onClick={this.props.toggleSearch.bind(this)}>
                       <i className="fa fa-search hw-search__text--dark"></i>
                       
                     </div>
@@ -107,8 +115,27 @@ export class MovieViewMDB extends React.Component{
                     className="hw-app__poster-container">
                     <Form addItem={this.props.addUserMovie}/>
                     {this.props.movies
+                        
                         .filter((el)=>{
                             return el.name.indexOf(this.state.textValue)!==-1;
+                        })
+                        .filter((el)=>{
+                            if(!this.props.searchState.genresSearch[0]){
+                                return true;
+                            }
+                            let stateArrGen = this.props.searchState.genresSearch.map((v)=> {return +v});
+                            
+                            let x = [];
+                            //return !el.genre_ids.indexOf([+this.props.searchState.genresSearch[0],+this.props.searchState.genresSearch[1]]);  
+                            for(let i =0;i<stateArrGen.length;i++){
+                               if(el.genre_ids.indexOf(stateArrGen[i]) !==-1) x.push('1');
+                               else x.push('');
+                            }
+                            console.log(x);
+                            for(let j = 0; j<x.length;j++){
+                                if(x[j] == '') return false;
+                            }
+                            return true;
                         })
                         .map((item,index)=>{
                             return ( 
@@ -134,8 +161,10 @@ export class MovieViewMDB extends React.Component{
 
 const mapStateToProps = (state) =>{
     var movies = state.init.movies;
+    var searchState = state.adSearch;
     return{
-        movies
+        movies,
+        searchState
     };
 };
 
@@ -151,6 +180,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     initMovies:()=> {
         dispatch(initMovieData());
+    },
+    toggleSearch: () => {
+        dispatch(toggleSearch());
     }
 });
 

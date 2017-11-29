@@ -10,9 +10,9 @@ import {
 
 const initialState = {
     state: 'INITIAL',
-    isSearchOpen: false,
+    isSearchOpen: true,
     genresSearch: [],
-    adultSearch: false,
+    adultSearch: '',
     voteSearch: 0,
     titleSearch: '',
     overviewSearch: ''
@@ -27,9 +27,10 @@ export function advancedSearchReducer(state = initialState, action){
             };
         
         case GENRE_SEARCH_CHANGE:
+            console.log(state.genresSearch);
             return {
                 ...state,
-                genresSearch: [...genresSearch, action.payload]
+                genresSearch: [...state.genresSearch, action.payload]
             }
 
         case ADULT_SEARCH_CHANGE:
@@ -45,16 +46,20 @@ export function advancedSearchReducer(state = initialState, action){
             }
 
         case TITLE_SEARCH_CHANGE:
+        console.log(state.titleSearch);
             return {
                 ...state,
                 titleSearch: action.payload
             }
 
          case OVERVIEW_SEARCH_CHANGE:
+         console.log(state.overviewSearch);
             return {
                 ...state,
                 overviewSearch: action.payload
             }
-        
+
+        default :
+            return state;        
     }
 }

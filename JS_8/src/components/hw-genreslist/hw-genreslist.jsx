@@ -14,6 +14,7 @@ export class GenresListMDB extends Component {
 
   handleGenreChange(event) {
     if (this.props.onChange) {
+      console.log(typeof(event.target.name));
       this.props.onChange(event.target.name);
     }
   }

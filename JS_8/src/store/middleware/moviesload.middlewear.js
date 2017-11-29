@@ -16,6 +16,7 @@ const movieLoad = store => next => action =>{
         if(!moviesLS){
             dataService.getData(apiUrl.movieUrl).then((result)=>{       
                 let arr = JSON.parse(result).results;
+                console.log(arr);
                 let movies = arr.map((item)=>{
                     return new MovieEntity(item);
                 });
