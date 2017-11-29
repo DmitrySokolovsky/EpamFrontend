@@ -2,10 +2,12 @@ import {
     TOGGLE_SEARCH,
     GENRE_SEARCH_CHANGE,
     ADULT_SEARCH_CHANGE,
+    REMOVE_GENRE_SEARCH_CHANGE,
     VOTE_SEARCH_CHANGE,
     TITLE_SEARCH_CHANGE,
     OVERVIEW_SEARCH_CHANGE,
-    SAVE_SEARCH_CONFIG
+    SAVE_SEARCH_CONFIG,
+    APPLY_SEARCH_CONFIG
 } from './advancedsearch-action.types';
 
 export function toggleSearch() {
@@ -17,6 +19,13 @@ export function toggleSearch() {
 export function changeGenre(payload) {
     return {
         type: GENRE_SEARCH_CHANGE,
+        payload
+    }
+}
+
+export function removeGenre(payload){
+    return {
+        type: REMOVE_GENRE_SEARCH_CHANGE,
         payload
     }
 }

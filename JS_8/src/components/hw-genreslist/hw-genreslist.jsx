@@ -13,11 +13,13 @@ export class GenresListMDB extends Component {
   }
 
   handleGenreChange(event) {
-    if (this.props.onChange) {
-      console.log(typeof(event.target.name));
-      this.props.onChange(event.target.name);
+    if (this.props.onChange&&this.props.onRemoveChange) {
+      if(event.target.checked) this.props.onChange(event.target.name);
+      else this.props.onRemoveChange(event.target.name);
     }
   }
+
+
 
   render() {
     return (

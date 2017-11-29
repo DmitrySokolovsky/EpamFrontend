@@ -131,7 +131,6 @@ export class MovieViewMDB extends React.Component{
                                if(el.genre_ids.indexOf(stateArrGen[i]) !==-1) x.push('1');
                                else x.push('');
                             }
-                            console.log(x);
                             for(let j = 0; j<x.length;j++){
                                 if(x[j] == '') return false;
                             }

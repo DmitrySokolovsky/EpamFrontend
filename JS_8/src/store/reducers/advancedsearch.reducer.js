@@ -5,7 +5,8 @@ import {
     VOTE_SEARCH_CHANGE,
     TITLE_SEARCH_CHANGE,
     OVERVIEW_SEARCH_CHANGE,
-    SAVE_SEARCH_CONFIG
+    SAVE_SEARCH_CONFIG,
+    REMOVE_GENRE_SEARCH_CHANGE,
 } from '../actions';
 
 const initialState = {
@@ -31,6 +32,13 @@ export function advancedSearchReducer(state = initialState, action){
             return {
                 ...state,
                 genresSearch: [...state.genresSearch, action.payload]
+            }
+
+        case REMOVE_GENRE_SEARCH_CHANGE:
+            let newValues = state.genresSearch.filter(v => v !== action.payload);
+            return {
+                ...state,
+                genresSearch: [...newValues]
             }
 
         case ADULT_SEARCH_CHANGE:

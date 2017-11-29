@@ -15,7 +15,8 @@ import {
     changeVote,
     changeTitle,
     changeOverview,
-    saveSearchConfig
+    saveSearchConfig,
+    removeGenre
 } from '../../store/actions';
 
 export class AdvancedSearchMDB extends Component{
@@ -44,6 +45,12 @@ export class AdvancedSearchMDB extends Component{
     
     handleGenreChange(item){
         this.props.changeGenre(item);
+        console.log(this.props.genresSearch);
+    }
+
+    onRemoveChange(item){
+        this.props.removeGenre(item);
+        console.log(this.props.genresSearch);        
     }
 
     render(){
@@ -64,7 +71,8 @@ export class AdvancedSearchMDB extends Component{
 
                     <div className="hw-ad-search__item">
                         Genres
-                        <GenresList onChange={this.handleGenreChange.bind(this)}/>
+                        <GenresList onChange={this.handleGenreChange.bind(this)}
+                        onRemoveChange={this.onRemoveChange.bind(this)}/>
                     </div>
                 </div> 
                 <div className="hw-ad-search__input-container">
@@ -115,6 +123,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     changeGenre:(item) => dispatch(changeGenre(item)),
+    removeGenre: (item) => dispatch(removeGenre(item)),
     changeTitle: (title) => dispatch(changeTitle(title)),
     changeOverview: (overview) => dispatch(changeOverview(overview)),
     changeAdult: (value) => dispatch(changeAdult(value)),
