@@ -12,7 +12,7 @@ import {
 
 const initialState = {
     state: 'INITIAL',
-    isMovieSearchOpen: true,
+    isMovieSearchOpen: false,
     genresMovieSearch: [],
     adultMovieSearch: '',
     voteMovieSearch: 0,
