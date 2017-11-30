@@ -1,6 +1,7 @@
 import { 
     MOVIE_DATA_INIT, 
-    GET_MOVIE_DATA
+    GET_MOVIE_DATA,
+    applyMovieSearchConfig
 } from "../actions";
 
 import { DataServise } from "../../services/data-service";
@@ -39,6 +40,7 @@ const movieLoad = store => next => action =>{
         } else {
             let moviesLS = localStorage.getItem('movies');
             let movies = JSON.parse(moviesLS);
+            
             store.dispatch({
                 type: GET_MOVIE_DATA,
                 payload: movies

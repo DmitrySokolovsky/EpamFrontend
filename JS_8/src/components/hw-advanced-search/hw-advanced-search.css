@@ -24,7 +24,7 @@
 }
 
 .hw-ad-search__item--margin-top{
-    margin-top: 110px;
+    margin-top: 80px;
 }
 
 .hw-prog-bar__outer{
@@ -46,6 +46,13 @@
     background-color: white;
     font-size: 25px;
     border-radius: 15px;
+    background-color: rgb(56, 184, 56)
+}
+
+.hw-ad-search__button--thin{
+    height: 40px;
+    width: 200px;
+    background-color: white;
 }
 
 .hw-ad-search--hide{

@@ -29,3 +29,42 @@ export function contains(where,what) {
       }
    return true;
 }
+
+export function searcher(where, config, itemsType) {
+    let genresForSearch;    
+    let titleForSearch;
+    let descriptionForSearch;
+    let adultForSearch;
+
+    if(itemsType==='movie'){
+        genresForSearch = config.genresMovieSearch;    
+        titleForSearch = config.titleMovieSearch;
+        descriptionForSearch = config.overviewMovieSearch;
+        adultForSearch = config.adultMovieSearch;
+    }
+
+    if(itemsType==='show'){
+        genresForSearch = config.genresShowSearch;    
+        titleForSearch = config.titleShowSearch;
+        descriptionForSearch = config.overviewShowSearch;
+        adultForSearch = config.adultShowSearch;
+    }    
+    
+    let searched = where.filter((item)=>{
+        return contains(item.genre_ids, genresForSearch);
+    })
+    .filter((item) => {
+        console.log(item);
+        return item.name.indexOf(titleForSearch)!==-1;
+    })
+    .filter((item) => {
+        console.log(item);
+        return item.description.indexOf(descriptionForSearch)!==-1;
+    })
+    .filter((item) => {
+        console.log(item);
+        return item.adult == adultForSearch;
+    });
+
+    return searched;
+}

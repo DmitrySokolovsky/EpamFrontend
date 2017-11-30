@@ -4,7 +4,11 @@ import {
      ADD_USER_MOVIE,
      MOVIE_ADDED_TO_LIB,
      MOVIE_REMOVED_FROM_LIB
-    } from "../actions"
+} from "../actions";
+
+import {
+    searcher
+} from '../../services/genresFilter.service';
 
 const initialState = {
     state: 'INITIAL',
@@ -12,12 +16,23 @@ const initialState = {
 }
 
 export function initMoviesAppReducer(state = initialState, action){
+    
+
     switch (action.type){
         
         case GET_MOVIE_DATA:
+            // checking for config in sessionStorage
+            let movieConfigStr = sessionStorage.getItem('movieSearchConfig');
+            let data = action.payload;
+            let config;
+            if(movieConfigStr){
+                config = JSON.parse(movieConfigStr);
+                data = searcher(action.payload, config, 'movie');
+            }   
+
             return {
                 ...state,
-                movies: action.payload
+                movies: data
             }
 
         case ADD_USER_MOVIE:

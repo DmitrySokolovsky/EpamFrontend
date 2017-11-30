@@ -17,6 +17,7 @@ import {
     changeMovieOverview,
     saveMovieSearchConfig,
     removeMovieGenre,
+    initMovieData,
 
     toggleShowSearch,
     changeShowGenre,
@@ -25,7 +26,8 @@ import {
     changeShowTitle,
     changeShowOverview,
     saveShowSearchConfig,
-    removeShowGenre
+    removeShowGenre,
+    initTvShowData
 } from '../../store/actions';
 
 export class AdvancedSearchMDB extends Component{
@@ -101,6 +103,26 @@ export class AdvancedSearchMDB extends Component{
         }     
     }
 
+    onClickReset(){
+        if(this.props.searchType==='movie'){
+            this.props.initMovieData();
+            this.props.toggleMovieSearch();
+        }
+        else {
+            this.props.initTvShowData();
+            this.props.toggleShowSearch();
+        }
+    }
+
+    onCheckSaveConfig(){
+        console.log(this.configSaved.checked);
+        if(this.props.searchType==='movie'){
+            if(this.configSaved.checked){
+                this.props.saveMovieSearchConfig();                
+            }
+        }
+    }
+
     render(){
         return (
             <div className={this.props.isSearchOpen?this.showClass:this.hiddenClass}>
@@ -137,13 +159,21 @@ export class AdvancedSearchMDB extends Component{
                         </div>
                     </div>
                     <div className="hw-ad-search__item hw-ad-search__item--margin-top">
-                        <input type="checkbox" name="" id=""/>
+                        <input type="checkbox" name="" id=""
+                        ref={input=> this.configSaved = input}
+                        onChange={this.onCheckSaveConfig.bind(this)}/>
                         <label htmlFor="">Save config</label>
                     </div>
                     <div className="hw-ad-search__item">
                         <button className="hw-ad-search__button"
                         onClick={this.onButtonClick.bind(this)}>
                             Search
+                        </button>
+                    </div>
+                    <div className="hw-ad-search__item">
+                        <button className="hw-ad-search__button hw-ad-search__button--thin"
+                        onClick={this.onClickReset.bind(this)}>
+                            Reset
                         </button>
                     </div>
                 </div>              
@@ -176,6 +206,8 @@ const mapDispatchToProps = (dispatch) => ({
     changeMovieOverview: (overview) => dispatch(changeMovieOverview(overview)),
     changeMovieAdult: (value) => dispatch(changeMovieAdult(value)),
     toggleMovieSearch: () => dispatch(toggleMovieSearch()),
+    initMovieData: () => dispatch(initMovieData()),
+    saveMovieSearchConfig: ()=> dispatch(saveMovieSearchConfig()),
     
     changeShowGenre:(item) => dispatch(changeShowGenre(item)),
     removeShowGenre: (item) => dispatch(removeShowGenre(item)),
@@ -183,6 +215,7 @@ const mapDispatchToProps = (dispatch) => ({
     changeShowOverview: (overview) => dispatch(changeShowOverview(overview)),
     changeShowAdult: (value) => dispatch(changeShowAdult(value)),
     toggleShowSearch: () => dispatch(toggleShowSearch()),
+    initTvShowData: () => dispatch(initTvShowData())
 });
 
 export const AdvancedSearch = connect(mapStateToProps, mapDispatchToProps)(AdvancedSearchMDB);
