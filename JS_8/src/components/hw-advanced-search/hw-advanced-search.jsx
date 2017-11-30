@@ -5,7 +5,8 @@ import './hw-advanced-search.css';
 
 import {
     GenresList,
-    TextBox
+    TextBox,
+    ProgressBar
 } from "../../components";
 
 import {
@@ -38,6 +39,16 @@ export class AdvancedSearchMDB extends Component{
         this.state = {
             isConfigSaved: false
         };
+        this.progressBarInnerStyleConfig = {
+            width: '10%',
+            backgroundColor: 'red'
+        }
+
+        this.progressBarOuterStyleConfig = {
+            height: '25px',
+            width: '135px',
+            backgroundColor: 'yellow'
+        }
     }
 
     componentDidMount(){
@@ -170,6 +181,15 @@ export class AdvancedSearchMDB extends Component{
         }
     }
 
+    onRangeChange(value){
+        if(this.props.searchType==='movie'){
+            this.props.changeMovieVote(value);
+        };
+        if(this.props.searchType==='show'){
+            this.props.changeShowVote(value);
+        };
+    }
+
     render(){
         return (
             <div className={this.props.isSearchOpen?this.showClass:this.hiddenClass}>
@@ -201,9 +221,9 @@ export class AdvancedSearchMDB extends Component{
                     </div>
                     <div className="hw-ad-search__item">
                         Vote Average
-                        <div className="hw-prog-bar__outer">
-                            <div className="hw-prog-bar__inner"></div>
-                        </div>
+                       <ProgressBar styleConfigInner={this.progressBarInnerStyleConfig}
+                       styleConfigOuter={this.progressBarOuterStyleConfig}
+                       onRangeChange={this.onRangeChange.bind(this)}/>
                     </div>
                     <div className="hw-ad-search__item hw-ad-search__item--margin-top">
                         <input type="checkbox" name="" id=""
@@ -260,6 +280,7 @@ const mapDispatchToProps = (dispatch) => ({
     toggleMovieSearch: () => dispatch(toggleMovieSearch()),
     initMovieData: () => dispatch(initMovieData()),
     saveMovieSearchConfig: ()=> dispatch(saveMovieSearchConfig()),
+    changeMovieVote: (value) => dispatch(changeMovieVote(value)),
     
     changeShowGenre:(item) => dispatch(changeShowGenre(item)),
     removeShowGenre: (item) => dispatch(removeShowGenre(item)),
@@ -268,7 +289,8 @@ const mapDispatchToProps = (dispatch) => ({
     changeShowAdult: (value) => dispatch(changeShowAdult(value)),
     toggleShowSearch: () => dispatch(toggleShowSearch()),
     initTvShowData: () => dispatch(initTvShowData()),
-    saveShowSearchConfig: () => dispatch(saveShowSearchConfig())
+    saveShowSearchConfig: () => dispatch(saveShowSearchConfig()),
+    changeShowVote: (value) => dispatch(changeShowVote(value))
 });
 
 export const AdvancedSearch = connect(mapStateToProps, mapDispatchToProps)(AdvancedSearchMDB);

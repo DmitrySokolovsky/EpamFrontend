@@ -1,0 +1,12 @@
+.hw-progressbar__outer{
+    height: 20px;
+    width: 120px;
+    background-color: #353336;
+    border: 1px solid white;
+}
+
+.hw-progressbar__inner{
+    background-color: yellow;
+    height: 100%;
+    width: 20%;
+}
