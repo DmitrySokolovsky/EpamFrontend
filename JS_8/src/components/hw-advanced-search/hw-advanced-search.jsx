@@ -35,6 +35,33 @@ export class AdvancedSearchMDB extends Component{
         super(props);
         this.showClass = 'hw-ad-search hw-ad-search__container';
         this.hiddenClass = 'hw-ad-search--hide';
+        this.state = {
+            isConfigSaved: false
+        };
+    }
+
+    componentDidMount(){
+        if(this.props.searchType==='movie'){
+            let config = sessionStorage.getItem('movieSearchConfig');
+            if(config){
+                this.configSaved.checked = true;
+                this.setState({isConfigSaved: true});   
+            }
+            else{
+                this.setState({isConfigSaved: false});   
+                this.configSaved.checked = false;
+            }
+        }
+
+        if(this.props.searchType==='show'){
+            let config = sessionStorage.getItem('showSearchConfig');
+            if(config){
+                this.setState({isConfigSaved: true});   
+            }
+            else{
+                this.setState({isConfigSaved: false});   
+            }
+        }        
     }
 
     onOverviewChange(value){
@@ -118,8 +145,28 @@ export class AdvancedSearchMDB extends Component{
         console.log(this.configSaved.checked);
         if(this.props.searchType==='movie'){
             if(this.configSaved.checked){
-                this.props.saveMovieSearchConfig();                
+                this.props.saveMovieSearchConfig();  
+                this.setState({isConfigSaved: true});              
             }
+        }
+        if(this.props.searchType==='show'){
+            if(this.configSaved.checked){
+                this.props.saveShowSearchConfig(); 
+                this.setState({isConfigSaved: true});                
+            }
+        }
+    }
+
+    onRemoveConfigClick(){
+        if(this.props.searchType==='movie'){
+            sessionStorage.removeItem('movieSearchConfig');
+            this.setState({isConfigSaved: false});
+            this.configSaved.checked = false;            
+        }
+        if(this.props.searchType==='show'){
+            sessionStorage.removeItem('showSearchConfig');
+            this.setState({isConfigSaved: false});
+            this.configSaved.checked = false;            
         }
     }
 
@@ -162,7 +209,12 @@ export class AdvancedSearchMDB extends Component{
                         <input type="checkbox" name="" id=""
                         ref={input=> this.configSaved = input}
                         onChange={this.onCheckSaveConfig.bind(this)}/>
-                        <label htmlFor="">Save config</label>
+                        <label htmlFor="">Save config</label>                        
+                        <button className="hw-ad-search__button hw-ad-search__button--thin hw-ad-search__button--small-font"
+                        onClick={this.onRemoveConfigClick.bind(this)}
+                        disabled={!this.state.isConfigSaved}>
+                            Remove saved config
+                        </button>                    
                     </div>
                     <div className="hw-ad-search__item">
                         <button className="hw-ad-search__button"
@@ -215,7 +267,8 @@ const mapDispatchToProps = (dispatch) => ({
     changeShowOverview: (overview) => dispatch(changeShowOverview(overview)),
     changeShowAdult: (value) => dispatch(changeShowAdult(value)),
     toggleShowSearch: () => dispatch(toggleShowSearch()),
-    initTvShowData: () => dispatch(initTvShowData())
+    initTvShowData: () => dispatch(initTvShowData()),
+    saveShowSearchConfig: () => dispatch(saveShowSearchConfig())
 });
 
 export const AdvancedSearch = connect(mapStateToProps, mapDispatchToProps)(AdvancedSearchMDB);

@@ -3,7 +3,8 @@ import {
     GET_MOVIE_DATA,
     SHOW_APPLY_SEARCH_CONFIG,
     GET_TVSHOW_DATA,
-    MOVIE_SAVE_SEARCH_CONFIG
+    MOVIE_SAVE_SEARCH_CONFIG,
+    SHOW_SAVE_SEARCH_CONFIG
 } from '../actions';
 import { contains, searcher } from '../../services/genresFilter.service';
 
@@ -37,6 +38,17 @@ const adSearchMiddlewear = store => next => action => {
         let movieSearchConfig = store.getState().adMovieSearch;
         let movieSearchConfigString = JSON.stringify(movieSearchConfig);
         sessionStorage.setItem('movieSearchConfig', movieSearchConfigString);
+    }
+
+    
+    if(action.type===SHOW_SAVE_SEARCH_CONFIG){
+        let showSearch = sessionStorage.getItem('showSearchConfig');
+        if(showSearch){
+            sessionStorage.removeItem('showSearchConfig');
+        }
+        let showSearchConfig = store.getState().adShowSearch;
+        let showSearchConfigString = JSON.stringify(showSearchConfig);
+        sessionStorage.setItem('showSearchConfig', showSearchConfigString);
     }
 
     return next(action);

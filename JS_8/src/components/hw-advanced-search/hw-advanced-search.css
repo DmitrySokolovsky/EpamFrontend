@@ -58,3 +58,7 @@
 .hw-ad-search--hide{
     display: none;
 }
+
+.hw-ad-search__button--small-font{
+    font-size: 15px;
+}

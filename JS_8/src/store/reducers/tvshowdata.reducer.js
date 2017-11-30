@@ -5,6 +5,8 @@ import {
     TVSHOW_ADDED_TO_LIB,
     TVSHOW_REMOVED_FROM_LIB
 } from "../actions";
+import { searcher } from '../../services/genresFilter.service';
+
 
 const initialState = {
     state: 'INITIAL',
@@ -15,9 +17,17 @@ export function initTvShowAppReducer(state = initialState, action){
     switch (action.type){
         
         case GET_TVSHOW_DATA:
+            let showConfigStr = sessionStorage.getItem('showSearchConfig');
+            let data = action.payload;
+            let config;
+            if(showConfigStr){
+                config = JSON.parse(showConfigStr);
+                data = searcher(action.payload, config, 'show');
+            }
+
             return {
                 ...state,
-                tvshows: action.payload
+                tvshows: data
             }
 
         case ADD_USER_TVSHOW:
