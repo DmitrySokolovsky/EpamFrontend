@@ -3,6 +3,7 @@
     height: 400px;
     display: flex;
     position: fixed;
+    z-index: 2;
     background-color: #353336;
     margin-top: 10px;
     margin-left: 300px;
