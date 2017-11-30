@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import "./hw-mylib-nodata.css";
 
-var sad = require('../../sad.png');
+var sad = require('../../assets/img/sad.png');
 
 export class NoLibraryData extends React.Component{
     constructor(props){
@@ -14,7 +14,7 @@ export class NoLibraryData extends React.Component{
         return (
             <div className="hw-nodata hw-nodata__container">
                 <h1 className="hw-nodata__text">There is no data in your library</h1>
-                <img src={sad} alt="sad"/>
+                <img src='./assets/img/sad.png' alt="sad" className='hw-nodata__img'/>
             </div>
         );
     }

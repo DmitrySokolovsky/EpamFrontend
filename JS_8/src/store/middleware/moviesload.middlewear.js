@@ -40,10 +40,14 @@ const movieLoad = store => next => action =>{
         } else {
             let moviesLS = localStorage.getItem('movies');
             let movies = JSON.parse(moviesLS);
+            let userMoviesLS = localStorage.getItem('userMovies');
+            let userMovies = JSON.parse(userMoviesLS);
+
+            let data = userMovies.concat(movies);
             
             store.dispatch({
                 type: GET_MOVIE_DATA,
-                payload: movies
+                payload: data
             });
         }
     }

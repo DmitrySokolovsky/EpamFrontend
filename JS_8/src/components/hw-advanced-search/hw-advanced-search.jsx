@@ -34,16 +34,21 @@ import {
 export class AdvancedSearchMDB extends Component{
     constructor(props){
         super(props);
+
+        // css classes for hide/show component
         this.showClass = 'hw-ad-search hw-ad-search__container';
         this.hiddenClass = 'hw-ad-search--hide';
         this.state = {
             isConfigSaved: false
         };
+
+        // style config for progress bar
         this.progressBarInnerStyleConfig = {
             width: '10%',
             backgroundColor: 'red'
         }
 
+        // style config for progress bar
         this.progressBarOuterStyleConfig = {
             height: '25px',
             width: '135px',
@@ -51,6 +56,7 @@ export class AdvancedSearchMDB extends Component{
         }
     }
 
+    //close-open if it was closed0opened
     componentDidMount(){
         if(this.props.searchType==='movie'){
             let config = sessionStorage.getItem('movieSearchConfig');
@@ -75,6 +81,7 @@ export class AdvancedSearchMDB extends Component{
         }        
     }
 
+    // gets overview(description) for search
     onOverviewChange(value){
         if(this.props.searchType==='movie'){
             this.props.changeMovieOverview(value);
@@ -83,6 +90,7 @@ export class AdvancedSearchMDB extends Component{
         }        
     }
 
+    // choos adukt/non-adult
     onAdultChecked(){
         if(this.props.searchType==='movie') {
             if(!this.inputAdult.checked){
@@ -103,6 +111,7 @@ export class AdvancedSearchMDB extends Component{
         }
     }
 
+    // get title for search
     onTitleChange(value){
         if(this.props.searchType==='movie'){
             this.props.changeMovieTitle(value);
@@ -111,6 +120,7 @@ export class AdvancedSearchMDB extends Component{
         }
     }
     
+    // choose genre for search
     handleGenreChange(item){
         if(this.props.searchType==='movie'){
             this.props.changeMovieGenre(item);
@@ -119,6 +129,7 @@ export class AdvancedSearchMDB extends Component{
         }        
     }
 
+    // removes genre item from array of genres in config object
     onRemoveChange(item){
         if(this.props.searchType==='movie'){
             this.props.removeMovieGenre(item); 
@@ -127,6 +138,7 @@ export class AdvancedSearchMDB extends Component{
         }              
     }
 
+    // start searching and close component 
     onButtonClick(){       
         if(this.props.searchType==='movie'){
             if(this.props.onClick){
@@ -141,6 +153,7 @@ export class AdvancedSearchMDB extends Component{
         }     
     }
 
+    // resets state of movies/shows to initial state
     onClickReset(){
         if(this.props.searchType==='movie'){
             this.props.initMovieData();
@@ -152,6 +165,7 @@ export class AdvancedSearchMDB extends Component{
         }
     }
 
+    // makes config safe in session storage
     onCheckSaveConfig(){
         console.log(this.configSaved.checked);
         if(this.props.searchType==='movie'){
@@ -168,6 +182,7 @@ export class AdvancedSearchMDB extends Component{
         }
     }
 
+    // removes saved config from local storage
     onRemoveConfigClick(){
         if(this.props.searchType==='movie'){
             sessionStorage.removeItem('movieSearchConfig');
@@ -181,6 +196,7 @@ export class AdvancedSearchMDB extends Component{
         }
     }
 
+    // set vote for search
     onRangeChange(value){
         if(this.props.searchType==='movie'){
             this.props.changeMovieVote(value);

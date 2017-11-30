@@ -39,9 +39,14 @@ const tvShowLoad = store => next => action => {
         } else {
             let tvshowsLS = localStorage.getItem('tvshows');
             let shows = JSON.parse(tvshowsLS);
+            let userTvShowLS = localStorage.getItem('userTvShow');
+            let userTvShow = JSON.parse(userTvShowLS);
+
+            let data = userTvShow.concat(shows);
+
             store.dispatch({
                 type: GET_TVSHOW_DATA,
-                payload: shows
+                payload: data
             });
         }
     }      
