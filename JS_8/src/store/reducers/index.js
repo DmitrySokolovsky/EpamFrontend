@@ -5,6 +5,7 @@ import {initTvShowAppReducer} from "./tvshowdata.reducer";
 import {genresReducer} from './genres.reducer';
 import {addToMyLibReducer} from './mylib.reducer';
 import {advancedSearchMovieReducer} from './advancedsearch-movie.reducer'
+import {advancedSearchShowReducer} from './advancedsearch-show.reducer';
 
 export const appReducers = combineReducers({
     form: formReducer,
@@ -12,5 +13,6 @@ export const appReducers = combineReducers({
     initTv: initTvShowAppReducer,
     genres: genresReducer,
     addToLib: addToMyLibReducer,
-    adMovieSearch: advancedSearchMovieReducer
+    adMovieSearch: advancedSearchMovieReducer,
+    adShowSearch: advancedSearchShowReducer
 });

@@ -26,7 +26,7 @@ import {
     addShowToMyLib,
     removeShowFromMyLib,
     applyShowSearchConfig,
-    toggleSearch
+    toggleShowSearch
 } from "../../store/actions";
 
 import "./hw-tvshows.view.css";
@@ -90,6 +90,8 @@ class TvShowViewMDB extends React.Component{
             <div className="hw-app__main-container">
                   <AdvancedSearch
                   onClick = {this.applyShowSearchConfig.bind(this)}
+                  isSearchOpen={this.props.isSearchOpen}
+                  searchType="show"
                   />
                   <div className="hw-header">
                   <header>
@@ -139,8 +141,10 @@ class TvShowViewMDB extends React.Component{
 
 const mapStateToProps = (state) =>{
     var tvshows = state.initTv.tvshows;
+    var isSearchOpen = state.adShowSearch.isShowSearchOpen;    
     return{
-        tvshows
+        tvshows,
+        isSearchOpen
     };
 };
 
@@ -158,7 +162,7 @@ const mapDispatchToProps = (dispatch) =>({
         dispatch(applyShowSearchConfig());
     },
     toggleSearch:() => {
-        dispatch(toggleSearch());
+        dispatch(toggleShowSearch());
     }
 });
 

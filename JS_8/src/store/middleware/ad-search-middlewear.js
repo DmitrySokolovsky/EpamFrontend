@@ -1,22 +1,21 @@
 import {
     MOVIE_APPLY_SEARCH_CONFIG,
     GET_MOVIE_DATA,
-    APPLY_SHOW_SEARCH_CONFIG,
+    SHOW_APPLY_SEARCH_CONFIG,
     GET_TVSHOW_DATA,
-    RESUME_DEFAULT_SEARCH_CONFIG
 } from '../actions';
 import { contains } from '../../services/genresFilter.service';
 
 
 const adSearchMiddlewear = store => next => action => {
-    if(action.type===APPLY_SHOW_SEARCH_CONFIG) {
+    if(action.type===SHOW_APPLY_SEARCH_CONFIG) {
         
-        let adSearchConfig = store.getState().adSearch;
+        let adSearchConfig = store.getState().adShowSearch;
         let tvshows = store.getState().initTv.tvshows;
-        let genresForSearch = adSearchConfig.genresMovieSearch;
-        let titleForSearch = adSearchConfig.titleMovieSearch;
-        let descriptionForSearch = adSearchConfig.overviewMovieSearch;
-        let adultForSearch = adSearchConfig.adultMovieSearch;
+        let genresForSearch = adSearchConfig.genresShowSearch;
+        let titleForSearch = adSearchConfig.titleShowSearch;
+        let descriptionForSearch = adSearchConfig.overviewShowSearch;
+        let adultForSearch = adSearchConfig.adultShowSearch;
         
         let searchedShows = tvshows.filter((item)=>{
             return contains(item.genre_ids, genresForSearch);

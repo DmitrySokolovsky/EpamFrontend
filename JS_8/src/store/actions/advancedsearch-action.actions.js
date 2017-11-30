@@ -28,7 +28,7 @@ export function toggleMovieSearch() {
 
 export function toggleShowSearch() {
     return {
-        type: MOVIE_TOGGLE_SEARCH
+        type: SHOW_TOGGLE_SEARCH
     }
 }
 

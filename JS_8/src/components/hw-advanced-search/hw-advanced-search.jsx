@@ -16,7 +16,16 @@ import {
     changeMovieTitle,
     changeMovieOverview,
     saveMovieSearchConfig,
-    removeMovieGenre
+    removeMovieGenre,
+
+    toggleShowSearch,
+    changeShowGenre,
+    changeShowAdult,
+    changeShowVote,
+    changeShowTitle,
+    changeShowOverview,
+    saveShowSearchConfig,
+    removeShowGenre
 } from '../../store/actions';
 
 export class AdvancedSearchMDB extends Component{
@@ -30,7 +39,7 @@ export class AdvancedSearchMDB extends Component{
         if(this.props.searchType==='movie'){
             this.props.changeMovieOverview(value);
         } else {
-
+            this.props.changeShowOverview(value);
         }        
     }
 
@@ -43,6 +52,14 @@ export class AdvancedSearchMDB extends Component{
             else{
                 this.props.changeMovieAdult("1");
             }
+        }else{
+            if(!this.inputAdult.checked){
+                console.log('121132132')
+                this.props.changeShowAdult("");
+            }
+            else{
+                this.props.changeShowAdult("1");
+            }
         }
     }
 
@@ -50,7 +67,7 @@ export class AdvancedSearchMDB extends Component{
         if(this.props.searchType==='movie'){
             this.props.changeMovieTitle(value);
         } else {
-
+            this.props.changeShowTitle(value);
         }
     }
     
@@ -58,7 +75,7 @@ export class AdvancedSearchMDB extends Component{
         if(this.props.searchType==='movie'){
             this.props.changeMovieGenre(item);
         } else {
-
+            this.props.changeShowGenre(item);
         }        
     }
 
@@ -66,7 +83,7 @@ export class AdvancedSearchMDB extends Component{
         if(this.props.searchType==='movie'){
             this.props.removeMovieGenre(item); 
         } else {
-
+            this.props.removeShowGenre(item);
         }              
     }
 
@@ -77,7 +94,10 @@ export class AdvancedSearchMDB extends Component{
             }
             this.props.toggleMovieSearch();
         } else {
-
+            if(this.props.onClick){
+                this.props.onClick();
+            }
+            this.props.toggleShowSearch();
         }     
     }
 
@@ -155,7 +175,14 @@ const mapDispatchToProps = (dispatch) => ({
     changeMovieTitle: (title) => dispatch(changeMovieTitle(title)),
     changeMovieOverview: (overview) => dispatch(changeMovieOverview(overview)),
     changeMovieAdult: (value) => dispatch(changeMovieAdult(value)),
-    toggleMovieSearch: () => dispatch(toggleMovieSearch())
+    toggleMovieSearch: () => dispatch(toggleMovieSearch()),
+    
+    changeShowGenre:(item) => dispatch(changeShowGenre(item)),
+    removeShowGenre: (item) => dispatch(removeShowGenre(item)),
+    changeShowTitle: (title) => dispatch(changeShowTitle(title)),
+    changeShowOverview: (overview) => dispatch(changeShowOverview(overview)),
+    changeShowAdult: (value) => dispatch(changeShowAdult(value)),
+    toggleShowSearch: () => dispatch(toggleShowSearch()),
 });
 
 export const AdvancedSearch = connect(mapStateToProps, mapDispatchToProps)(AdvancedSearchMDB);
