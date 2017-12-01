@@ -14,7 +14,14 @@ import {
     ProgressBar
 } from '../../components';
 import {findGenres} from '../../services/genresFilter.service.js';
-import {getSimilarMovies, getSimilarShows} from '../../store/actions';
+import {
+    getSimilarMovies, 
+    getSimilarShows,
+    addShowToMyLib,
+    removeShowFromMyLib,
+    addMovieToMyLib,
+    removeMovieFromMyLib
+} from '../../store/actions';
 
 export class ItemInfoMDB extends Component{
     constructor(props){
@@ -74,6 +81,14 @@ componentDidMount(){
     if(this.state.item.type==='tvshow') this.props.getSimilarShows(this.state.item.id);
 }
 
+addShowToLibrary(item){
+    this.props.addToLibShow(item);
+}
+
+removeShowFromLibrary(item){
+    this.props.removeFromLibShow(item);
+}
+
     render(){
         return (
             <div className="hw-movie-info hw-movie-info__container">
@@ -118,7 +133,8 @@ componentDidMount(){
                                 height='170px'
                                 key = {item.name}
                                 data={item}
-                                >                                
+                                addItemToLibrary={this.addShowToLibrary.bind(this)}
+                                removeItemFromLibrary={this.removeShowFromLibrary.bind(this)}>                                
                                 <div className="hw-poster__title">{item.name}</div>                               
                                 </Poster>
                             )
@@ -130,8 +146,9 @@ componentDidMount(){
                                 height='170px'
                                 key = {item.name}
                                 data={item}
-                                >                                
-                                <div className="hw-poster__title">{item.name}</div>                               
+                                addItemToLibrary={this.addShowToLibrary.bind(this)}
+                                removeItemFromLibrary={this.removeShowFromLibrary.bind(this)}>
+                                <div className="hw-poster__title">{item.name}</div>
                                 </Poster>
                             )
                         })}
@@ -159,7 +176,19 @@ const mapDispatchToProps = (dispatch) => ({
     },
     getSimilarShows: (value) => {
         dispatch(getSimilarShows(value));
-    }
+    },
+    addToLibShow: (item) => {
+        dispatch(addShowToMyLib(item));
+    },
+    removeFromLibShow: (item) => {
+        dispatch(removeShowFromMyLib(item));
+    },
+    addMovieToLib: (item)=>{
+        dispatch(addMovieToMyLib(item));
+    },
+    removeMovieFromLib: (item) =>{
+        dispatch(removeMovieFromMyLib(item));
+    },
 });
 export const ItemInfo = connect(mapStateToProps,mapDispatchToProps)(ItemInfoMDB);
 

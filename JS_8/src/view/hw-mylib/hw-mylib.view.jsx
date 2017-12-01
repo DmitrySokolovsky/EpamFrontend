@@ -120,6 +120,8 @@ export class MyLibraryMDB extends React.Component{
                         .map((item,index)=>{
                             return ( 
                                 <Poster
+                                width='170px'
+                                height='247px'
                                 key = {item.name}
                                 data={item}
                                 removeItemFromLibrary={item.type==='movie'?
