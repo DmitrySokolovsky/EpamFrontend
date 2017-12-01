@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from "react-redux";
-import './hw-movie-info.css';
+import './hw-item-info.css';
 import {
     HashRouter as Router,
     Route,
@@ -14,7 +14,7 @@ import {
 import {findGenres} from '../../services/genresFilter.service.js';
 
 
-export class MovieInfoMDB extends Component{
+export class ItemInfoMDB extends Component{
     constructor(props){
         super(props);   
         this.item = {};  
@@ -41,14 +41,23 @@ componentWillMount(){
 
 componentWillUnmount(){
     sessionStorage.removeItem('currentCard');
+    sessionStorage.removeItem('currentGenresList');
 }
 
 componentDidMount(){    
     let genreCollection = this.props.genres;
     let itemGenres = this.state.item.genre_ids;
-    var currentGenresNames = findGenres(genreCollection, itemGenres);
-    
-    this.setState({itemStringGenres: currentGenresNames})       
+    var currentGenresNames = findGenres(genreCollection, itemGenres);  
+    let genresStr = sessionStorage.getItem('currentGenresList');
+    if(!genresStr) {
+        let currenGenresStr = JSON.stringify(currentGenresNames);
+        sessionStorage.setItem('currentGenresList', currenGenresStr);
+        this.setState({itemStringGenres: currentGenresNames});
+    }
+    else{
+        let currentGenresList = JSON.parse(genresStr);
+        this.setState({itemStringGenres: currentGenresList});
+    }    
 }
 
     render(){
@@ -97,7 +106,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export const MovieInfo = connect(mapStateToProps)(MovieInfoMDB);
+export const ItemInfo = connect(mapStateToProps)(ItemInfoMDB);
 
 function getValue(array, search) {
     var i = array.length;

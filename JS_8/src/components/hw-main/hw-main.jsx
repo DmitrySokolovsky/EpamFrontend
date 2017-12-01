@@ -13,7 +13,7 @@ import {MyLibrary} from "../../view/hw-mylib/hw-mylib.view.jsx";
 import {About} from "../../view/hw-about/hw-about.view.jsx";
 import {
     SideBar,   
-    MovieInfo
+    ItemInfo
 } from "../../components";
 import {
     initMovieData, 
@@ -47,9 +47,9 @@ export class AppMDB extends React.Component{
 
                 <Route exact path="/tvshows"component={TvShowView}/>
 
-                <Route path="/movies/:id" render={(props)=><MovieInfo data={this.props.movies}{...props}/>}/>
+                <Route path="/movies/:id" render={(props)=><ItemInfo data={this.props.movies}{...props}/>}/>
 
-                <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.props.shows}{...props}/>}/>       
+                <Route path="/tvshows/:id" render={(props)=><ItemInfo data={this.props.shows}{...props}/>}/>       
                 
                 <Route path="/mylib" component={MyLibrary}/>
 

@@ -1,5 +1,5 @@
 export * from "./hw-form";
-export * from "./hw-movie-info";
+export * from "./hw-item-info";
 export * from "./hw-navigation";
 export * from "./hw-poster";
 export * from "./hw-scrollbar";

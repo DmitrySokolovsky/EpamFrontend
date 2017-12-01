@@ -28,7 +28,6 @@ import {
     removeShowFromMyLib
  } from "../../store/actions"; 
 
-import {MovieInfo} from "../../components/hw-movie-info/hw-movie-info.jsx";
 import "./hw-mylib.view.css";
 
 export class MyLibraryMDB extends React.Component{
@@ -126,9 +125,9 @@ export class MyLibraryMDB extends React.Component{
                                 removeItemFromLibrary={item.type==='movie'?
                                 this.removeMovieFromLib.bind(this):
                                 this.removeShowFromLib.bind(this)}>
-                                <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>
+                                
                                 <div className="hw-poster__title">{item.name}</div>
-                                </NavLink>
+                               
                                 </Poster>
                             )
                         })}
