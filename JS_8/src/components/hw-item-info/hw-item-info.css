@@ -9,8 +9,8 @@
 }
 
 .hw-movie-info__poster-container{
-    height: 300px;
-    width: 200px;
+    height: 247px;
+    width: 170px;
     background-size: 100% 100%;
     border: 1px solid white;
     margin-left: 60px;
@@ -21,7 +21,6 @@
     width: 450px;
     height: 100px;
     overflow-y: scroll;
-    border: 1px solid white;   
     margin-bottom: 30px;    
 }
 
@@ -43,7 +42,6 @@
     width: 80%;
     height: 200px;
     overflow-x: scroll; 
-    border: 1px solid white;
     float: left;
     display: flex;    
 }

@@ -24,6 +24,7 @@ export class ItemInfoMDB extends Component{
             item: {},
             itemStringGenres: []
         }  
+        this.progressBarInnerStyleConfig = {};
     }
 
 componentWillMount(){
@@ -60,6 +61,15 @@ componentDidMount(){
         this.setState({itemStringGenres: currentGenresList});
     }
     console.log(this.state.item.type);   
+    this.progressBarInnerStyleConfig = {
+        width: '10%',
+        backgroundColor: 'red'
+    }
+
+    this.progressBarInnerStyleConfig = {
+        width: this.state.item.vote*10+'%'
+    };
+
     if(this.state.item.type==='movie') this.props.getSimilarMovies(this.state.item.id);
     if(this.state.item.type==='tvshow') this.props.getSimilarShows(this.state.item.id);
 }
@@ -82,7 +92,8 @@ componentDidMount(){
                             {this.state.item.description}
                         </div> 
                         Vote average: {this.state.item.vote}
-                        <ProgressBar/>                  
+                        <ProgressBar
+                        styleConfigInner={this.progressBarInnerStyleConfig}/>                  
                     </div>
                 </div>
                 <div className="hw-movie-info__genre-container">
