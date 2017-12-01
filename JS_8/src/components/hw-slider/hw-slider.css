@@ -1,0 +1,54 @@
+.hw-slider__container{
+    width: 375px;
+}
+
+.hw-slider__buttons-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hw-slider__picture-item{
+    height: 250px;
+    width: 375px;
+}
+
+.hw-slider__picture-item--min{
+    height: 125px;
+    width: 185px;
+}
+
+.hw-slider__button{
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    height: 20px;
+    width:40px;
+}
+
+.hw-slider__button--next{
+    color: white;
+    border-radius: 3px 0 0 3px;
+}
+
+.hw-slider__button:hover{
+    background-color: white;
+    color: black;
+}
+
+.fade{
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@-webkit-keyframes fade{
+    from{opacity: 0}
+    to{opacity: 4}
+}
+@keyframes fade{
+    from{opacity: 0}
+    to{opacity: 4}
+}

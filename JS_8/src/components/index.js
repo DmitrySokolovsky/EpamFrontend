@@ -8,3 +8,4 @@ export * from "./hw-sidebar";
 export * from './hw-genreslist';
 export * from './hw-advanced-search';
 export * from './hw-progressbar';
+export * from './hw-slider';

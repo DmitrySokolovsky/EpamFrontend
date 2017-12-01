@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import './hw-about.css';
+import {
+    Slider
+} from '../../components';
 
 export class About extends React.Component {
     constructor(props){
@@ -48,7 +51,9 @@ export class About extends React.Component {
                         <img src="./assets/img/default_poster.png"  className="hw-about__pic" alt="def"/>
                     </div>
                 </div>
-                <div className="hw-about__slider-container"></div>
+                <div className="hw-about__slider-container">
+                    <Slider/>
+                </div>
             </div>
         );
     }
