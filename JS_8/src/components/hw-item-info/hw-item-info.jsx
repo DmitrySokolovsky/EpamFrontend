@@ -9,10 +9,11 @@ import {
   } from 'react-router-dom';
 import {
     Navigation,
-    GenresList
+    GenresList,
+    Poster
 } from '../../components';
 import {findGenres} from '../../services/genresFilter.service.js';
-
+import {getSimilarMovies} from '../../store/actions';
 
 export class ItemInfoMDB extends Component{
     constructor(props){
@@ -35,8 +36,7 @@ componentWillMount(){
     else{
         let card = JSON.parse(cardStr);
         this.setState({ item: card});
-    }
-   
+    }    
 }
 
 componentWillUnmount(){
@@ -44,7 +44,7 @@ componentWillUnmount(){
     sessionStorage.removeItem('currentGenresList');
 }
 
-componentDidMount(){    
+componentDidMount(){  
     let genreCollection = this.props.genres;
     let itemGenres = this.state.item.genre_ids;
     var currentGenresNames = findGenres(genreCollection, itemGenres);  
@@ -57,7 +57,9 @@ componentDidMount(){
     else{
         let currentGenresList = JSON.parse(genresStr);
         this.setState({itemStringGenres: currentGenresList});
-    }    
+    }
+    console.log(this.state.item.type);   
+    if(this.state.item.type==='movie') this.props.getSimilarMovies(this.state.item.id);
 }
 
     render(){
@@ -92,7 +94,18 @@ componentDidMount(){
                 </div>
                 <div className="hw-movie-info__recomindation-container">
                     <h3 className="hw-movie-info__text">We also recommend</h3>
-                    <div className="hw-movie-info__recomindation-list"></div>
+                    <div className="hw-movie-info__recomindation-list">
+                        { this.props.similarMovies.map((item,index)=>{
+                            return ( 
+                                <Poster
+                                key = {item.name}
+                                data={item}
+                                >                                
+                                <div className="hw-poster__title">{item.name}</div>                               
+                                </Poster>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         );
@@ -101,12 +114,17 @@ componentDidMount(){
 
 const mapStateToProps = (state) => {
     var genres = state.genres.genres;
+    var similarMovies = state.init.similarMovies;
     return {
-        genres
+        genres,
+        similarMovies
     };
 };
-
-export const ItemInfo = connect(mapStateToProps)(ItemInfoMDB);
+//dispath state to props
+const mapDispatchToProps = (dispatch) => ({
+    getSimilarMovies: (value) => { dispatch(getSimilarMovies(value)); }
+});
+export const ItemInfo = connect(mapStateToProps,mapDispatchToProps)(ItemInfoMDB);
 
 function getValue(array, search) {
     var i = array.length;

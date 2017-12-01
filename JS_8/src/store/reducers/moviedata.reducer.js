@@ -3,7 +3,8 @@ import {
      GET_MOVIE_DATA,
      ADD_USER_MOVIE,
      MOVIE_ADDED_TO_LIB,
-     MOVIE_REMOVED_FROM_LIB
+     MOVIE_REMOVED_FROM_LIB,
+     GET_SIMILAR_MOVIES_DATA
 } from "../actions";
 
 import {
@@ -12,7 +13,8 @@ import {
 
 const initialState = {
     state: 'INITIAL',
-    movies: []
+    movies: [],
+    similarMovies: []
 }
 
 export function initMoviesAppReducer(state = initialState, action){
@@ -59,6 +61,12 @@ export function initMoviesAppReducer(state = initialState, action){
                 item)
             }
 
+        case GET_SIMILAR_MOVIES_DATA:
+            return {
+                ...state,
+                similarMovies: action.payload
+            }
+            
         default:
             return state;
     }

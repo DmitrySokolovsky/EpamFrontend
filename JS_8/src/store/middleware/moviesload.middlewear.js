@@ -1,7 +1,9 @@
 import { 
     MOVIE_DATA_INIT, 
     GET_MOVIE_DATA,
-    applyMovieSearchConfig
+    applyMovieSearchConfig,
+    GET_SIMILAR_MOVIES,
+    GET_SIMILAR_MOVIES_DATA
 } from "../actions";
 
 import { DataServise } from "../../services/data-service";
@@ -48,6 +50,21 @@ const movieLoad = store => next => action =>{
             console.log(store.getState().init);
         }
     }
+
+    if(action.type === GET_SIMILAR_MOVIES){
+        dataService.getSimilarMovieData(action.payload).then(result=>{
+            let resultArr = JSON.parse(result).results;
+            let similarMovies = resultArr.map((item)=>{
+                return new MovieEntity(item);
+            });
+            store.dispatch({
+                type: GET_SIMILAR_MOVIES_DATA,
+                payload: similarMovies
+            })
+            console.log(similarMovies);
+        });
+    }
+
     return next(action);
 }
 

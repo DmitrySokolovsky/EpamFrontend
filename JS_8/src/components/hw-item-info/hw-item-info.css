@@ -1,5 +1,5 @@
 .hw-movie-info__container{
-    width: 100%;
+    width: 1142.550px;
     background-color: #262127;
 }
 
@@ -39,10 +39,11 @@
 
 .hw-movie-info__recomindation-list{
     width: 80%;
-    height: 150px;
+    height: 280px;
     overflow-x: scroll; 
     border: 1px solid white;
-    
+    float: left;
+    display: flex;    
 }
 
 .hw-movie-info__text{
