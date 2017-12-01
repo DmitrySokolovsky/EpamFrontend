@@ -25,8 +25,22 @@ export class MovieInfoMDB extends Component{
     }
 
 componentWillMount(){
-    var itemCard = getValue(this.props.data, this.props.match.params.id);
-    this.setState({ item: itemCard});
+    let cardStr = sessionStorage.getItem('currentCard');
+    if(!cardStr){
+        var itemCard = getValue(this.props.data, this.props.match.params.id);
+        let itemCardStr = JSON.stringify(itemCard);
+        sessionStorage.setItem('currentCard', itemCardStr);
+        this.setState({ item: itemCard});
+    }
+    else{
+        let card = JSON.parse(cardStr);
+        this.setState({ item: card});
+    }
+   
+}
+
+componentWillUnmount(){
+    sessionStorage.removeItem('currentCard');
 }
 
 componentDidMount(){    
