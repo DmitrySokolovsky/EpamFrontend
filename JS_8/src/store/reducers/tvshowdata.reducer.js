@@ -33,7 +33,7 @@ export function initTvShowAppReducer(state = initialState, action){
         case ADD_USER_TVSHOW:
             return {
                 ...state,
-                tvshows: [...state.tvshows,action.payload]    
+                tvshows: [action.payload, ...state.tvshows]    
             }
 
         case TVSHOW_ADDED_TO_LIB:

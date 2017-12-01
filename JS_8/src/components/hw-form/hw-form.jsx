@@ -19,8 +19,8 @@ class FormMovie extends Component{
     constructor (props){
         super(props); 
         this.validationForm = this.validationForm.bind(this);
-        this.genre_ids = [];     
         this.dataArray = [];
+        this.genre_ids = [];
         this.state = {
             name: '',
             description: '',
@@ -71,7 +71,9 @@ class FormMovie extends Component{
             name: this.state.name,
             description: this.state.description,
             genre_ids: this.genre_ids,
-            poster: this.state.poster
+            poster: this.state.poster,
+            adult: '',
+            vote: 1
         }   
        
         if(this.props.addItem){
@@ -82,6 +84,13 @@ class FormMovie extends Component{
 
     handleGenreChange(item){
         this.genre_ids.push(item);
+        console.log(this.genre_ids);
+    }
+
+    onRemoveGenreChange(item){
+        this.genre_ids = this.genre_ids.filter((i)=>{
+            i.id !== item.id;
+        });
     }
 
     render(){
@@ -105,7 +114,8 @@ class FormMovie extends Component{
                 </div>
                 <div className="hw-form__genre-container">
                   <div className="hw-form__text">Genre</div>
-                  <GenresList onChange={this.handleGenreChange.bind(this)}/>
+                  <GenresList onChange={this.handleGenreChange.bind(this)}
+                  onRemoveChange={this.onRemoveGenreChange.bind(this)}/>
                </div>
                <div className="hw-form__submit-container">
                  <div className="hw-form__drop-files" draggable="true"

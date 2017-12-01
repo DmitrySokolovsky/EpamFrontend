@@ -45,6 +45,7 @@ const movieLoad = store => next => action =>{
                 type: GET_MOVIE_DATA,
                 payload: movies
             });
+            console.log(store.getState().init);
         }
     }
     return next(action);

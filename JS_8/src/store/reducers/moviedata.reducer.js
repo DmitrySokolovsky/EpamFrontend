@@ -38,7 +38,7 @@ export function initMoviesAppReducer(state = initialState, action){
         case ADD_USER_MOVIE:
             return {
                 ...state,
-                movies: [...state.movies,action.payload]    
+                movies: [action.payload, ...state.movies]    
             }
 
         case MOVIE_ADDED_TO_LIB:
