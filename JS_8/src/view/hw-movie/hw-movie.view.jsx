@@ -44,6 +44,7 @@ export class MovieViewMDB extends React.Component{
                 });
             }                        
         };
+
     }
 
     scrollingHandler(){        
@@ -126,8 +127,11 @@ export class MovieViewMDB extends React.Component{
                         .map((item,index)=>{
                             return ( 
                                 <Poster
+                                width='170px'
+                                height='247px'
                                 key = {item.name}
                                 data={item}
+                                style={this.posterStyle}
                                 addItemToLibrary={this.addItemToLibrary.bind(this)}
                                 removeItemFromLibrary={this.removeItemFromLibrary.bind(this)}>
                                 <NavLink to={`/movies/${item.id}`} key={item.name+item.id}>

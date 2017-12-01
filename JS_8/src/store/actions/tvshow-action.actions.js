@@ -1,6 +1,7 @@
 import {
     TVSHOW_DATA_INIT,
-    ADD_USER_TVSHOW
+    ADD_USER_TVSHOW,
+    GET_SIMILAR_SHOWS
 } from "./tvshow-action.types";
 
 export function initTvShowData() {
@@ -14,4 +15,11 @@ export function addUserTvShow(payload) {
         type: ADD_USER_TVSHOW,
         payload
     }
+}
+
+export function getSimilarShows(payload){
+    return {
+        type: GET_SIMILAR_SHOWS,
+        payload
+    }    
 }

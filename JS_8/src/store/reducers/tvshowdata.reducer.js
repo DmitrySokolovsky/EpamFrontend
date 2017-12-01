@@ -3,14 +3,16 @@ import {
     GET_TVSHOW_DATA,
     ADD_USER_TVSHOW,
     TVSHOW_ADDED_TO_LIB,
-    TVSHOW_REMOVED_FROM_LIB
+    TVSHOW_REMOVED_FROM_LIB,
+    GET_SIMILAR_SHOW_DATA
 } from "../actions";
 import { searcher } from '../../services/genresFilter.service';
 
 
 const initialState = {
     state: 'INITIAL',
-    tvshows: []
+    tvshows: [],
+    similarShows: []
 }
 
 export function initTvShowAppReducer(state = initialState, action){
@@ -54,6 +56,12 @@ export function initTvShowAppReducer(state = initialState, action){
                 item)
             }
         
+        case GET_SIMILAR_SHOW_DATA:
+            return {
+                ...state,
+                similarShows: action.payload
+            }
+
         default:
             return state;
     }

@@ -1,6 +1,7 @@
 .hw-movie-info__container{
     width: 1142.550px;
     background-color: #262127;
+    color: white;
 }
 
 .hw-movie-info__description-container{
@@ -8,8 +9,8 @@
 }
 
 .hw-movie-info__poster-container{
-    height: 200px;
-    width: 150px;
+    height: 300px;
+    width: 200px;
     background-size: 100% 100%;
     border: 1px solid white;
     margin-left: 60px;
@@ -20,7 +21,8 @@
     width: 450px;
     height: 100px;
     overflow-y: scroll;
-    border: 1px solid white;    
+    border: 1px solid white;   
+    margin-bottom: 30px;    
 }
 
 .hw-movie-info__info-container{
@@ -39,7 +41,7 @@
 
 .hw-movie-info__recomindation-list{
     width: 80%;
-    height: 280px;
+    height: 200px;
     overflow-x: scroll; 
     border: 1px solid white;
     float: left;

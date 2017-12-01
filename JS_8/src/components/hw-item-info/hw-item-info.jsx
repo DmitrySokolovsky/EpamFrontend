@@ -10,10 +10,11 @@ import {
 import {
     Navigation,
     GenresList,
-    Poster
+    Poster,
+    ProgressBar
 } from '../../components';
 import {findGenres} from '../../services/genresFilter.service.js';
-import {getSimilarMovies} from '../../store/actions';
+import {getSimilarMovies, getSimilarShows} from '../../store/actions';
 
 export class ItemInfoMDB extends Component{
     constructor(props){
@@ -60,6 +61,7 @@ componentDidMount(){
     }
     console.log(this.state.item.type);   
     if(this.state.item.type==='movie') this.props.getSimilarMovies(this.state.item.id);
+    if(this.state.item.type==='tvshow') this.props.getSimilarShows(this.state.item.id);
 }
 
     render(){
@@ -78,7 +80,9 @@ componentDidMount(){
                         <h1 className="hw-movie-info__text">{this.state.item.name}</h1>
                         <div className="hw-movie-info__text hw-movie-info__overview-container">
                             {this.state.item.description}
-                        </div>
+                        </div> 
+                        Vote average: {this.state.item.vote}
+                        <ProgressBar/>                  
                     </div>
                 </div>
                 <div className="hw-movie-info__genre-container">
@@ -95,9 +99,24 @@ componentDidMount(){
                 <div className="hw-movie-info__recomindation-container">
                     <h3 className="hw-movie-info__text">We also recommend</h3>
                     <div className="hw-movie-info__recomindation-list">
-                        { this.props.similarMovies.map((item,index)=>{
+                        { this.state.item.type==='movie'?
+                            this.props.similarMovies.map((item,index)=>{
                             return ( 
                                 <Poster
+                                width='110px'
+                                height='170px'
+                                key = {item.name}
+                                data={item}
+                                >                                
+                                <div className="hw-poster__title">{item.name}</div>                               
+                                </Poster>
+                            )
+                        }):
+                          this.props.similarShows.map((item,index)=>{
+                            return ( 
+                                <Poster
+                                width='110px'
+                                height='170px'
                                 key = {item.name}
                                 data={item}
                                 >                                
@@ -115,14 +134,21 @@ componentDidMount(){
 const mapStateToProps = (state) => {
     var genres = state.genres.genres;
     var similarMovies = state.init.similarMovies;
+    var similarShows = state.initTv.similarShows;
     return {
         genres,
-        similarMovies
+        similarMovies,
+        similarShows
     };
 };
 //dispath state to props
 const mapDispatchToProps = (dispatch) => ({
-    getSimilarMovies: (value) => { dispatch(getSimilarMovies(value)); }
+    getSimilarMovies: (value) => { 
+        dispatch(getSimilarMovies(value)); 
+    },
+    getSimilarShows: (value) => {
+        dispatch(getSimilarShows(value));
+    }
 });
 export const ItemInfo = connect(mapStateToProps,mapDispatchToProps)(ItemInfoMDB);
 

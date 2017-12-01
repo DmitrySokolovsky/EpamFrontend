@@ -122,6 +122,8 @@ class TvShowViewMDB extends React.Component{
                         .map((item,index)=>{
                             return ( 
                                 <Poster 
+                                width='170px'
+                                height='247px'
                                 key = {item.name}
                                 data={item}
                                 addItemToLibrary={this.addItemToLibrary.bind(this)}
