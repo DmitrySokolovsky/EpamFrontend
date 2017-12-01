@@ -1,6 +1,13 @@
 import React,{Component} from 'react';
 import './hw-navigation.css';
 
+import {
+    HashRouter as Router,
+    Route,
+    NavLink,
+    Switch
+} from 'react-router-dom';
+
 import {connect} from "react-redux";
 import { toggleForm } from "../../store/actions"; 
 
@@ -17,7 +24,9 @@ class Nav extends Component{
                 <div className="hw-nav__container">
                 <div className={this.props.hideForm?this.classHiddenItem:this.classNameItem}
                 onClick={this.props.toggleForm}>Add movie</div>
+                <NavLink to="/about" activeClassName="active-link">  
                 <div className={this.props.hideAbout?this.classHiddenItem:this.classNameItem}>About</div>
+                </NavLink>
                 </div>
             </div>
         );

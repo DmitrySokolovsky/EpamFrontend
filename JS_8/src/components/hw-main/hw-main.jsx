@@ -10,6 +10,7 @@ import {
 import {MovieView} from "../../view/hw-movie/hw-movie.view.jsx";
 import {TvShowView} from "../../view/hw-tvshow/hw-tvshows.view.jsx";
 import {MyLibrary} from "../../view/hw-mylib/hw-mylib.view.jsx";
+import {About} from "../../view/hw-about/hw-about.view.jsx";
 import {
     SideBar,   
     MovieInfo
@@ -51,6 +52,8 @@ export class AppMDB extends React.Component{
                 <Route path="/tvshows/:id" render={(props)=><MovieInfo data={this.props.shows}{...props}/>}/>       
                 
                 <Route path="/mylib" component={MyLibrary}/>
+
+                <Route path="/about" component={About}/>
                 
                 </Switch>               
                 </div>
