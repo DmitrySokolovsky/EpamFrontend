@@ -53,3 +53,18 @@
 .hw-side-bar__hide{
     display: none;
 }
+
+.active-link{
+    color: #476280;  
+}
+
+a{
+    display: flex;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+a:active{
+    color : gold;
+}

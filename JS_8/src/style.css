@@ -9,14 +9,7 @@
     font-family: Bradley;
 }
 
-a{
-    display: flex;
-    text-decoration: none;
-}
 
-a:visited{
-    color: white;
-}
 
 #test{
     width: 100%;
@@ -75,9 +68,17 @@ a:visited{
     width: 200px;
 }
 
-a.active-link{
-    color: red;  
+.active-link{
+    color: #476280;  
+}
+
+a{
     display: flex;
+    text-decoration: none;
+    color: white;
     cursor: pointer;
 }
-  
+
+a:active{
+    color : gold;
+}

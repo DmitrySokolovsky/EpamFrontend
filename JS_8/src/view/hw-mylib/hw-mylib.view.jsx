@@ -85,7 +85,7 @@ export class MyLibraryMDB extends React.Component{
 
     render(){ 
         let string = localStorage.getItem("mylib")
-        if(string==="[]"){
+        if(string==="[]"||!string){
             return(
                 <NoLibraryData/>
             );

@@ -24,7 +24,7 @@ class Nav extends Component{
                 <div className="hw-nav__container">
                 <div className={this.props.hideForm?this.classHiddenItem:this.classNameItem}
                 onClick={this.props.toggleForm}>Add movie</div>
-                <NavLink to="/about" activeClassName="active-link">  
+                <NavLink to="/about">  
                 <div className={this.props.hideAbout?this.classHiddenItem:this.classNameItem}>About</div>
                 </NavLink>
                 </div>
