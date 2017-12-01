@@ -1,22 +1,19 @@
-import { ADD_USER_TVSHOW } from "../actions";
+import { ADD_USER_TVSHOW, CLOSE_FORM } from "../actions";
+import {setLocal, setLocalRemoveLast} from '../../services/local-saver.service';
+
 
 const tvshowRefresh = store => next => action => {
     if(action.type===ADD_USER_TVSHOW){
-        var localUserTvShowSTR = localStorage.getItem("userTvShow");
+        var localTvShowStr = localStorage.getItem("tvshows");
+        let localTvShowArray = JSON.parse(localTvShowStr);
         let item = action.payload;
-        if(!localUserTvShowSTR){
-            var tempArray = [];
-            tempArray.push(item);
-            let tempArrayStr = JSON.stringify(tempArray);
-            localStorage.setItem("userTvShow",tempArrayStr);
-        }
-        else{
-            var localUserTvShow = JSON.parse(localUserTvShowSTR);
-            localUserTvShow.push(item);
-            let arrstr = JSON.stringify(localUserTvShow);
-            localStorage.removeItem("userTvShow");
-            localStorage.setItem("userTvShow", arrstr);
-        }        
+        item.type = 'tvshow';
+        item.isInLibrary = false;
+        localTvShowArray.unshift(item);
+        setLocalRemoveLast(localTvShowArray, 'tvshows');
+        store.dispatch({
+            type: CLOSE_FORM
+        });     
     }
     return next(action);
 };
