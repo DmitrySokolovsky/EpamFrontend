@@ -26,11 +26,14 @@ import {
     addShowToMyLib,
     removeShowFromMyLib,
     applyShowSearchConfig,
-    toggleShowSearch
+    toggleShowSearch,
+    getNextShows
 } from "../../store/actions";
 
 import "./hw-tvshows.view.css";
 import {EntityMovieService} from "../../services/movie-entity.service.js";
+
+let startPageScroll = 2;
 
 class TvShowViewMDB extends React.Component{
     constructor(props){
@@ -46,8 +49,13 @@ class TvShowViewMDB extends React.Component{
         };
     }
 
-    scrollingHandler(){        
+    scrollingHandler(){     
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
+        if(div.scrollHeight==div.clientHeight+div.scrollTop){
+            console.log("REQUEST!!");
+            this.props.getNextShows(startPageScroll);
+            startPageScroll++;
+        }   
         var currentScroll = div.scrollTop;
         
         if(currentScroll === 0){
@@ -165,6 +173,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     toggleSearch:() => {
         dispatch(toggleShowSearch());
+    },
+    getNextShows:(value) => {
+        dispatch(getNextShows(value));
     }
 });
 

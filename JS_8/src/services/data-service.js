@@ -91,7 +91,7 @@ export class DataServise {
   }
 
 
-getNextPartShowLink(n){
+getNextShowPartData(n){
   let url = getNextPartShowLink(n);
   return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();

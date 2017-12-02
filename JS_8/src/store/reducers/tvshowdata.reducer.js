@@ -4,7 +4,8 @@ import {
     ADD_USER_TVSHOW,
     TVSHOW_ADDED_TO_LIB,
     TVSHOW_REMOVED_FROM_LIB,
-    GET_SIMILAR_SHOW_DATA
+    GET_SIMILAR_SHOW_DATA,
+    ADD_NEXT_SHOW_DATA
 } from "../actions";
 import { searcher } from '../../services/genresFilter.service';
 
@@ -60,6 +61,12 @@ export function initTvShowAppReducer(state = initialState, action){
             return {
                 ...state,
                 similarShows: action.payload
+            }
+
+        case ADD_NEXT_SHOW_DATA:
+            return {
+                ...state,
+                tvshows: state.tvshows.concat(action.payload)    
             }
 
         default:

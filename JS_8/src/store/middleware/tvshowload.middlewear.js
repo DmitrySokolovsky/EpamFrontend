@@ -2,7 +2,9 @@ import {
     TVSHOW_DATA_INIT, 
     GET_TVSHOW_DATA,
     GET_SIMILAR_SHOW_DATA,
-    GET_SIMILAR_SHOWS
+    GET_SIMILAR_SHOWS,
+    ADD_NEXT_SHOW_DATA,
+    ADD_NEXT_SHOWS
 } from "../actions";
 
 import { DataServise } from "../../services/data-service";
@@ -59,6 +61,21 @@ const tvShowLoad = store => next => action => {
                 type: GET_SIMILAR_SHOW_DATA,
                 payload: similarShows
             })
+        });
+    }
+
+    if(action.type === ADD_NEXT_SHOWS){
+        dataService.getNextShowPartData(action.payload).then(result=>{
+            let resultArr = JSON.parse(result).results;
+            let nextShows = resultArr.map((item) => {
+                return new TvShowEntity(item);
+            });
+            //console.log('nextMovies: '+nextMovies);            
+
+            store.dispatch({
+                type: ADD_NEXT_SHOW_DATA,
+                payload: nextShows
+            });
         });
     }
     

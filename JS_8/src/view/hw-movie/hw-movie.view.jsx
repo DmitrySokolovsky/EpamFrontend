@@ -54,9 +54,6 @@ export class MovieViewMDB extends React.Component{
     scrollingHandler(){        
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
         var currentScroll = div.scrollTop;
-        console.log(div.scrollHeight+'scrollHeight');
-        console.log(div.clientHeight+'clientHeight');
-        console.log(div.scrollTop+'scrollTop');
         if(div.scrollHeight==div.clientHeight+div.scrollTop){
             console.log("REQUEST!!");
             this.props.getNextMovies(startPageScroll);
