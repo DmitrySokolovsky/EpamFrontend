@@ -1,7 +1,8 @@
 import {
     MOVIE_DATA_INIT,
     ADD_USER_MOVIE,
-    GET_SIMILAR_MOVIES
+    GET_SIMILAR_MOVIES,
+    ADD_NEXT_MOVIES
 } from "./moviedata-action.types";
 
 export function initMovieData() {
@@ -20,6 +21,13 @@ export function addUserMovie(payload){
 export function getSimilarMovies(payload){
     return {
         type: GET_SIMILAR_MOVIES,
+        payload
+    }    
+}
+
+export function getNextMovies(payload){
+    return {
+        type: ADD_NEXT_MOVIES,
         payload
     }    
 }

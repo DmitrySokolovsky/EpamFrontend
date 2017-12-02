@@ -26,14 +26,18 @@ import {
     addMovieToMyLib,
     removeMovieFromMyLib,
     toggleMovieSearch,
-    applyMovieSearchConfig
+    applyMovieSearchConfig,
+    getNextMovies
  } from "../../store/actions"; 
+
+let startPageScroll=2;
 
 import "./hw-movie.view.css";
 
 export class MovieViewMDB extends React.Component{
     constructor(props){
         super(props);
+        this.startPageScroll = 2;
         this.lastScroll = 0;
         this.state = {
             isScrollDown: true,
@@ -50,6 +54,14 @@ export class MovieViewMDB extends React.Component{
     scrollingHandler(){        
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
         var currentScroll = div.scrollTop;
+        console.log(div.scrollHeight+'scrollHeight');
+        console.log(div.clientHeight+'clientHeight');
+        console.log(div.scrollTop+'scrollTop');
+        if(div.scrollHeight==div.clientHeight+div.scrollTop){
+            console.log("REQUEST!!");
+            this.props.getNextMovies(startPageScroll);
+            startPageScroll++;
+        }
         
         if(currentScroll === 0){
             this.setState({isScrollDown: true});
@@ -79,7 +91,6 @@ export class MovieViewMDB extends React.Component{
         else{
             div.scrollTo(0, 1000000000);
         }
-        
     }
 
     applyMovieSearchConfig(){
@@ -176,6 +187,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     applyMovieSearchConfig: () => {
         dispatch(applyMovieSearchConfig());
+    },
+    getNextMovies: (value)=> {
+        dispatch(getNextMovies(value));
     }
 });
 

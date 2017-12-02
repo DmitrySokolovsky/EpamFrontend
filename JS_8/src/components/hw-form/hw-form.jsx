@@ -160,8 +160,7 @@ export const Form = connect(mapStateToProps, mapDispatchToProps)(FormMovie);
 function loadInView(file,elem){
     var fileReader = new FileReader();
     fileReader.onloadend = ()=>{            
-        elem.src = fileReader.result;
-        
+        elem.src = fileReader.result;        
     }
     fileReader.readAsDataURL(file);
 }

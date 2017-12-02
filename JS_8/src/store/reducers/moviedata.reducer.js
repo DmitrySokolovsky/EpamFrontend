@@ -4,7 +4,8 @@ import {
      ADD_USER_MOVIE,
      MOVIE_ADDED_TO_LIB,
      MOVIE_REMOVED_FROM_LIB,
-     GET_SIMILAR_MOVIES_DATA
+     GET_SIMILAR_MOVIES_DATA,
+     ADD_NEXT_MOVIE_DATA
 } from "../actions";
 
 import {
@@ -67,6 +68,12 @@ export function initMoviesAppReducer(state = initialState, action){
                 similarMovies: action.payload
             }
             
+        case ADD_NEXT_MOVIE_DATA:
+            return {
+                ...state,
+                movies: state.movies.concat(action.payload)    
+            }
+
         default:
             return state;
     }
