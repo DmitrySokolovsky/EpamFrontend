@@ -21,7 +21,6 @@ const movieLoad = store => next => action =>{
         if(!moviesLS){
             dataService.getData(apiUrl.movieUrl).then((result)=>{       
                 let arr = JSON.parse(result).results;
-                console.log(arr);
                 let movies = arr.map((item)=>{
                     return new MovieEntity(item);
                 });
@@ -49,7 +48,6 @@ const movieLoad = store => next => action =>{
                 type: GET_MOVIE_DATA,
                 payload: movies
             });
-            console.log(store.getState().init);
         }
     }
 
@@ -74,8 +72,6 @@ const movieLoad = store => next => action =>{
             let nextMovies = resultArr.map((item) => {
                 return new MovieEntity(item);
             });
-            console.log(nextMovies);
-            //console.log('nextMovies: '+nextMovies);            
 
             store.dispatch({
                 type: ADD_NEXT_MOVIE_DATA,

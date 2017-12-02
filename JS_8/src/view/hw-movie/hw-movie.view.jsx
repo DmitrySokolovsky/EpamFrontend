@@ -37,7 +37,6 @@ import "./hw-movie.view.css";
 export class MovieViewMDB extends React.Component{
     constructor(props){
         super(props);
-        this.startPageScroll = 2;
         this.lastScroll = 0;
         this.state = {
             isScrollDown: true,

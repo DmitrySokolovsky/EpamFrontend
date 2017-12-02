@@ -15,8 +15,7 @@ let dataService = new DataServise();
 
 const tvShowLoad = store => next => action => {
     if(action.type===TVSHOW_DATA_INIT){ 
-        console.log(action.type);
-      
+        console.log(action.type);      
         let tvshowsLS = localStorage.getItem("tvshows");
         if(!tvshowsLS){
             dataService.getData(apiUrl.showUrl).then((result)=>{       
@@ -70,7 +69,6 @@ const tvShowLoad = store => next => action => {
             let nextShows = resultArr.map((item) => {
                 return new TvShowEntity(item);
             });
-            //console.log('nextMovies: '+nextMovies);            
 
             store.dispatch({
                 type: ADD_NEXT_SHOW_DATA,
