@@ -49,6 +49,9 @@ class TvShowViewMDB extends React.Component{
         };
     }
 
+    //it's mostly the same as for movies
+    // see movie view comments
+
     scrollingHandler(){     
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
         if(div.scrollHeight==div.clientHeight+div.scrollTop){

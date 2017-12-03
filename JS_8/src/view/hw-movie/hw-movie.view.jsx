@@ -50,6 +50,7 @@ export class MovieViewMDB extends React.Component{
 
     }
 
+    //action for changing arrow and making request for next page of data
     scrollingHandler(){        
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
         var currentScroll = div.scrollTop;

@@ -18,7 +18,7 @@ const initialState = {
 
 export function initTvShowAppReducer(state = initialState, action){
     switch (action.type){
-        
+        // checking for config in sessionStorage
         case GET_TVSHOW_DATA:
             let showConfigStr = sessionStorage.getItem('showSearchConfig');
             let data = action.payload;

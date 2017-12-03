@@ -21,6 +21,7 @@ const operationsWithMyLibMiddlewear = store => next => action => {
             payload: item
         });
 
+        //sets watched only after dispatching MOVIE_ADDED_TO_LIB
         item.watched=false;
 
         if(!myLibStr){
@@ -53,7 +54,8 @@ const operationsWithMyLibMiddlewear = store => next => action => {
         });
 
         item.watched = false;
-
+        
+        // same as for movies
         if(!myLibStr){
             var tempArray = [];
             tempArray.push(item);

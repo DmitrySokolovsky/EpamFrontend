@@ -29,6 +29,8 @@ export function advancedSearchShowReducer(state = initialState, action){
                 isShowSearchOpen: !state.isShowSearchOpen
             };
         
+            // different handlers for counctructing ad search config
+   
         case SHOW_GENRE_SEARCH_CHANGE:
             return {
                 ...state,

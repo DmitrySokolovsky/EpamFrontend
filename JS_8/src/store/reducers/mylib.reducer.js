@@ -22,6 +22,7 @@ export function addToMyLibReducer(state = initialState, action){
                 myLibItems: action.payload              
             }
 
+            //this is needed for unwatched items counter
         case MAKE_ITEMS_WATCHED:
             return {
                 ...state,
@@ -43,6 +44,7 @@ export function addToMyLibReducer(state = initialState, action){
                 myLibItems: [...state.myLibItems, action.payload]
             }
 
+            //removing from LS also
         case MOVIE_REMOVE_FROM_LIB:
             var newMovies = state.myLibItems.filter(v => v.id !== action.payload.id);
             let currentLibraryString = JSON.stringify(newMovies);

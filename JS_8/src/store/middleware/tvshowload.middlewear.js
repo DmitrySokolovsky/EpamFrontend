@@ -13,6 +13,8 @@ import { apiUrl } from "../../services/api.config";
 
 let dataService = new DataServise();
 
+// same as for movies, see comments in movie.middlewear
+
 const tvShowLoad = store => next => action => {
     if(action.type===TVSHOW_DATA_INIT){ 
         console.log(action.type);      

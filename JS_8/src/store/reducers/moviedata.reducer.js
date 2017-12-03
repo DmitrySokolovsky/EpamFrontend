@@ -38,12 +38,14 @@ export function initMoviesAppReducer(state = initialState, action){
                 movies: data
             }
 
+            //action for adding user item through form
         case ADD_USER_MOVIE:
             return {
                 ...state,
                 movies: [action.payload, ...state.movies]    
             }
 
+            //sets prop to see is the item in lib
         case MOVIE_ADDED_TO_LIB:
             return {
                 ...state,

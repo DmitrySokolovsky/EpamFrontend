@@ -58,6 +58,7 @@ export class MyLibraryMDB extends React.Component{
         this.props.removeShowFromMyLib(item);
     }
 
+    //handlers to change scrollbar arrow
     scrollingHandler(){        
         var div = document.getElementsByClassName("hw-app__poster-container")[0];
         var currentScroll = div.scrollTop;
@@ -88,6 +89,8 @@ export class MyLibraryMDB extends React.Component{
     }
 
     render(){ 
+        //if there is no saved data in lib
+        // we should tell about it
         let string = localStorage.getItem("mylib")
         if(string==="[]"||!string){
             return(

@@ -8,7 +8,7 @@ const initialState = {
     state: 'INITIAL',
     isFormOpen: false
 }
-
+//see comments in form component
 export function formReducer(state = initialState, action) {
     switch (action.type) {
         case OPEN_FORM:

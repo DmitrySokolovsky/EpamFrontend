@@ -19,6 +19,8 @@ const movieLoad = store => next => action =>{
     if(action.type===MOVIE_DATA_INIT){ 
         let moviesLS = localStorage.getItem("movies");
         if(!moviesLS){
+
+            //if there is no data in LS - gets it by request and saves in LS
             dataService.getData(apiUrl.movieUrl).then((result)=>{       
                 let arr = JSON.parse(result).results;
                 let movies = arr.map((item)=>{
@@ -41,6 +43,7 @@ const movieLoad = store => next => action =>{
                 });
             });
         } else {
+            // get from LS if there is some data 
             let moviesLS = localStorage.getItem('movies');
             let movies = JSON.parse(moviesLS);
                         
@@ -51,6 +54,7 @@ const movieLoad = store => next => action =>{
         }
     }
 
+    // request for similar items
     if(action.type === GET_SIMILAR_MOVIES){
         dataService.getSimilarMovieData(action.payload).then(result=>{
             let resultArr = JSON.parse(result).results;

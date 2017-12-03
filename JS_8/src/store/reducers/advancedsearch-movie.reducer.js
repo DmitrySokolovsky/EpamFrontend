@@ -29,6 +29,7 @@ export function advancedSearchMovieReducer(state = initialState, action){
                 isMovieSearchOpen: !state.isMovieSearchOpen
             };
         
+        // different handlers for counctructing ad search config
         case MOVIE_GENRE_SEARCH_CHANGE:
             return {
                 ...state,
