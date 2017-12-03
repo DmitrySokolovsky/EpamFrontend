@@ -8,7 +8,7 @@ import {
     Switch
 } from 'react-router-dom';
 
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { toggleForm } from "../../store/actions"; 
 
 class Nav extends Component{
@@ -18,6 +18,7 @@ class Nav extends Component{
         this.classHiddenItem = "hw-nav__item--hidden";            
     };
 
+    //here is some logic to hide nav items
     render(){
         return(
             <div className="hw-nav">
@@ -33,6 +34,7 @@ class Nav extends Component{
     }
 }
 
+//I used redux to keep state of opening form cause we need to controll it from differet parts of app
 const mapDispatchToProps = (dispatch) => ({
     toggleForm: () => dispatch(toggleForm())
 });

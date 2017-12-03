@@ -1,3 +1,5 @@
+// getting array of pictures for slider in component "ABOUT"
+
 require('../assets/img/About.png');
 require('../assets/img/Add movie.png');
 require('../assets/img/Add movie(validations).png');

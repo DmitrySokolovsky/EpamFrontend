@@ -7,6 +7,8 @@ import {
 import { setLocalRemoveLast } from '../../services/local-saver.service';
 
 const initMyLibMiddlewear = store => next => action => {
+
+    //getting data to state for viewing lib
     if(action.type===MYLIB_DATA_INIT){
         let libstring = localStorage.getItem('mylib');
         if(libstring){
@@ -18,6 +20,7 @@ const initMyLibMiddlewear = store => next => action => {
         }        
     }
 
+    // changes prop watched in lib for local st. 
     if(action.type === MAKE_ITEMS_WATCHED){
         let libItemsString = localStorage.getItem('mylib');
         if(libItemsString){

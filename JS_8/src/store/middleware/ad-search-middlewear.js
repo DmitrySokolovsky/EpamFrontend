@@ -10,6 +10,7 @@ import { contains, searcher } from '../../services/genresFilter.service';
 
 
 const adSearchMiddlewear = store => next => action => {
+    //filtering items according to search config and push them in state
     if(action.type===SHOW_APPLY_SEARCH_CONFIG) {        
         let adSearchConfig = store.getState().adShowSearch;
         let tvshows = store.getState().initTv.tvshows;
@@ -30,6 +31,7 @@ const adSearchMiddlewear = store => next => action => {
         });
     }
 
+    //saving search config in session storage
     if(action.type===MOVIE_SAVE_SEARCH_CONFIG){
         let movieSearch = sessionStorage.getItem('movieSearchConfig');
         if(movieSearch){

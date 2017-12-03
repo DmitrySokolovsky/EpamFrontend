@@ -7,6 +7,7 @@ export class ProgressBar extends Component{
         super(props);
     }
     
+    // logic that calculates the range - page and element coorda were used
     onRangeChange(event){
         if(this.props.onRangeChange){
             let x = event.clientX;

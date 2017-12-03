@@ -13,6 +13,7 @@ export function initMyLibData() {
     }
 }
 
+// dispathing action to make items watch after visitig lib page
 export function makeItemsWatched() {
     return {
         type: MAKE_ITEMS_WATCHED

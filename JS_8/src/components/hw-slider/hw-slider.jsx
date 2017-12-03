@@ -9,8 +9,7 @@ export class Slider extends Component{
     }
 
     componentDidMount(){
-        this.showSlides(this.slideIndex);
-        
+        this.showSlides(this.slideIndex);        
     }
 
     plusSlide(n) {
@@ -18,6 +17,7 @@ export class Slider extends Component{
         console.log(this.slideIndex);
     }
 
+    // tryed to get array of children with ref-s but I couldn't
     showSlides(n) {
         var i;
         let slides = document.getElementsByClassName('hw-slider__picture-container');        

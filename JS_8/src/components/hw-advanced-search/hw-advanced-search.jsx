@@ -182,7 +182,7 @@ export class AdvancedSearchMDB extends Component{
         }
     }
 
-    // removes saved config from local storage
+    // removes saved config from session storage
     onRemoveConfigClick(){
         if(this.props.searchType==='movie'){
             sessionStorage.removeItem('movieSearchConfig');

@@ -19,8 +19,6 @@ export class GenresListMDB extends Component {
     }
   }
 
-
-
   render() {
     return (
       <div

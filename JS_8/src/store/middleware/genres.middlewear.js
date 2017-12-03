@@ -8,6 +8,7 @@ import { apiUrl } from '../../services/api.config';
 
 let dataService = new DataServise();
 
+//getting genres data
 const genresLoad = store => next => action => {
     if(action.type===GENRES_DATA_INIT){
         dataService.getData(apiUrl.genreUrl).then((result)=>{

@@ -1,17 +1,17 @@
 import React,{Component} from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
-import {GenresService} from "../../services/genres.service.js";
+import {GenresService} from '../../services/genres.service.js';
 import {
     TextBox,
     GenresList
-} from "../../components";
+} from '../../components';
 import './hw-form.css';
 
 import {
     closeForm,
     addUserMovie
-} from "../../store/actions"; 
+} from '../../store/actions'; 
 
 let defaultPoster = require('../../assets/img/default_poster.png');
 
@@ -29,9 +29,10 @@ class FormMovie extends Component{
         };
     }
 
+    //dropdown logic
     componentDidMount(){
         console.log(this.dropped);
-       this.dropzone.ondrop = (e)=>{
+        this.dropzone.ondrop = (e)=>{
             e.preventDefault();
             var file = e.dataTransfer.files[0];
             console.log(this.dropped);
@@ -64,6 +65,7 @@ class FormMovie extends Component{
         this.setState({name: val});
     }
     
+    //sets constructed item to list
     handleSubmit(event){
         event.preventDefault(); 
         let item = {
@@ -87,6 +89,7 @@ class FormMovie extends Component{
         console.log(this.genre_ids);
     }
 
+    // removes chosen genre from adding item genre list 
     onRemoveGenreChange(item){
         this.genre_ids = this.genre_ids.filter((i)=>{
             i.id !== item.id;

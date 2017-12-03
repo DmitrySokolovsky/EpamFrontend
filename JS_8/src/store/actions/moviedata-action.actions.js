@@ -5,6 +5,8 @@ import {
     ADD_NEXT_MOVIES
 } from "./moviedata-action.types";
 
+//I've created two different views for Movies and Tv
+// So logic for features will be different 
 export function initMovieData() {
     return {
         type: MOVIE_DATA_INIT        

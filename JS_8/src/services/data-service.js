@@ -7,6 +7,8 @@ import {
 
 export class DataServise {
   constructor() {}
+
+  // gets data in app starting
   getData(url) {
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
@@ -27,6 +29,7 @@ export class DataServise {
     });
   }
 
+  //gets similar item's data
   getSimilarMovieData(movieId) {
     let url = movieSimilarUrl(movieId);
     return new Promise(function(resolve, reject) {

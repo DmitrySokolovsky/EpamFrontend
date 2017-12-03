@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import './hw-item-info.css';
 import {
     HashRouter as Router,
@@ -48,11 +48,13 @@ componentWillMount(){
     }    
 }
 
+//remove curren card
 componentWillUnmount(){
     sessionStorage.removeItem('currentCard');
     sessionStorage.removeItem('currentGenresList');
 }
 
+// saving current card in session storage...I'v made it because while refreshing page I get white window
 componentDidMount(){  
     let genreCollection = this.props.genres;
     let itemGenres = this.state.item.genre_ids;
@@ -169,7 +171,7 @@ const mapStateToProps = (state) => {
         similarShows
     };
 };
-//dispath state to props
+
 const mapDispatchToProps = (dispatch) => ({
     getSimilarMovies: (value) => { 
         dispatch(getSimilarMovies(value)); 
@@ -192,6 +194,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 export const ItemInfo = connect(mapStateToProps,mapDispatchToProps)(ItemInfoMDB);
 
+
+// searches object in object array by prop...I know shoul crate service for this func
 function getValue(array, search) {
     var i = array.length;
     while (i--) {

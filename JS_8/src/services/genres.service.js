@@ -6,6 +6,7 @@ export class GenresService{
         this.url = apiUrl.genreUrl;
     }
 
+    //I've not used it, wanted but it's too late
     saveGenresLocal(){
         let service = new DataServise();
         service.getData(this.url).then((response)=>{

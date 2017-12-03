@@ -20,6 +20,8 @@ import {
     SHOW_SAVE_SEARCH_CONFIG
 } from './advancedsearch-action.types';
 
+//I've created two different views for Movies and Tv
+// So logic for features will be different 
 export function toggleMovieSearch() {
     return {
         type: MOVIE_TOGGLE_SEARCH

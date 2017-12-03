@@ -5,6 +5,7 @@ export class TextBox extends Component{
     constructor(props){
         super(props);
     }
+    
     render(){
         return(
             <div className="hw-textbox hw-textbox__container">                                
@@ -15,6 +16,7 @@ export class TextBox extends Component{
             </div>
         );
     }
+
     onInputChange(event) {
         if (this.props.onChange) {
             this.props.onChange(event.target.value);

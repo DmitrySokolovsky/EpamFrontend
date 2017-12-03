@@ -1,3 +1,6 @@
+
+//RENAMING!!!!
+//find genres to show in item card - returns name according to ID
 export function findGenres(genreCollection,movieGenresIds){
     var resultArr = [];
     for(let i = 0;i<genreCollection.length;i++){
@@ -10,6 +13,7 @@ export function findGenres(genreCollection,movieGenresIds){
     return resultArr;
 }
 
+// finds out is one array contains all items of another one
 export function contains(where,what) {
     if(!what){
         return true;
@@ -30,6 +34,7 @@ export function contains(where,what) {
    return true;
 }
 
+// logic for advanced search
 export function searcher(where, config, itemsType) {
     let genresForSearch;    
     let titleForSearch;

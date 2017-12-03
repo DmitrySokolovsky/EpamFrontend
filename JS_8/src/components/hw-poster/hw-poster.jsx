@@ -16,6 +16,7 @@ export class Poster extends Component{
 
     }
 
+    //handler of adding/removing to library 
     addItemToLibtary(){
         if(this.props.addItemToLibrary){
             this.props.addItemToLibrary(this.props.data);

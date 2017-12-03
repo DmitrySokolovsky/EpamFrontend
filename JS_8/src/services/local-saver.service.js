@@ -1,3 +1,5 @@
+/// used it only for several times
+
 export function setLocal(array,key){
     let string = JSON.stringify(array);
     localStorage.setItem(key,string);

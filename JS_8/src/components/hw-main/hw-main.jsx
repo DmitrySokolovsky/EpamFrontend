@@ -28,6 +28,7 @@ import './hw-main.css';
 export class AppMDB extends React.Component{
     constructor(props){
         super(props);   
+        // init all data
         this.props.initMovies();
         this.props.initTvShows();
         this.props.initMyLibData();

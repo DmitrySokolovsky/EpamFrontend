@@ -9,7 +9,6 @@ import {
   } from 'react-router-dom';
 import './hw-sidebar.css';
 
-//fa fa-window-close-o
 export class SideBarMDB extends Component{
     constructor(props){
         super(props);       
@@ -22,6 +21,7 @@ export class SideBarMDB extends Component{
         this.libraryArray = null;
     }
 
+    // I thought that there was no use to use redux for keeping this state
     toggleState(){
         this.setState({isOpened: !this.state.isOpened});
     }
@@ -70,6 +70,7 @@ export class SideBarMDB extends Component{
     }
 }
 
+// filtering of unwatched movies
 const mapStateToProps = (state) => {
     var mylib = state.addToLib.myLibItems.filter((item)=> {
         return item.watched == false;
