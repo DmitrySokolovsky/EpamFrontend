@@ -10,5 +10,6 @@ export class MovieEntity {
         this.vote = entity.vote_average || '';
         this.isInLibrary = false;
         this.type = 'movie';
+        this.watched = true;
     }
 }

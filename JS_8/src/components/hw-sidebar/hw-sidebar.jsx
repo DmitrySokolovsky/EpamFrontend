@@ -71,7 +71,9 @@ export class SideBarMDB extends Component{
 }
 
 const mapStateToProps = (state) => {
-    var mylib = state.addToLib.myLibItems;
+    var mylib = state.addToLib.myLibItems.filter((item)=> {
+        return item.watched == false;
+    });
     return {
         mylib
     };

@@ -25,7 +25,8 @@ import {
     initMovieData,
     addUserMovie,
     removeMovieFromMyLib,
-    removeShowFromMyLib
+    removeShowFromMyLib,
+    makeItemsWatched
  } from "../../store/actions"; 
 
 import "./hw-mylib.view.css";
@@ -43,6 +44,10 @@ export class MyLibraryMDB extends React.Component{
                 });
             }                        
         };
+    }
+
+    componentWillMount(){
+        this.props.makeItemsWatched();
     }
 
     removeMovieFromLib(item){
@@ -154,6 +159,9 @@ const mapDispatchToProps = (dispatch) =>({
     },
     removeShowFromMyLib: (item) => {
         dispatch(removeShowFromMyLib(item));
+    },
+    makeItemsWatched: () => {
+        dispatch(makeItemsWatched());
     }
 });
 

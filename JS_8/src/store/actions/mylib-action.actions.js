@@ -3,12 +3,19 @@ import {
     MOVIE_ADD_TO_LIB,    
     TVSHOW_ADD_TO_LIB,
     MOVIE_REMOVE_FROM_LIB,
-    TVSHOW_REMOVE_FROM_LIB
+    TVSHOW_REMOVE_FROM_LIB,
+    MAKE_ITEMS_WATCHED
 } from './mylib-action.types';
 
 export function initMyLibData() {
     return {
         type: MYLIB_DATA_INIT     
+    }
+}
+
+export function makeItemsWatched() {
+    return {
+        type: MAKE_ITEMS_WATCHED
     }
 }
 

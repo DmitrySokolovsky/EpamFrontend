@@ -15,6 +15,14 @@ const operationsWithMyLibMiddlewear = store => next => action => {
         let myLibStr = localStorage.getItem("mylib");
         let item = action.payload;
         item.isInLibrary = true;
+
+        store.dispatch({
+            type: MOVIE_ADDED_TO_LIB,
+            payload: item
+        });
+
+        item.watched=false;
+
         if(!myLibStr){
             var tempArray = [];
             tempArray.push(item);
@@ -27,10 +35,7 @@ const operationsWithMyLibMiddlewear = store => next => action => {
             localStorage.removeItem("mylib");
             localStorage.setItem("mylib", arrstr);
         } 
-        store.dispatch({
-            type: MOVIE_ADDED_TO_LIB,
-            payload: item
-        });
+
         localStorage.removeItem('movies');
         let currentMovies = store.getState().init.movies;
         let currentMoviesString = JSON.stringify(currentMovies);
@@ -41,6 +46,14 @@ const operationsWithMyLibMiddlewear = store => next => action => {
         let myLibStr = localStorage.getItem("mylib");
         let item = action.payload;
         item.isInLibrary = true;
+
+        store.dispatch({
+            type: TVSHOW_ADDED_TO_LIB,
+            payload: item
+        });
+
+        item.watched = false;
+
         if(!myLibStr){
             var tempArray = [];
             tempArray.push(item);
@@ -53,10 +66,7 @@ const operationsWithMyLibMiddlewear = store => next => action => {
             localStorage.removeItem("mylib");
             localStorage.setItem("mylib", arrstr);
         } 
-        store.dispatch({
-            type: TVSHOW_ADDED_TO_LIB,
-            payload: item
-        });
+        
         localStorage.removeItem('tvshows');
         let currentShows = store.getState().initTv.tvshows;
         let currentShowsString = JSON.stringify(currentShows);

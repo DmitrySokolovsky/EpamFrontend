@@ -4,7 +4,8 @@ import {
     MOVIE_ADD_TO_LIB,
     TVSHOW_ADD_TO_LIB,
     MOVIE_REMOVE_FROM_LIB,
-    TVSHOW_REMOVE_FROM_LIB
+    TVSHOW_REMOVE_FROM_LIB,
+    MAKE_ITEMS_WATCHED
 } from '../actions';
 
 const initialState = {
@@ -19,6 +20,15 @@ export function addToMyLibReducer(state = initialState, action){
             return {
                 ...state,
                 myLibItems: action.payload              
+            }
+
+        case MAKE_ITEMS_WATCHED:
+            return {
+                ...state,
+                myLibItems: state.myLibItems.map((item)=>{
+                    item.watched=true;
+                    return item;
+                })
             }
 
         case MOVIE_ADD_TO_LIB:

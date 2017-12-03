@@ -9,5 +9,6 @@ export class TvShowEntity {
         this.vote = entity.vote_average || '';
         this.isInLibrary = false;
         this.type = 'tvshow';
+        this.watched = true;
     }
 }
