@@ -1,0 +1,29 @@
+.hw-startpage__container{
+    height: 655px;
+    width: 100%;
+    background-color: #262127;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hw-startpage__text--medium{
+    font-size: 35px;
+    text-decoration: underline;
+}
+
+.hw-startpage__list-item>a{
+    display: inline;
+    color: rgb(93, 93, 226);
+}
+
+.hw-startpage__text--xxl{
+    font-size: 70px;
+}
+
+.hw-startpage__list-item{
+    font-size: 20px;
+    margin-top: 15px;
+}

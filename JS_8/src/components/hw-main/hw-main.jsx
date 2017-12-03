@@ -6,22 +6,24 @@ import {
   Route,
   NavLink,
   Switch
-} from 'react-router-dom'
-import {MovieView} from "../../view/hw-movie/hw-movie.view.jsx";
-import {TvShowView} from "../../view/hw-tvshow/hw-tvshows.view.jsx";
-import {MyLibrary} from "../../view/hw-mylib/hw-mylib.view.jsx";
-import {About} from "../../view/hw-about/hw-about.view.jsx";
+} from 'react-router-dom';
+import { MovieView } from '../../view/hw-movie/hw-movie.view.jsx';
+import { TvShowView } from '../../view/hw-tvshow/hw-tvshows.view.jsx';
+import { MyLibrary } from '../../view/hw-mylib/hw-mylib.view.jsx';
+import { NotFound } from '../../view/hw-notfound/hw-notfound.view.jsx';
+import { About } from '../../view/hw-about/hw-about.view.jsx';
+import { StartPage } from '../../view/hw-startpage/hw-startpage.view.jsx';
+
 import {
     SideBar,   
     ItemInfo
-} from "../../components";
+} from '../../components';
 import {
     initMovieData, 
     initTvShowData,
     initMyLibData
 } from '../../store/actions';
 import './hw-main.css';
-
 
 export class AppMDB extends React.Component{
     constructor(props){
@@ -54,7 +56,11 @@ export class AppMDB extends React.Component{
                 <Route path="/mylib" component={MyLibrary}/>
 
                 <Route path="/about" component={About}/>
-                
+
+                <Route path="/" component={StartPage}/>
+
+                <Route path="*" component={NotFound}/>
+
                 </Switch>               
                 </div>
               </Router>             
