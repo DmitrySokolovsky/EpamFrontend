@@ -1,7 +1,7 @@
 .hw-form__container{
     color:white;
     background-color: #222329;
-    height: 250px;
+    height: 300px;
     width: 100%;
 }
 
@@ -110,4 +110,8 @@
 .hw-form__dropped-image{
     height: 120px;
     width: 60px;
+}
+
+.hw-form__validation{
+    color: red;
 }

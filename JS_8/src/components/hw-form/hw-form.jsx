@@ -86,6 +86,7 @@ class FormMovie extends Component{
 
     handleGenreChange(item){
         this.genre_ids.push(item);
+        this.setState({genre_ids: this.state.genre_ids.push(item)});
         console.log(this.genre_ids);
     }
 
@@ -108,17 +109,20 @@ class FormMovie extends Component{
                     <label className="hw-form__text">Title</label>
                     <TextBox onChange={this.onTitleChange.bind(this)}
                     placeholder="Title"/>
+                    <p className={this.state.name==""?"hw-form__validation":"hw-form__container--closed"}>Enter Title</p>
                   </div>
                   <div className="hw-form__text-container">
                     <label className="hw-form__text">Overview</label>
                     <TextBox onChange={this.onOverviewChange.bind(this)}
                     placeholder = "Overview"/>
+                    <p className={this.state.description==""?"hw-form__validation":"hw-form__container--closed"}>Enter Describtion</p>
                   </div>                 
                 </div>
                 <div className="hw-form__genre-container">
                   <div className="hw-form__text">Genre</div>
                   <GenresList onChange={this.handleGenreChange.bind(this)}
                   onRemoveChange={this.onRemoveGenreChange.bind(this)}/>
+                  <p className={this.genre_ids.length==0?"hw-form__validation":"hw-form__container--closed"}>Enter genres</p>
                </div>
                <div className="hw-form__submit-container">
                  <div className="hw-form__drop-files" draggable="true"
