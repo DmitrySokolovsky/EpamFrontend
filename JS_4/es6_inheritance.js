@@ -14,18 +14,11 @@ class Car {
     }
 }
 
-class Executer {
-    static execute(callback) {
-        callback.bind(this);
-        console.log('called from Executer');
-    }
-}
-
 class Outlander extends Car {
     // if there is no constructor - parent's one is used
-    constructor(mark, engine, model) {
-        super(mark, engine, model);
-    }
+    // constructor(mark, engine, model) {
+    //     super(mark, engine, model);
+    // }
 
     dirtMove(){
         console.log(`${this.mark} ${this.model} move through the dirt successfully`);
@@ -36,17 +29,13 @@ class Outlander extends Car {
         console.log(`И прёт как падла`);
     }
 
-    // as an example of context usage
-    func() {
-        Executer.execute(this.move);
-    }
 }
 
 let outlander = new Outlander('Mitsubishi', 3.0 ,'Outlander');
 
 outlander.move();
 
-outlander.func();
+
 
 
 
