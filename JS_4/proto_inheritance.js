@@ -48,7 +48,7 @@ mitsOutland.move();
 
 //Object inheritance
 var tuning = {
-    upgradeEngine: () =>{
+    upgradeEngine: () => {
         console.log ("The new engine was installed");
     },
     addTurbo: () => {
